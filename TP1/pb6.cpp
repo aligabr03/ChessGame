@@ -1,64 +1,73 @@
 /**
-* Programme de traitement de données pour un dictionnaire (mot, nature/genre, définition).
-* \file   pb6.cpp
-* \author Rayane Othmani : 2126485 et Ali Gabr : 2128904
-* \date   23 janvier 2023
-* Créé le 23 janvier 2023
-*/
+ * Programme de traitement de données pour un dictionnaire (mot, nature/genre, définition).
+ * \file   pb6.cpp
+ * \author Rayane Othmani : 2126485 et Ali Gabr : 2128904
+ * \date   23 janvier 2023
+ * Créé le 23 janvier 2023
+ */
 
 #include <iostream>
 #include <fstream>
 #include <string>
 using namespace std;
 
-const int DICTIONARY_SIZE = 1000;  // Nombre de mots dans le dictionnaire
-const string DICTIONARY_FILE = "dictionnaire.txt";  // Nom du fichier contenant le dictionnaire
+const int NB_MOTS_MAX = 1000;
+const string FICHIER_DICTIONNAIRE = "dictionnaire.txt";
 
-struct Word {
-    string word;
-    string nature;
+struct EntreeDict
+{
+    string mot;
+    string natureGenre;
     string definition;
 };
 
-int main() {
-    // Création du tableau de structures pour stocker les mots du dictionnaire
-    Word dictionary[DICTIONARY_SIZE];
-
-    // Ouverture du fichier contenant le dictionnaire
-    ifstream file(DICTIONARY_FILE);
-
-    // Lecture du dictionnaire ligne par ligne
-    string line;
-    int wordCount = 0;
-    while (getline(file, line)) {
-        // Séparation des champs de la ligne (mot, nature, définition) en utilisant le caractère de tabulation
-        int tabIndex = line.find("\t");
-        dictionary[wordCount].word = line.substr(0, tabIndex);
-        int nextTabIndex = line.find("\t", tabIndex + 1);
-        dictionary[wordCount].nature = line.substr(tabIndex + 1, nextTabIndex - tabIndex - 1);
-        dictionary[wordCount].definition = line.substr(nextTabIndex + 1);
-        wordCount++;
+int separerChampDictionnaire(const string FICHIER_DICTIONNAIRE, EntreeDict dictionnaire[])
+{
+    ifstream fichier(FICHIER_DICTIONNAIRE);
+    string ligne;
+    int compteurDeMot = 0;
+    while (getline(fichier, ligne))
+    {
+        int indexTab = ligne.find("\t");
+        dictionnaire[compteurDeMot].mot = ligne.substr(0, indexTab);
+        int prochainIndexTab = ligne.find("\t", indexTab + 1);
+        dictionnaire[compteurDeMot].natureGenre = ligne.substr(indexTab + 1, prochainIndexTab - indexTab - 1);
+        dictionnaire[compteurDeMot].definition = ligne.substr(prochainIndexTab + 1);
+        compteurDeMot++;
     }
+    fichier.close();
+    return compteurDeMot;
+}
 
-    // Fermeture du fichier
-    file.close();
-
-    // Recherche du mot le plus long
-    string longestWord = "";
-    for (int i = 0; i < wordCount; i++) {
-        if (dictionary[i].word.length() > longestWord.length()) {
-            longestWord = dictionary[i].word;
+string trouverMotPlusLong(EntreeDict dictionnaire[], int compteurDeMot)
+{
+    string motPlusLong = "";
+    for (int i = 0; i < compteurDeMot; i++)
+    {
+        if (dictionnaire[i].mot.length() > motPlusLong.length())
+        {
+            motPlusLong = dictionnaire[i].mot;
         }
     }
+    return motPlusLong;
+}
 
-    // Affichage du mot le plus long dans le format demandé
-    for (int i = 0; i < wordCount; i++) {
-        if (dictionary[i].word == longestWord) {
-            cout << dictionary[i].word << " (" << dictionary[i].nature << ") : " << dictionary[i].definition << endl;
+int main()
+{
+
+    EntreeDict dictionnaire[NB_MOTS_MAX];
+
+    int compteurDeMot = separerChampDictionnaire(FICHIER_DICTIONNAIRE, dictionnaire);
+    string motPlusLong = trouverMotPlusLong(dictionnaire, compteurDeMot);
+
+    for (int i = 0; i < compteurDeMot; i++)
+    {
+        if (dictionnaire[i].mot == motPlusLong)
+        {
+            cout << dictionnaire[i].mot << " (" << dictionnaire[i].natureGenre << ") : " << dictionnaire[i].definition << endl;
             break;
         }
     }
-
     return 0;
 }
 
