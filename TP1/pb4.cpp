@@ -28,7 +28,7 @@ int main()
     int nbpPointsDansCercle = 0;
     const double valeurPiEnonce = 3.141593;
 
-    cout << "Entrez le nombre de points (d'itérations) que vous souhaitez avoir" << endl;
+    cout << "Entrez le nombre de points (d'iterations) que vous souhaitez avoir" << endl;
     cin >> nbPoints;
 
     for (int i = 0; i < nbPoints; i++)
@@ -43,9 +43,9 @@ int main()
     double approximationPi = 4 * (double)nbpPointsDansCercle / nbPoints;
     double ecartRelatif = abs(approximationPi - valeurPiEnonce);
 
-    cout << "La valeur approchée de Pi par la méthode de Monte-Carlo en utilisant " << nbPoints << " Points aléatoire est : ";
+    cout << "La valeur approchee de Pi par la methode de Monte-Carlo en utilisant " << nbPoints << " Points aleatoire est : ";
     cout << fixed << setprecision(6) << approximationPi << endl;
-    cout << "L'écart relatif est de :" << ecartRelatif << endl;
+    cout << "L'ecart relatif est de :" << ecartRelatif << endl;
 
     return 0;
 }

@@ -24,7 +24,7 @@ double avoirEntreeValide(string message, double min, double max)
         {
             break;
         }
-        cout << "Entrée non valide. Veuillez entrer une valeur entre " << min << " et " << max << endl;
+        cout << "Entree non valide. Veuillez entrer une valeur entre " << min << " et " << max << endl;
     }
     return entree;
 }
@@ -47,8 +47,8 @@ void calculerRemboursementDuPret(double montantDuPret, double tauxInteretsAnnuel
         }
     }
 
-    cout << "Nombre de mois nécessaires pour rembourser la dette: " << mois << endl;
-    cout << "Somme des intérêts perçus par le prêteur: " << interetsPercuesParLePreteur << endl;
+    cout << "Nombre de mois necessaires pour rembourser la dette: " << mois << endl;
+    cout << "Somme des interets percus par le preteur: " << interetsPercuesParLePreteur << endl;
 }
 
 int main()
@@ -57,9 +57,9 @@ int main()
     double detteRestante, interetsPercuesParLePreteur = 0;
     int mois = 0;
 
-    montantDuPret = avoirEntreeValide("Entrez le montant du prêt: ", 0, INFINITY);
-    paiementMensuel = avoirEntreeValide("Entrez le montant remboursé chaque mois: ", 0, INFINITY);
-    tauxInteretsAnnuel = avoirEntreeValide("Entrez le taux d'intérêt annuel (en %): ", 0, 100);
+    montantDuPret = avoirEntreeValide("Entrez le montant du pret: ", 0, INFINITY);
+    paiementMensuel = avoirEntreeValide("Entrez le montant rembourse chaque mois: ", 0, INFINITY);
+    tauxInteretsAnnuel = avoirEntreeValide("Entrez le taux d'interet annuel (en %): ", 0, 100);
 
     calculerRemboursementDuPret(montantDuPret, tauxInteretsAnnuel, paiementMensuel);
 

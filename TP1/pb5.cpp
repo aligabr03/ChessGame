@@ -8,7 +8,6 @@
 
 #include <iostream>
 using namespace std;
-
 void ecrireTableau(int tableau[], int taille)
 {
     for (int i = 0; i < taille; i++)
@@ -26,12 +25,13 @@ void afficherTableau(int tableau[], int taille)
     }
 }
 
-void avoirTableauTrie(int tableau[], int taille)
+void avoirTableauTrie(int tableau[])
 {
-    int tableauTrie[taille];
+    const int TAILLE = 10;
+    int tableauTrie[TAILLE];
     int compteur = 0;
 
-    for (int i = 0; i < taille; i++)
+    for (int i = 0; i < TAILLE; i++)
     {
         if (tableau[i] % 2 == 0)
         {
@@ -40,7 +40,7 @@ void avoirTableauTrie(int tableau[], int taille)
         }
     }
 
-    for (int j = 0; j < taille; j++)
+    for (int j = 0; j < TAILLE; j++)
     {
         if (tableau[j] % 2 != 0)
         {
@@ -63,8 +63,8 @@ int main()
     afficherTableau(tableau, TAILLE);
 
     cout << endl
-         << "Le tableau trié est le suivant : " << endl;
-    avoirTableauTrie(tableau, TAILLE);
+         << "Le tableau trie est le suivant : " << endl;
+    avoirTableauTrie(tableau);
 
     return 0;
 }

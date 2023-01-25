@@ -21,7 +21,7 @@ double avoirEntreeValide(string message, double min, double max)
         {
             break;
         }
-        cout << "Entrée non valide. Veuillez entrer une valeur entre " << min << " et " << max << endl;
+        cout << "Entree non valide. Veuillez entrer une valeur entre " << min << " et " << max << endl;
     }
     return entree;
 }
@@ -42,7 +42,7 @@ void calculerHauteurRebond(double hauteurInitiale, double nbDeRebonds, double co
         i++;
     }
 
-    cout << "La hauteur après " << nbDeRebonds << " rebonds, est de : " << hauteur << " unité de hauteur. " << endl;
+    cout << "La hauteur apres " << nbDeRebonds << " rebonds, est de : " << hauteur << " unite de hauteur. " << endl;
 }
 
 int main()
@@ -52,7 +52,7 @@ int main()
 
     hauteurInitiale = avoirEntreeValide("Entrez la hauteur initiale de la balle: ", 0, INFINITY);
     nbDeRebonds = avoirEntreeValide("Entrez le nombre de rebonds au bout duquel vous souhaitez connaitre la hauteur de la balle: ", 0, INFINITY);
-    coefficientDeRebond = avoirEntreeValide("Entrez la valeur du coefficient de rebond): ", 0, 1);
+    coefficientDeRebond = avoirEntreeValide("Entrez la valeur du coefficient de rebond: ", 0, 1);
 
     calculerHauteurRebond(hauteurInitiale, nbDeRebonds, coefficientDeRebond);
 
