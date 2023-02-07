@@ -273,6 +273,7 @@ int main()
 	afficherFilmographieActeur(listeFilms, "Benedict Cumberbatch" );
 	// TODO: Détruire et enlever le premier film de la liste (Alien).  Ceci devrait "automatiquement" (par ce que font vos fonctions) détruire les acteurs Tom Skerritt et John Hurt, mais pas Sigourney Weaver puisqu'elle joue aussi dans Avatar.
 	detruireFilm(listeFilms.elements[0]);
+	enleverFilmDeListeFilms(listeFilms, listeFilms.elements[0]);
 	cout << ligneDeSeparation << "Les films sont maintenant:" << endl;
 	// TODO: Afficher la liste des films.
 	afficherListeFilms(listeFilms);
