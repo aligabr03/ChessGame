@@ -77,12 +77,12 @@ void enleverFilmDeListeFilms(ListeFilms &liste, Film *filmAEnlever)
 			if (i != liste.nElements - 1)
 			{
 				liste.elements[i] = liste.elements[liste.nElements - 1];
-				delete[] liste.elements[liste.nElements - 1];
+				//delete[] liste.elements[liste.nElements - 1];
 				liste.nElements--;
 			}
 			else
 			{
-				delete[] liste.elements[i];
+				//delete[] liste.elements[i];
 				liste.nElements--;
 			}
 		}
@@ -118,11 +118,14 @@ Acteur *lireActeur(istream &fichier, ListeFilms &listeFilms)
 	Acteur *acteurExistant = trouverActeur(listeFilms, acteur.nom);
 	if (acteurExistant != nullptr)
 	{
-		//cout << "L'Acteur existe et son nom est le suivant : " << acteurExistant->nom << endl;
+		cout << "L'Acteur existe et son nom est le suivant : " << acteurExistant->nom << endl;
 		return acteurExistant;
 	}
 	cout << "Un nouvel acteur a été créé et son nom est : " << acteur.nom << endl;
 	acteurExistant = new Acteur(acteur);
+	acteurExistant->joueDans.elements = new Film * [1];
+	acteurExistant->joueDans.nElements = 0;
+	acteurExistant->joueDans.capacite = 1;
 	return acteurExistant;
 }
 
@@ -138,18 +141,18 @@ Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 	// sans faire de réallocation comme pour ListeFilms.
 	// Vous pouvez aussi copier-coller les fonctions d'allocation de ListeFilms ci-dessus dans des nouvelles fonctions
 	// et faire un remplacement de Film par Acteur, pour réutiliser cette réallocation.
-	film.acteurs.elements = new Acteur * [film.acteurs.nElements];
-	for (int i : range(film.acteurs.nElements))
+	Film* filmAlloue = new Film(film);
+	filmAlloue->acteurs.elements = new Acteur * [filmAlloue->acteurs.nElements];
+	for (int i : range(filmAlloue->acteurs.nElements))
 	{
 		// TODO: Placer l'acteur au bon endroit dans les acteurs du film.
-		film.acteurs.elements[i] = lireActeur(fichier, listeFilms);
+		filmAlloue->acteurs.elements[i] = lireActeur(fichier, listeFilms);
 		// TODO: Ajouter le film à la liste des films dans lesquels l'acteur joue.
-		ajouterFilmDansListeFilms(film.acteurs.elements[i]->joueDans, &film);
+		ajouterFilmDansListeFilms(filmAlloue->acteurs.elements[i]->joueDans, filmAlloue);
 	}
 
 	// TODO: Retourner le pointeur vers le nouveau film.
-	Film* filmAlloue = new Film(film);
-	ajouterFilmDansListeFilms(listeFilms, filmAlloue);
+	//ajouterFilmDansListeFilms(listeFilms, filmAlloue);
 	return filmAlloue;
 }
 
@@ -163,8 +166,8 @@ ListeFilms creerListe(string nomFichier)
 	// TODO: Créer une liste de films vide.
 	ListeFilms listeFilms;
 	listeFilms.nElements = 0;
-	listeFilms.capacite = 0;
-	listeFilms.elements = new Film * [nElements];
+	listeFilms.capacite = 1;
+	listeFilms.elements = new Film* [nElements];
 	for (int i : range(nElements))
 	{
 		// TODO: Ajouter le film à la liste.
