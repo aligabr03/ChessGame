@@ -13,9 +13,10 @@ public:
 	}
 
 	ListeFilms(string nomFichier) {
-		capacite = creerListe(nomFichier).capacite;
-		nElements = creerListe(nomFichier).nElements;
-		elements = creerListe(nomFichier).elements;
+		ListeFilms temp = creerListe(nomFichier);
+		capacite = temp.capacite;
+		nElements = temp.nElements;
+		elements = temp.elements;s
 	}
 
 	ListeFilms creerListe(string nomFichier);
@@ -26,27 +27,14 @@ public:
 	void afficher() const;
 	void afficherFilmographieActeur(const string& nomActeur);
 
-
-	int getCapacite() {
-		return capacite;
-	}
-	void setCapacite(int c) {
-		capacite = c;
-	}
-
 	int getnElements() {
 		return nElements;
-	}
-	void setnElements(int n) {
-		nElements = n;
 	}
 
 	Film** getElements() {
 		return elements;
 	}
-	void setElements(Film** e) {
-		elements = e;
-	}
+
 
 private:
 	int capacite, nElements;
