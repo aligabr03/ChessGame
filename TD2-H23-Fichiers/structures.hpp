@@ -1,24 +1,67 @@
-#pragma once
-// Structures mémoires pour une collection de films.
+#include <iostream>
 
-#include <string>
+using namespace std;
 
-struct Film; struct Acteur; // Permet d'utiliser les types alors qu'ils seront défini après.
+struct Film; struct Acteur;
 
-struct ListeFilms {
+class ListeFilms {
+public:
+	ListeFilms() { //Constructeur par defaut
+		capacite = 0;
+		nElements = 0;
+		elements = {};
+	}
+
+	ListeFilms(string nomFichier) {
+		capacite = creerListe(nomFichier).capacite;
+		nElements = creerListe(nomFichier).nElements;
+		elements = creerListe(nomFichier).elements;
+	}
+
+	ListeFilms creerListe(string nomFichier);
+	void ajouterFilm(Film* film);
+	void enleverFilm(Film* filmAEnlever);
+	Acteur* trouverActeur(const string& nomActeur);
+	void detruire();
+	void afficher() const;
+	void afficherFilmographieActeur(const string& nomActeur);
+
+
+	int getCapacite() {
+		return capacite;
+	}
+	void setCapacite(int c) {
+		capacite = c;
+	}
+
+	int getnElements() {
+		return nElements;
+	}
+	void setnElements(int n) {
+		nElements = n;
+	}
+
+	Film** getElements() {
+		return elements;
+	}
+	void setElements(Film** e) {
+		elements = e;
+	}
+
+private:
 	int capacite, nElements;
-	Film** elements; // Pointeur vers un tableau de Film*, chaque Film* pointant vers un Film.
+	Film** elements;
 };
 
 struct ListeActeurs {
 	int capacite, nElements;
-	Acteur** elements; // Pointeur vers un tableau de Acteur*, chaque Acteur* pointant vers un Acteur.
+	Acteur** elements;
 };
 
 struct Film
 {
-	std::string titre, realisateur; // Titre et nom du réalisateur (on suppose qu'il n'y a qu'un réalisateur).
-	int anneeSortie, recette; // Année de sortie et recette globale du film en millions de dollars
+	std::string titre, realisateur; 
+	int anneeSortie, recette; 
 	ListeActeurs acteurs;
 };
 
