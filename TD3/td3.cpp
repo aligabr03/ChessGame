@@ -1,4 +1,11 @@
-﻿#include "structures.hpp"
+﻿/*
+nom: td2.cpp
+description: Contient les fonctions pour lire un fichier et pour gerer un objet de type Film ainsi que les appels de fonction
+auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
+date: 12 fevrier 2023
+*/
+
+#include "structures.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -16,8 +23,6 @@
 using namespace std;
 using namespace iter;
 using namespace gsl;
-
-#pragma endregion //}
 
 typedef uint8_t UInt8;
 typedef uint16_t UInt16;
