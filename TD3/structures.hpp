@@ -6,6 +6,7 @@ date: 12 fevrier 2023
 */
 
 #include <iostream>
+#include <memory>
 
 using namespace std;
 
@@ -43,7 +44,7 @@ private:
 
 struct ListeActeurs {
 	int capacite, nElements;
-	Acteur** elements;
+	unique_ptr<Acteur*[]> elements;
 };
 
 struct Film
