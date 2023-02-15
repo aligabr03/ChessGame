@@ -5,6 +5,7 @@
 #include <string>
 #include <limits>
 #include <algorithm>
+#include <memory>
 
 #include "cppitertools/range.hpp"
 #include "gsl/span"
@@ -74,8 +75,7 @@ Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 	film.recette = lireUint16(fichier);
 	film.acteurs.nElements = lireUint8(fichier);
 
-	Film* filmAlloue = new Film(film);
-	filmAlloue->acteurs.elements = new Acteur * [filmAlloue->acteurs.nElements];
+	Film* filmAlloue = new Film(film.acteurs.capacite, film.acteurs.nElements);
 	for (int i : range(filmAlloue->acteurs.nElements))
 	{
 		filmAlloue->acteurs.elements[i] = lireActeur(fichier, listeFilms);
@@ -97,7 +97,6 @@ void detruireFilm(Film* film)
 			delete acteur;
 		}
 	}
-	delete[] film->acteurs.elements;
 	delete film;
 }
 
