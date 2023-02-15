@@ -1,0 +1,91 @@
+/*
+nom: structures.hpp
+description: Contient les definitions des structures et de la classe ListeFilms
+auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
+date: 12 fevrier 2023
+*/
+
+#include <iostream>
+#include <memory>
+
+using namespace std;
+
+struct Film;
+struct Acteur;
+
+class ListeFilms {
+public:
+	ListeFilms() { //Constructeur par defaut
+		capacite_ = 0;
+		nElements_ = 0;
+		elements_ = {};
+	}
+
+	ListeFilms(string nomFichier) {
+		ListeFilms temp = creerListe(nomFichier);
+		capacite_ = temp.capacite_;
+		nElements_ = temp.nElements_;
+		elements_ = temp.elements_;
+	}
+
+	ListeFilms creerListe(string nomFichier);
+	void ajouterFilm(Film* film);
+	void enleverFilm(Film* filmAEnlever);
+	Acteur* trouverActeur(const string& nomActeur);
+	void detruire();
+	void afficher() const;
+	void afficherFilmographieActeur(const string& nomActeur);
+	int getnElements();
+	Film** getElements();
+
+private:
+	int capacite_, nElements_;
+	Film** elements_;
+};
+
+
+
+struct ListeActeurs
+{
+	int capacite, nElements;
+	unique_ptr<Acteur *[]> elements;
+	ListeActeurs()
+	{
+		capacite = 0;
+		nElements = 0;
+		elements = make_unique<Acteur* []>(0);
+	}
+	ListeActeurs(unsigned int taille, int n)
+	{
+		capacite = taille;
+		nElements = n;
+		elements = make_unique<Acteur* []>(n);
+	}
+
+};
+
+struct Film
+{
+	std::string titre, realisateur;
+	int anneeSortie, recette;
+	ListeActeurs acteurs;
+	Film()
+	{
+		titre = "";
+		realisateur = "";
+		anneeSortie = 0;
+		recette = 0;
+	}
+	Film(unsigned int taille, int nElements)
+	{
+		acteurs = ListeActeurs(taille, nElements);
+	}
+};
+
+struct Acteur
+{
+	std::string nom;
+	int anneeNaissance;
+	char sexe;
+	ListeFilms joueDans;
+};
