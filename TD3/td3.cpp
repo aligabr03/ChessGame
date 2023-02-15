@@ -72,15 +72,16 @@ Acteur* lireActeur(istream& fichier, ListeFilms& listeFilms)
 
 Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 {
-	Film film = {};
+	Film film;
 	film.titre = lireString(fichier);
 	film.realisateur = lireString(fichier);
 	film.anneeSortie = lireUint16(fichier);
 	film.recette = lireUint16(fichier);
 	film.acteurs.nElements = lireUint8(fichier);
 
-	Film* filmAlloue = new Film(film);
-	filmAlloue->acteurs.elements = new Acteur * [filmAlloue->acteurs.nElements];
+	Film* filmAlloue = new Film(film.acteurs.capacite, film.acteurs.nElements);
+	//ListeActeurs list;
+	//filmAlloue->acteurs.elements = list.elements;
 	for (int i : range(filmAlloue->acteurs.nElements))
 	{
 		filmAlloue->acteurs.elements[i] = lireActeur(fichier, listeFilms);
@@ -102,7 +103,7 @@ void detruireFilm(Film* film)
 			delete acteur;
 		}
 	}
-	delete[] film->acteurs.elements;
+	//delete[] film->acteurs.elements;
 	delete film;
 }
 

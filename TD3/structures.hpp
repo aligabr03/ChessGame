@@ -43,15 +43,45 @@ private:
 };
 
 struct ListeActeurs {
+
+
+	ListeActeurs() {
+		capacite = 0;
+		nElements = 0;
+		elements = make_unique<Acteur* []>(nElements);
+	}
+	ListeActeurs(unsigned int taille, int n) {
+		capacite = taille;
+		nElements = n;
+		elements = make_unique<Acteur* []>(n);
+
+	}
+//	Acteur** getElements() {
+//		return elements.get();
+//	}
+//private:
 	int capacite, nElements;
-	unique_ptr<Acteur*[]> elements;
+	unique_ptr<Acteur* []> elements;
 };
 
 struct Film
 {
-	std::string titre, realisateur; 
-	int anneeSortie, recette; 
+	std::string titre, realisateur;
+	int anneeSortie, recette;
 	ListeActeurs acteurs;
+	Film() {
+		titre = "";
+		realisateur = "";
+		anneeSortie = 0;
+		recette = 0;
+	}
+	Film(unsigned int taille, int nElements) {
+		acteurs = ListeActeurs(taille, nElements);
+		titre = "";
+		realisateur = "";
+		anneeSortie = 0;
+		recette = 0;
+	}
 };
 
 struct Acteur

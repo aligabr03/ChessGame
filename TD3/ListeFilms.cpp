@@ -61,7 +61,7 @@ void ListeFilms::ajouterFilm(Film* film)
 		{
 			nouvelleListe[i] = elements_[i];
 		}
-		delete[] elements_;
+		//delete[] elements_;
 		elements_ = nouvelleListe;
 		capacite_ = nouvelleCapacite;
 	}
@@ -93,7 +93,7 @@ Acteur* ListeFilms::trouverActeur(const string& nomActeur)
 	for (int i : range(nElements_))
 	{
 		Film* film = elements_[i];
-		for (Acteur*& acteur : span<Acteur*>(film->acteurs.elements, film->acteurs.nElements))
+		for (Acteur*& acteur : span<Acteur*>(film->acteurs.elements.get(), film->acteurs.nElements))
 		{
 			if (acteur->nom == nomActeur)
 				return acteur;
