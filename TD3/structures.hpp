@@ -55,9 +55,9 @@ struct ListeActeurs
 		nElements = 0;
 		elements = make_unique<shared_ptr<Acteur>[]>(0);
 	}
-	ListeActeurs(unsigned int taille, int n)
+	ListeActeurs(unsigned int cap, int n)
 	{
-		capacite = taille;
+		capacite = cap;
 		nElements = n;
 		elements = make_unique<shared_ptr<Acteur>[]>(n);
 	}
@@ -76,9 +76,13 @@ struct Film
 		anneeSortie = 0;
 		recette = 0;
 	}
-	Film(unsigned int taille, int nElements)
+	Film(unsigned int capacite, int nElements, string t, string rea, int ann, int rec)
 	{
-		acteurs = ListeActeurs(taille, nElements);
+		acteurs = ListeActeurs(capacite, nElements);
+		titre = t;
+		realisateur = rea;
+		anneeSortie = ann;
+		recette = rec;
 	}
 };
 
