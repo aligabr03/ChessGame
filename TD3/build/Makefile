@@ -31,9 +31,6 @@ default_target: all
 
 .SUFFIXES: .hpux_make_needs_suffix_list
 
-# Produce verbose output by default.
-VERBOSE = 1
-
 # Command-line flag to silence nested $(MAKE).
 $(VERBOSE)MAKESILENT = -s
 
@@ -60,10 +57,10 @@ RM = /opt/homebrew/Cellar/cmake/3.25.2/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers
+CMAKE_SOURCE_DIR = /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/build
+CMAKE_BINARY_DIR = /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -90,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/build/CMakeFiles /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/build/CMakeFiles /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -193,29 +190,29 @@ bibliotheque_cours.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD2-H23-FICHIERS.dir/build.make CMakeFiles/TD2-H23-FICHIERS.dir/bibliotheque_cours.cpp.s
 .PHONY : bibliotheque_cours.cpp.s
 
-td2.o: td2.cpp.o
-.PHONY : td2.o
+td3.o: td3.cpp.o
+.PHONY : td3.o
 
 # target to build an object file
-td2.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD2-H23-FICHIERS.dir/build.make CMakeFiles/TD2-H23-FICHIERS.dir/td2.cpp.o
-.PHONY : td2.cpp.o
+td3.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD2-H23-FICHIERS.dir/build.make CMakeFiles/TD2-H23-FICHIERS.dir/td3.cpp.o
+.PHONY : td3.cpp.o
 
-td2.i: td2.cpp.i
-.PHONY : td2.i
+td3.i: td3.cpp.i
+.PHONY : td3.i
 
 # target to preprocess a source file
-td2.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD2-H23-FICHIERS.dir/build.make CMakeFiles/TD2-H23-FICHIERS.dir/td2.cpp.i
-.PHONY : td2.cpp.i
+td3.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD2-H23-FICHIERS.dir/build.make CMakeFiles/TD2-H23-FICHIERS.dir/td3.cpp.i
+.PHONY : td3.cpp.i
 
-td2.s: td2.cpp.s
-.PHONY : td2.s
+td3.s: td3.cpp.s
+.PHONY : td3.s
 
 # target to generate assembly for a file
-td2.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD2-H23-FICHIERS.dir/build.make CMakeFiles/TD2-H23-FICHIERS.dir/td2.cpp.s
-.PHONY : td2.cpp.s
+td3.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD2-H23-FICHIERS.dir/build.make CMakeFiles/TD2-H23-FICHIERS.dir/td3.cpp.s
+.PHONY : td3.cpp.s
 
 verification_allocation.o: verification_allocation.cpp.o
 .PHONY : verification_allocation.o
@@ -257,9 +254,9 @@ help:
 	@echo "... bibliotheque_cours.o"
 	@echo "... bibliotheque_cours.i"
 	@echo "... bibliotheque_cours.s"
-	@echo "... td2.o"
-	@echo "... td2.i"
-	@echo "... td2.s"
+	@echo "... td3.o"
+	@echo "... td3.i"
+	@echo "... td3.s"
 	@echo "... verification_allocation.o"
 	@echo "... verification_allocation.i"
 	@echo "... verification_allocation.s"

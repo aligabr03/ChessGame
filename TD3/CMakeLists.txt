@@ -10,7 +10,7 @@ project(TD2-H23-FICHIERS)
 
 # On met les fichiers sources (incluant les entêtes)
 set(ALL_FILES
-    "td2.cpp"
+    "td3.cpp"
 	"ListeFilms.cpp"
     "bibliotheque_cours.cpp"
     "verification_allocation.cpp"

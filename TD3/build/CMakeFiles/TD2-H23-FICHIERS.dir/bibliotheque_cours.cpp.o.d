@@ -1,7 +1,7 @@
 CMakeFiles/TD2-H23-FICHIERS.dir/bibliotheque_cours.cpp.o: \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/bibliotheque_cours.cpp \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/CodeCoverage_bugfix.h \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/bibliotheque_cours.hpp \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/bibliotheque_cours.cpp \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/CodeCoverage_bugfix.h \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/bibliotheque_cours.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/streambuf \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__config_site \
@@ -423,6 +423,6 @@ CMakeFiles/TD2-H23-FICHIERS.dir/bibliotheque_cours.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__split_buffer \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/iomanip \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/array \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/include/gsl/span \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/include/gsl/gsl_assert \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/include/gsl/gsl_byte
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/include/gsl/span \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/include/gsl/gsl_assert \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/include/gsl/gsl_byte

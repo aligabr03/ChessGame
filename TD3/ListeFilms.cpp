@@ -88,12 +88,12 @@ void ListeFilms::enleverFilm(Film* filmAEnlever)
 	}
 }
 
-Acteur* ListeFilms::trouverActeur(const string& nomActeur)
+shared_ptr<Acteur> ListeFilms::trouverActeur(const string& nomActeur)
 {
 	for (int i : range(nElements_))
 	{
 		Film* film = elements_[i];
-		for (Acteur*& acteur : span<Acteur*>(film->acteurs.elements.get(), film->acteurs.nElements))
+		for (shared_ptr<Acteur>& acteur : span<shared_ptr<Acteur>>(film->acteurs.elements.get(), film->acteurs.nElements))
 		{
 			if (acteur->nom == nomActeur)
 				return acteur;
@@ -124,11 +124,11 @@ void ListeFilms::afficher() const
 	}
 }
 
-void ListeFilms::afficherFilmographieActeur(const string& nomActeur)
-{
-	const Acteur* acteur = trouverActeur(nomActeur);
-	if (acteur == nullptr)
-		cout << "Aucun acteur de ce nom" << endl;
-	else
-		acteur->joueDans.afficher();
-}
+// void ListeFilms::afficherFilmographieActeur(const string& nomActeur)
+// {
+// 	const Acteur* acteur = trouverActeur(nomActeur);
+// 	if (acteur == nullptr)
+// 		cout << "Aucun acteur de ce nom" << endl;
+// 	else
+// 		acteur->joueDans.afficher();
+// }

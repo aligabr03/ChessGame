@@ -1,6 +1,6 @@
 CMakeFiles/TD2-H23-FICHIERS.dir/ListeFilms.cpp.o: \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/ListeFilms.cpp \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/structures.hpp \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/ListeFilms.cpp \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/structures.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__config_site \
@@ -421,10 +421,10 @@ CMakeFiles/TD2-H23-FICHIERS.dir/ListeFilms.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/deque \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__split_buffer \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/iomanip \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/include/cppitertools/range.hpp \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/include/cppitertools/internal/iterbase.hpp \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/include/cppitertools/range.hpp \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/include/cppitertools/internal/iterbase.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/optional \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/include/gsl/span \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/include/gsl/gsl_assert \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/include/gsl/gsl_byte \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/include/gsl/span \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/include/gsl/gsl_assert \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/include/gsl/gsl_byte \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/array

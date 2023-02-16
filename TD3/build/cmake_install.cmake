@@ -1,4 +1,4 @@
-# Install script for directory: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers
+# Install script for directory: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

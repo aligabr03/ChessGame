@@ -41,7 +41,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "TD2-H23-FICHIERS::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-TD2-H23-FICHIERS-Debug-4478714bd2c3c6ee7870.json",
+					"jsonFile" : "target-TD2-H23-FICHIERS-Debug-042bcf5b043775a29650.json",
 					"name" : "TD2-H23-FICHIERS",
 					"projectIndex" : 0
 				},
@@ -58,8 +58,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers/build",
-		"source" : "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP3/TD2-H23-Fichiers"
+		"build" : "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3/build",
+		"source" : "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD3"
 	},
 	"version" : 
 	{

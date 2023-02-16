@@ -31,7 +31,7 @@ public:
 	ListeFilms creerListe(string nomFichier);
 	void ajouterFilm(Film* film);
 	void enleverFilm(Film* filmAEnlever);
-	Acteur* trouverActeur(const string& nomActeur);
+	shared_ptr<Acteur> trouverActeur(const string& nomActeur);
 	void detruire();
 	void afficher() const;
 	void afficherFilmographieActeur(const string& nomActeur);
@@ -48,18 +48,18 @@ private:
 struct ListeActeurs
 {
 	int capacite, nElements;
-	unique_ptr<Acteur *[]> elements;
+	unique_ptr<shared_ptr<Acteur>[]> elements;
 	ListeActeurs()
 	{
 		capacite = 0;
 		nElements = 0;
-		elements = make_unique<Acteur* []>(0);
+		elements = make_unique<shared_ptr<Acteur>[]>(0);
 	}
 	ListeActeurs(unsigned int taille, int n)
 	{
 		capacite = taille;
 		nElements = n;
-		elements = make_unique<Acteur* []>(n);
+		elements = make_unique<shared_ptr<Acteur>[]>(n);
 	}
 
 };
@@ -84,8 +84,8 @@ struct Film
 
 struct Acteur
 {
-	std::string nom;
-	int anneeNaissance;
-	char sexe;
-	ListeFilms joueDans;
+	std::string nom ;
+	int anneeNaissance ;
+	char sexe ;
+	// ListeFilms joueDans;
 };
