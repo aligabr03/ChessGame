@@ -10,7 +10,8 @@ date: 12 fevrier 2023
 
 using namespace std;
 
-struct Film; struct Acteur;
+struct Film;
+struct Acteur;
 
 class ListeFilms {
 public:
@@ -30,7 +31,7 @@ public:
 	ListeFilms creerListe(string nomFichier);
 	void ajouterFilm(Film* film);
 	void enleverFilm(Film* filmAEnlever);
-	Acteur* trouverActeur(const string& nomActeur);
+	shared_ptr<Acteur> trouverActeur(const string& nomActeur);
 	void detruire();
 	void afficher() const;
 	void afficherFilmographieActeur(const string& nomActeur);
@@ -42,26 +43,25 @@ private:
 	Film** elements_;
 };
 
-struct ListeActeurs {
 
 
-	ListeActeurs() {
+struct ListeActeurs
+{
+	int capacite, nElements;
+	unique_ptr<shared_ptr<Acteur>[]> elements;
+	ListeActeurs()
+	{
 		capacite = 0;
 		nElements = 0;
-		elements = make_unique<Acteur* []>(nElements);
+		elements = make_unique<shared_ptr<Acteur>[]>(0);
 	}
-	ListeActeurs(unsigned int taille, int n) {
-		capacite = taille;
+	ListeActeurs(unsigned int cap, int n)
+	{
+		capacite = cap;
 		nElements = n;
-		elements = make_unique<Acteur* []>(n);
-
+		elements = make_unique<shared_ptr<Acteur>[]>(n);
 	}
-//	Acteur** getElements() {
-//		return elements.get();
-//	}
-//private:
-	int capacite, nElements;
-	unique_ptr<Acteur* []> elements;
+
 };
 
 struct Film
@@ -69,23 +69,27 @@ struct Film
 	std::string titre, realisateur;
 	int anneeSortie, recette;
 	ListeActeurs acteurs;
-	Film() {
+	Film()
+	{
 		titre = "";
 		realisateur = "";
 		anneeSortie = 0;
 		recette = 0;
 	}
-	Film(unsigned int taille, int nElements) {
-		acteurs = ListeActeurs(taille, nElements);
-		titre = "";
-		realisateur = "";
-		anneeSortie = 0;
-		recette = 0;
+	Film(unsigned int capacite, int nElements, string t, string rea, int ann, int rec)
+	{
+		acteurs = ListeActeurs(capacite, nElements);
+		titre = t;
+		realisateur = rea;
+		anneeSortie = ann;
+		recette = rec;
 	}
 };
 
 struct Acteur
 {
-	std::string nom; int anneeNaissance; char sexe;
-	ListeFilms joueDans;
+	std::string nom;
+	int anneeNaissance;
+	char sexe;
+	// ListeFilms joueDans;
 };

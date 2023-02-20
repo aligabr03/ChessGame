@@ -12,6 +12,7 @@ date: 12 fevrier 2023
 #include <string>
 #include <limits>
 #include <algorithm>
+#include <memory>
 
 #include "cppitertools/range.hpp"
 #include "gsl/span"
@@ -52,40 +53,38 @@ string lireString(istream& fichier)
 #pragma endregion
 
 
-Acteur* lireActeur(istream& fichier, ListeFilms& listeFilms)
+shared_ptr<Acteur> lireActeur(istream& fichier, ListeFilms& listeFilms)
 {
 	Acteur acteur = {};
 	acteur.nom = lireString(fichier);
 	acteur.anneeNaissance = lireUint16(fichier);
 	acteur.sexe = lireUint8(fichier);
 
-	Acteur* acteurExistant = listeFilms.trouverActeur(acteur.nom);
+	shared_ptr<Acteur> acteurExistant = listeFilms.trouverActeur(acteur.nom);
 	if (acteurExistant != nullptr)
 	{
 		cout << "L'Acteur existe et son nom est le suivant : " << acteurExistant->nom << endl;
 		return acteurExistant;
 	}
 	cout << "Un nouvel acteur a été créé et son nom est : " << acteur.nom << endl;
-	acteurExistant = new Acteur(acteur);
+	acteurExistant = make_shared<Acteur>(Acteur(acteur));
 	return acteurExistant;
 }
 
 Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 {
-	Film film;
+	Film film = {};
 	film.titre = lireString(fichier);
 	film.realisateur = lireString(fichier);
 	film.anneeSortie = lireUint16(fichier);
 	film.recette = lireUint16(fichier);
 	film.acteurs.nElements = lireUint8(fichier);
 
-	Film* filmAlloue = new Film(film.acteurs.capacite, film.acteurs.nElements);
-	//ListeActeurs list;
-	//filmAlloue->acteurs.elements = list.elements;
+	Film* filmAlloue = new Film(film.acteurs.capacite, film.acteurs.nElements, film.titre, film.realisateur, film.anneeSortie, film.recette);
 	for (int i : range(filmAlloue->acteurs.nElements))
 	{
 		filmAlloue->acteurs.elements[i] = lireActeur(fichier, listeFilms);
-		filmAlloue->acteurs.elements[i]->joueDans.ajouterFilm(filmAlloue);
+		// filmAlloue->acteurs.elements[i]->joueDans.ajouterFilm(filmAlloue);
 	}
 	return filmAlloue;
 }
@@ -94,16 +93,14 @@ void detruireFilm(Film* film)
 {
 	for (int i : range(film->acteurs.nElements))
 	{
-		Acteur* acteur = film->acteurs.elements[i];
-		acteur->joueDans.enleverFilm(film);
-		int nElementsJoueDans = acteur->joueDans.getnElements();
-		if ( nElementsJoueDans == 0){
-			cout << " L'acteur " << acteur->nom << " va être détruit" << endl;
-			delete[] acteur->joueDans.getElements();
-			delete acteur;
-		}
+		shared_ptr<Acteur> acteur = film->acteurs.elements[i];
+		// acteur->joueDans.enleverFilm(film);
+		// int nElementsJoueDans = acteur->joueDans.getnElements();
+		// if ( nElementsJoueDans == 0){
+		// 	cout << " L'acteur " << acteur->nom << " va être détruit" << endl;
+			// delete[] acteur->joueDans.getElements();
+		// delete acteur;
 	}
-	//delete[] film->acteurs.elements;
 	delete film;
 }
 
@@ -140,11 +137,11 @@ int main()
 	// TODO: Afficher la liste des films.  Il devrait y en avoir 7.
 	liste.afficher();
 	// TODO: Modifier l'année de naissance de Benedict Cumberbatch pour être 1976 (elle était 0 dans les données lues du fichier).  Vous ne pouvez pas supposer l'ordre des films et des acteurs dans les listes, il faut y aller par son nom.
-	Acteur* acteurBenedict = liste.trouverActeur("Benedict Cumberbatch");
+	shared_ptr<Acteur> acteurBenedict = liste.trouverActeur("Benedict Cumberbatch");
 	acteurBenedict->anneeNaissance = 1976;
 	cout << ligneDeSeparation << "Liste des films où Benedict Cumberbatch joue sont:" << endl;
 	// TODO: Afficher la liste des films où Benedict Cumberbatch joue.  Il devrait y avoir Le Hobbit et Le jeu de l'imitation.
-	liste.afficherFilmographieActeur("Benedict Cumberbatch");
+	// liste.afficherFilmographieActeur("Benedict Cumberbatch");
 	// TODO: Détruire et enlever le premier film de la liste (Alien).  Ceci devrait "automatiquement" (par ce que font vos fonctions) détruire les acteurs Tom Skerritt et John Hurt, mais pas Sigourney Weaver puisqu'elle joue aussi dans Avatar.
 	detruireFilm(liste.getElements()[0]);
 	liste.enleverFilm(liste.getElements()[0]);
@@ -152,7 +149,7 @@ int main()
 	// TODO: Afficher la liste des films.
 	liste.afficher();
 	// TODO: Faire les appels qui manquent pour avoir 0% de lignes non exécutées dans le programme (aucune ligne rouge dans la couverture de code; c'est normal que les lignes de "new" et "delete" soient jaunes).  Vous avez aussi le droit d'effacer les lignes du programmes qui ne sont pas exécutée, si finalement vous pensez qu'elle ne sont pas utiles.
-	liste.afficherFilmographieActeur("Ali Gabr");
+	// liste.afficherFilmographieActeur("Ali Gabr");
 	// TODO: Détruire tout avant de terminer le programme.  La bibliothèque de verification_allocation devrait afficher "Aucune fuite detectee."
 	//a la sortie du programme; il affichera "Fuite detectee:" avec la liste des blocs, s'il manque des delete.
 	liste.detruire();
