@@ -38,11 +38,14 @@ public:
 	int getnElements();
 	Film** getElements();
 
+	Film* operator[](int index)
+	{
+		return elements_[index];
+	}
 private:
 	int capacite_, nElements_;
 	Film** elements_;
 };
-
 
 
 struct ListeActeurs
@@ -55,12 +58,22 @@ struct ListeActeurs
 		nElements = 0;
 		elements = make_unique<shared_ptr<Acteur>[]>(0);
 	}
+	ListeActeurs(const ListeActeurs& liste) 
+	{
+        capacite = liste.capacite;
+        nElements = liste.nElements;
+        elements = make_unique<shared_ptr<Acteur>[]>(capacite);
+        for (int i = 0; i < nElements; i++) {
+            elements[i] = liste.elements[i];
+        }
+    }
 	ListeActeurs(unsigned int cap, int n)
 	{
 		capacite = cap;
 		nElements = n;
 		elements = make_unique<shared_ptr<Acteur>[]>(n);
 	}
+	friend ostream& operator<<(ostream& os, const Acteur& acteur);
 
 };
 

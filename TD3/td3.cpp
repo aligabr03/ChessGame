@@ -104,9 +104,10 @@ void detruireFilm(Film* film)
 	delete film;
 }
 
-void afficherActeur(const Acteur& acteur)
+ostream& operator<<(ostream& os, const Acteur& acteur)
 {
-	cout << "  " << acteur.nom << ", " << acteur.anneeNaissance << " " << acteur.sexe << endl;
+	os << "  " << acteur.nom << ", " << acteur.anneeNaissance << " " << acteur.sexe << endl;
+	return os;
 }
 
 ostream& operator<<(ostream& os, const Film& film)
@@ -114,7 +115,7 @@ ostream& operator<<(ostream& os, const Film& film)
 	os << "Les acteurs qui jouent dans le film " << film.titre << " sont" << endl;
 	for (int i : range(film.acteurs.nElements))
 	{
-		afficherActeur(*film.acteurs.elements[i]);
+		os << *film.acteurs.elements[i];
 	}
 	return os;
 }
@@ -132,6 +133,7 @@ int main()
 	// TODO: La ligne suivante devrait lire le fichier binaire en allouant la mémoire nécessaire.  Devrait afficher les noms de 20 acteurs sans doublons (par l'affichage pour fins de débogage dans votre fonction lireActeur).
 	ListeFilms liste("films.bin");
 
+	Film skylien = *liste[0];
 	cout << ligneDeSeparation << "Le premier film de la liste est:" << endl;
 	// TODO: Afficher le premier film de la liste. Devrait être Alien.
 	cout << liste.getElements()[0]->titre << endl;
