@@ -34,7 +34,7 @@ public:
 	shared_ptr<Acteur> trouverActeur(const string& nomActeur);
 	void detruire();
 	void afficher() const;
-	void afficherFilmographieActeur(const string& nomActeur);
+	void afficherFilmographieActeur(const string& nomActeur) ;
 	int getnElements();
 	Film** getElements();
 
@@ -84,6 +84,8 @@ struct Film
 		anneeSortie = ann;
 		recette = rec;
 	}
+
+	friend ostream& operator<<(ostream& os, const Film& film);
 };
 
 struct Acteur

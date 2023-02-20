@@ -5,8 +5,7 @@ auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
 date: 12 fevrier 2023
 */
 
-
-#include "structures.hpp" 
+#include "structures.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -20,21 +19,24 @@ using namespace gsl;
 
 typedef uint16_t UInt16;
 
-UInt16 lireUint16(istream& fichier);
+UInt16 lireUint16(istream &fichier);
 
-Film* lireFilm(istream& fichier, ListeFilms& listeFilms);
+Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
 void detruireFilm(Film* film);
-void afficherFilm(const Film& film);
+// void afficherFilm(const Film& film);
 
-int ListeFilms::getnElements() {
+int ListeFilms::getnElements()
+{
 	return nElements_;
 }
 
-Film** ListeFilms::getElements() {
+Film **ListeFilms::getElements()
+{
 	return elements_;
 }
 
-ListeFilms ListeFilms::creerListe(string nomFichier) {
+ListeFilms ListeFilms::creerListe(string nomFichier)
+{
 
 	ifstream fichier(nomFichier, ios::binary);
 	fichier.exceptions(ios::failbit);
@@ -43,7 +45,7 @@ ListeFilms ListeFilms::creerListe(string nomFichier) {
 
 	ListeFilms listeFilms;
 
-	for (int i : range(nElements))
+	for ([[maybe_unused]] int i : range(nElements))
 	{
 		Film* film = lireFilm(fichier, listeFilms);
 		listeFilms.ajouterFilm(film);
@@ -51,12 +53,12 @@ ListeFilms ListeFilms::creerListe(string nomFichier) {
 	return listeFilms;
 }
 
-void ListeFilms::ajouterFilm(Film* film)
+void ListeFilms::ajouterFilm(Film *film)
 {
 	if (capacite_ == nElements_)
 	{
 		int nouvelleCapacite = max(1, 2 * capacite_);
-		Film** nouvelleListe = new Film * [nouvelleCapacite];
+		Film **nouvelleListe = new Film *[nouvelleCapacite];
 		for (int i : range(nElements_))
 		{
 			nouvelleListe[i] = elements_[i];
@@ -69,7 +71,7 @@ void ListeFilms::ajouterFilm(Film* film)
 	nElements_++;
 }
 
-void ListeFilms::enleverFilm(Film* filmAEnlever)
+void ListeFilms::enleverFilm(Film *filmAEnlever)
 {
 	for (int i : range(nElements_))
 	{
@@ -88,12 +90,12 @@ void ListeFilms::enleverFilm(Film* filmAEnlever)
 	}
 }
 
-shared_ptr<Acteur> ListeFilms::trouverActeur(const string& nomActeur)
+shared_ptr<Acteur> ListeFilms::trouverActeur(const string &nomActeur)
 {
 	for (int i : range(nElements_))
 	{
-		Film* film = elements_[i];
-		for (shared_ptr<Acteur>& acteur : span<shared_ptr<Acteur>>(film->acteurs.elements.get(), film->acteurs.nElements))
+		Film *film = elements_[i];
+		for (shared_ptr<Acteur> &acteur : span<shared_ptr<Acteur>>(film->acteurs.elements.get(), film->acteurs.nElements))
 		{
 			if (acteur->nom == nomActeur)
 				return acteur;
@@ -116,10 +118,9 @@ void ListeFilms::afficher() const
 {
 	static const string ligneDeSeparation = "\n\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\n";
 	cout << ligneDeSeparation;
-	for (Film* film : span<Film*>(elements_, nElements_ - 1))
+	for (Film *film : span<Film *>(elements_, nElements_ - 1))
 	{
-
-		afficherFilm(*film);
+		cout << *film;
 		cout << ligneDeSeparation;
 	}
 }

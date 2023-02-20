@@ -109,14 +109,16 @@ void afficherActeur(const Acteur& acteur)
 	cout << "  " << acteur.nom << ", " << acteur.anneeNaissance << " " << acteur.sexe << endl;
 }
 
-void afficherFilm(const Film& film)
+ostream& operator<<(ostream& os, const Film& film)
 {
-	cout << "Les acteurs qui jouent dans le film " << film.titre << " sont" << endl;
+	os << "Les acteurs qui jouent dans le film " << film.titre << " sont" << endl;
 	for (int i : range(film.acteurs.nElements))
 	{
 		afficherActeur(*film.acteurs.elements[i]);
 	}
+	return os;
 }
+
 
 int main()
 {
