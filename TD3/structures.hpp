@@ -7,7 +7,10 @@ date: 12 fevrier 2023
 
 #include <iostream>
 #include <memory>
+#include "cppitertools/range.hpp"
 
+
+using namespace iter;
 using namespace std;
 
 struct Film;
@@ -38,7 +41,7 @@ public:
 	int getnElements();
 	Film** getElements();
 
-	Film* operator[](int index)
+	Film* operator[](const int& index)
 	{
 		return elements_[index];
 	}
@@ -74,6 +77,27 @@ struct ListeActeurs
 		elements = make_unique<shared_ptr<Acteur>[]>(n);
 	}
 	friend ostream& operator<<(ostream& os, const Acteur& acteur);
+	ListeActeurs operator=(const ListeActeurs& liste)
+	{
+		return liste;
+	}
+
+	void ajouterActeurs(shared_ptr<Acteur> acteur)
+	{
+		if (capacite == nElements)
+	{
+		int nouvelleCapacite = max(1, 2 * capacite);
+		unique_ptr<shared_ptr<Acteur[]> nouvelleListe = make_uniqueshared_ptr<Acteur[]>(nouvelleCapacite);
+		for (int i : range(nElements))
+		{
+			nouvelleListe[i] = elements[i];
+		}
+		elements = move(nouvelleListe);
+		capacite = nouvelleCapacite;
+	}
+	elements[nElements] = acteur;
+	nElements++;
+	}
 
 };
 

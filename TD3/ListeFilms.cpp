@@ -21,7 +21,7 @@ typedef uint16_t UInt16;
 
 UInt16 lireUint16(istream &fichier);
 
-Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
+Film* lireFilm(istream &fichier, ListeFilms &listeFilms);
 void detruireFilm(Film* film);
 // void afficherFilm(const Film& film);
 
@@ -30,7 +30,7 @@ int ListeFilms::getnElements()
 	return nElements_;
 }
 
-Film **ListeFilms::getElements()
+Film** ListeFilms::getElements()
 {
 	return elements_;
 }
@@ -53,12 +53,12 @@ ListeFilms ListeFilms::creerListe(string nomFichier)
 	return listeFilms;
 }
 
-void ListeFilms::ajouterFilm(Film *film)
+void ListeFilms::ajouterFilm(Film* film)
 {
 	if (capacite_ == nElements_)
 	{
 		int nouvelleCapacite = max(1, 2 * capacite_);
-		Film **nouvelleListe = new Film *[nouvelleCapacite];
+		Film** nouvelleListe = new Film *[nouvelleCapacite];
 		for (int i : range(nElements_))
 		{
 			nouvelleListe[i] = elements_[i];
