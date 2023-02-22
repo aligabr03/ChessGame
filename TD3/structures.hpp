@@ -9,22 +9,24 @@ date: 12 fevrier 2023
 #include <memory>
 #include "cppitertools/range.hpp"
 
-
 using namespace iter;
 using namespace std;
 
 struct Film;
 struct Acteur;
 
-class ListeFilms {
+class ListeFilms
+{
 public:
-	ListeFilms() { //Constructeur par defaut
+	ListeFilms()
+	{ // Constructeur par defaut
 		capacite_ = 0;
 		nElements_ = 0;
 		elements_ = {};
 	}
 
-	ListeFilms(string nomFichier) {
+	ListeFilms(string nomFichier)
+	{
 		ListeFilms temp = creerListe(nomFichier);
 		capacite_ = temp.capacite_;
 		nElements_ = temp.nElements_;
@@ -32,24 +34,24 @@ public:
 	}
 
 	ListeFilms creerListe(string nomFichier);
-	void ajouterFilm(Film* film);
-	void enleverFilm(Film* filmAEnlever);
-	shared_ptr<Acteur> trouverActeur(const string& nomActeur);
+	void ajouterFilm(Film *film);
+	void enleverFilm(Film *filmAEnlever);
+	shared_ptr<Acteur> trouverActeur(const string &nomActeur);
 	void detruire();
 	void afficher() const;
-	void afficherFilmographieActeur(const string& nomActeur) ;
+	void afficherFilmographieActeur(const string &nomActeur);
 	int getnElements();
-	Film** getElements();
+	Film **getElements();
 
-	Film* operator[](const int& index)
+	Film *operator[](const int &index)
 	{
 		return elements_[index];
 	}
+
 private:
 	int capacite_, nElements_;
-	Film** elements_;
+	Film **elements_;
 };
-
 
 struct ListeActeurs
 {
@@ -61,45 +63,45 @@ struct ListeActeurs
 		nElements = 0;
 		elements = make_unique<shared_ptr<Acteur>[]>(0);
 	}
-	ListeActeurs(const ListeActeurs& liste) 
+	ListeActeurs(const ListeActeurs &liste)
 	{
-        capacite = liste.capacite;
-        nElements = liste.nElements;
-        elements = make_unique<shared_ptr<Acteur>[]>(capacite);
-        for (int i = 0; i < nElements; i++) {
-            elements[i] = liste.elements[i];
-        }
-    }
+		capacite = liste.capacite;
+		nElements = liste.nElements;
+		elements = make_unique<shared_ptr<Acteur>[]>(capacite);
+		for (int i = 0; i < nElements; i++)
+		{
+			elements[i] = liste.elements[i];
+		}
+	}
 	ListeActeurs(unsigned int cap, int n)
 	{
 		capacite = cap;
 		nElements = n;
 		elements = make_unique<shared_ptr<Acteur>[]>(n);
 	}
-	friend ostream& operator<<(ostream& os, const Acteur& acteur);
-	ListeActeurs operator=(const ListeActeurs& liste)
+	friend ostream &operator<<(ostream &os, const Acteur &acteur);
+	ListeActeurs operator=(const ListeActeurs &liste)
 	{
 		return liste;
 	}
 
-	void ajouterActeurs(shared_ptr<Acteur> acteur)
+	void ajouterActeur(shared_ptr<Acteur> acteur) 
 	{
 		if (capacite == nElements)
-	{
-		int nouvelleCapacite = max(1, 2 * capacite);
-		unique_ptr<shared_ptr<Acteur[]> nouvelleListe = make_uniqueshared_ptr<Acteur[]>(nouvelleCapacite);
-		for (int i : range(nElements))
 		{
-			nouvelleListe[i] = elements[i];
+			int nouvelleCapacite = max(1, 2 * capacite);
+			unique_ptr< shared_ptr<Acteur>[]> nouvelleListe = make_unique< shared_ptr<Acteur> []>(nouvelleCapacite);
+			for (int i : range(nElements)) {
+				nouvelleListe[i] = elements[i];
+			}
+			elements = move(nouvelleListe);
+			capacite = nouvelleCapacite;
 		}
-		elements = move(nouvelleListe);
-		capacite = nouvelleCapacite;
-	}
-	elements[nElements] = acteur;
-	nElements++;
-	}
+		elements[nElements] = acteur;
+		nElements++;
 
-};
+		}
+	};
 
 struct Film
 {
@@ -122,13 +124,13 @@ struct Film
 		recette = rec;
 	}
 
-	friend ostream& operator<<(ostream& os, const Film& film);
+	friend ostream &operator<<(ostream &os, const Film &film);
 };
 
 struct Acteur
 {
-	std::string nom ;
-	int anneeNaissance ;
-	char sexe ;
+	std::string nom;
+	int anneeNaissance;
+	char sexe;
 	// ListeFilms joueDans;
 };

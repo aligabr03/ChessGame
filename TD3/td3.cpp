@@ -78,12 +78,13 @@ Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 	film.realisateur = lireString(fichier);
 	film.anneeSortie = lireUint16(fichier);
 	film.recette = lireUint16(fichier);
-	film.acteurs.nElements = lireUint8(fichier);
+	int nElements = lireUint8(fichier);
 
 	Film* filmAlloue = new Film(film.acteurs.capacite, film.acteurs.nElements, film.titre, film.realisateur, film.anneeSortie, film.recette);
-	for (int i : range(filmAlloue->acteurs.nElements))
+	for (int i : range(nElements))
 	{
-		filmAlloue->acteurs.elements[i] = lireActeur(fichier, listeFilms);
+		filmAlloue->acteurs.ajouterActeur(lireActeur(fichier, listeFilms));
+		//filmAlloue->acteurs.elements[i] = lireActeur(fichier, listeFilms);
 		// filmAlloue->acteurs.elements[i]->joueDans.ajouterFilm(filmAlloue);
 	}
 	return filmAlloue;
