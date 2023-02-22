@@ -5,8 +5,7 @@ auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
 date: 12 fevrier 2023
 */
 
-
-#include "structures.hpp" 
+#include "structures.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -24,31 +23,34 @@ UInt16 lireUint16(istream& fichier);
 
 Film* lireFilm(istream& fichier, ListeFilms& listeFilms);
 void detruireFilm(Film* film);
-void afficherFilm(const Film& film);
+// void afficherFilm(const Film& film);
 
-int ListeFilms::getnElements() {
+int ListeFilms::getnElements()
+{
 	return nElements_;
 }
 
-Film** ListeFilms::getElements() {
+Film** ListeFilms::getElements()
+{
 	return elements_;
 }
 
-ListeFilms ListeFilms::creerListe(string nomFichier) {
+void ListeFilms::creerListe(string nomFichier)
+{
 
 	ifstream fichier(nomFichier, ios::binary);
 	fichier.exceptions(ios::failbit);
 
 	int nElements = lireUint16(fichier);
 
-	ListeFilms listeFilms;
+	//ListeFilms listeFilms;
 
-	for (int i : range(nElements))
+	for ([[maybe_unused]] int i : range(nElements))
 	{
-		Film* film = lireFilm(fichier, listeFilms);
-		listeFilms.ajouterFilm(film);
+		Film* film = lireFilm(fichier, *this);
+		ajouterFilm(film);
 	}
-	return listeFilms;
+	//return listeFilms;
 }
 
 void ListeFilms::ajouterFilm(Film* film)
@@ -118,8 +120,7 @@ void ListeFilms::afficher() const
 	cout << ligneDeSeparation;
 	for (Film* film : span<Film*>(elements_, nElements_ - 1))
 	{
-
-		afficherFilm(*film);
+		cout << *film;
 		cout << ligneDeSeparation;
 	}
 }

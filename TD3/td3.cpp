@@ -78,12 +78,13 @@ Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 	film.realisateur = lireString(fichier);
 	film.anneeSortie = lireUint16(fichier);
 	film.recette = lireUint16(fichier);
-	film.acteurs.nElements = lireUint8(fichier);
+	int nElements = lireUint8(fichier);
 
 	Film* filmAlloue = new Film(film.acteurs.capacite, film.acteurs.nElements, film.titre, film.realisateur, film.anneeSortie, film.recette);
-	for (int i : range(filmAlloue->acteurs.nElements))
+	for (int i : range(nElements))
 	{
-		filmAlloue->acteurs.elements[i] = lireActeur(fichier, listeFilms);
+		filmAlloue->acteurs.ajouterActeur(lireActeur(fichier, listeFilms));
+		//filmAlloue->acteurs.elements[i] = lireActeur(fichier, listeFilms);
 		// filmAlloue->acteurs.elements[i]->joueDans.ajouterFilm(filmAlloue);
 	}
 	return filmAlloue;
@@ -109,14 +110,16 @@ void afficherActeur(const Acteur& acteur)
 	cout << "  " << acteur.nom << ", " << acteur.anneeNaissance << " " << acteur.sexe << endl;
 }
 
-void afficherFilm(const Film& film)
+ostream& operator<<(ostream& os, const Film& film)
 {
-	cout << "Les acteurs qui jouent dans le film " << film.titre << " sont" << endl;
+	os << "Les acteurs qui jouent dans le film " << film.titre << " sont" << endl;
 	for (int i : range(film.acteurs.nElements))
 	{
 		afficherActeur(*film.acteurs.elements[i]);
 	}
+	return os;
 }
+
 
 int main()
 {
@@ -130,6 +133,8 @@ int main()
 	// TODO: La ligne suivante devrait lire le fichier binaire en allouant la mémoire nécessaire.  Devrait afficher les noms de 20 acteurs sans doublons (par l'affichage pour fins de débogage dans votre fonction lireActeur).
 	ListeFilms liste("films.bin");
 
+	Film skylien = *liste[0];
+
 	cout << ligneDeSeparation << "Le premier film de la liste est:" << endl;
 	// TODO: Afficher le premier film de la liste. Devrait être Alien.
 	cout << liste.getElements()[0]->titre << endl;
@@ -139,7 +144,7 @@ int main()
 	// TODO: Modifier l'année de naissance de Benedict Cumberbatch pour être 1976 (elle était 0 dans les données lues du fichier).  Vous ne pouvez pas supposer l'ordre des films et des acteurs dans les listes, il faut y aller par son nom.
 	shared_ptr<Acteur> acteurBenedict = liste.trouverActeur("Benedict Cumberbatch");
 	acteurBenedict->anneeNaissance = 1976;
-	cout << ligneDeSeparation << "Liste des films où Benedict Cumberbatch joue sont:" << endl;
+	// cout << ligneDeSeparation << "Liste des films où Benedict Cumberbatch joue sont:" << endl;
 	// TODO: Afficher la liste des films où Benedict Cumberbatch joue.  Il devrait y avoir Le Hobbit et Le jeu de l'imitation.
 	// liste.afficherFilmographieActeur("Benedict Cumberbatch");
 	// TODO: Détruire et enlever le premier film de la liste (Alien).  Ceci devrait "automatiquement" (par ce que font vos fonctions) détruire les acteurs Tom Skerritt et John Hurt, mais pas Sigourney Weaver puisqu'elle joue aussi dans Avatar.

@@ -7,7 +7,8 @@ date: 12 fevrier 2023
 
 #include <iostream>
 #include <memory>
-
+#include "cppitertools/range.hpp"
+using namespace iter;
 using namespace std;
 
 struct Film;
@@ -21,22 +22,26 @@ public:
 		elements_ = {};
 	}
 
-	ListeFilms(string nomFichier) {
-		ListeFilms temp = creerListe(nomFichier);
-		capacite_ = temp.capacite_;
+	ListeFilms(string nomFichier) : ListeFilms() {
+		creerListe(nomFichier);
+		/*capacite_ = temp.capacite_;
 		nElements_ = temp.nElements_;
-		elements_ = temp.elements_;
+		elements_ = temp.elements_;*/
 	}
 
-	ListeFilms creerListe(string nomFichier);
+	void creerListe(string nomFichier);
 	void ajouterFilm(Film* film);
 	void enleverFilm(Film* filmAEnlever);
 	shared_ptr<Acteur> trouverActeur(const string& nomActeur);
 	void detruire();
 	void afficher() const;
-	void afficherFilmographieActeur(const string& nomActeur);
+	//void afficherFilmographieActeur(const string& nomActeur);
 	int getnElements();
 	Film** getElements();
+
+	Film* operator[](int index) {
+		return elements_[index];
+	}
 
 private:
 	int capacite_, nElements_;
@@ -55,13 +60,39 @@ struct ListeActeurs
 		nElements = 0;
 		elements = make_unique<shared_ptr<Acteur>[]>(0);
 	}
+	ListeActeurs operator=(const ListeActeurs& liste) {
+		return liste;
+	}
+	ListeActeurs(const ListeActeurs& liste) {
+		capacite = liste.capacite;
+		nElements = liste.nElements;
+		elements = make_unique<shared_ptr<Acteur>[]>(liste.nElements);
+		for (int i = 0; i < nElements; i++) {
+			elements[i] = liste.elements[i];
+		}
+	}
+
 	ListeActeurs(unsigned int cap, int n)
 	{
 		capacite = cap;
 		nElements = n;
 		elements = make_unique<shared_ptr<Acteur>[]>(n);
 	}
+	void ajouterActeur(shared_ptr<Acteur> acteur) {
+		if (capacite == nElements)
+		{
+			int nouvelleCapacite = max(1, 2 * capacite);
+			unique_ptr< shared_ptr<Acteur>[]> nouvelleListe = make_unique< shared_ptr<Acteur> []>(nouvelleCapacite);
+			for (int i : range(nElements)) {
+				nouvelleListe[i] = elements[i];
+			}
+			elements = move(nouvelleListe);
+			capacite = nouvelleCapacite;
+		}
+		elements[nElements] = acteur;
+		nElements++;
 
+	}
 };
 
 struct Film
@@ -84,6 +115,8 @@ struct Film
 		anneeSortie = ann;
 		recette = rec;
 	}
+
+	friend ostream& operator<<(ostream& os, const Film& film);
 };
 
 struct Acteur
