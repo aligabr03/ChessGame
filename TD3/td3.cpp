@@ -2,10 +2,10 @@
 nom: td2.cpp
 description: Contient les fonctions pour lire un fichier et pour gerer un objet de type Film ainsi que les appels de fonction
 auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-date: 12 fevrier 2023
+date: 1 mars 2023
 */
 
-#include "structures.hpp"
+
 
 #include <iostream>
 #include <fstream>
@@ -17,6 +17,7 @@ date: 12 fevrier 2023
 #include "cppitertools/range.hpp"
 #include "gsl/span"
 
+#include "structures.hpp"
 #include "bibliotheque_cours.hpp"
 #include "verification_allocation.hpp"
 #include "debogage_memoire.hpp"
@@ -80,8 +81,8 @@ Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 	film.recette = lireUint16(fichier);
 	int nElements = lireUint8(fichier);
 
-	Film* filmAlloue = new Film(film.acteurs.capacite, film.acteurs.nElements, film.titre, film.realisateur, film.anneeSortie, film.recette);
-	for (int i : range(nElements))
+	Film* filmAlloue = new Film(film);
+	for ([[maybe_unused]] int i : range(nElements))
 	{
 		filmAlloue->acteurs.ajouterActeur(lireActeur(fichier, listeFilms));
 		//filmAlloue->acteurs.elements[i] = lireActeur(fichier, listeFilms);
@@ -121,12 +122,10 @@ ostream& operator<<(ostream& os, const Film& film)
 	return os;
 }
 
-
 int main()
 {
 	bibliotheque_cours::activerCouleursAnsi(); // Permet sous Windows les "ANSI escape code" pour changer de couleurs https://en.wikipedia.org/wiki/ANSI_escape_code ; les consoles Linux/Mac les supportent normalement par défaut.
 
-	//static const string ligneDeSeparation = "\n\033[35m════════════════════════════════════════\033[0m\n";
 	static const string ligneDeSeparation = "\n\033[35m════════════════════════════════════════\033[0m\n";
 
 	// TODO: Chaque TODO dans cette fonction devrait se faire en 1 ou 2 lignes, en appelant les fonctions écrites.
@@ -135,6 +134,18 @@ int main()
 	ListeFilms liste("films.bin");
 
 	Film skylien = *liste[0];
+	skylien.titre = "Skylien";
+	skylien.acteurs.elements[0] = liste[1]->acteurs.elements[0];
+	skylien.acteurs.elements[0].get()->nom = "Daniel Wroughton Craig";
+	cout << ligneDeSeparation << endl;
+	cout << skylien << endl; 
+	cout << *liste[0] << endl;
+	cout << *liste[1] << endl;
+	cout << ligneDeSeparation << endl;
+
+	Film* film = liste.afficherFilmParCritere([](const Film* film){ return film->recette == 955; });
+	cout << "Le premier film ayant pour recette 955 M$ est : " << film->titre << endl;
+
 	cout << ligneDeSeparation << "Le premier film de la liste est:" << endl;
 	// TODO: Afficher le premier film de la liste. Devrait être Alien.
 	cout << liste.getElements()[0]->titre << endl;

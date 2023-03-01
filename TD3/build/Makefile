@@ -145,30 +145,6 @@ TD2-H23-FICHIERS_couverture/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD2-H23-FICHIERS_couverture.dir/build.make CMakeFiles/TD2-H23-FICHIERS_couverture.dir/build
 .PHONY : TD2-H23-FICHIERS_couverture/fast
 
-ListeFilms.o: ListeFilms.cpp.o
-.PHONY : ListeFilms.o
-
-# target to build an object file
-ListeFilms.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD2-H23-FICHIERS.dir/build.make CMakeFiles/TD2-H23-FICHIERS.dir/ListeFilms.cpp.o
-.PHONY : ListeFilms.cpp.o
-
-ListeFilms.i: ListeFilms.cpp.i
-.PHONY : ListeFilms.i
-
-# target to preprocess a source file
-ListeFilms.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD2-H23-FICHIERS.dir/build.make CMakeFiles/TD2-H23-FICHIERS.dir/ListeFilms.cpp.i
-.PHONY : ListeFilms.cpp.i
-
-ListeFilms.s: ListeFilms.cpp.s
-.PHONY : ListeFilms.s
-
-# target to generate assembly for a file
-ListeFilms.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD2-H23-FICHIERS.dir/build.make CMakeFiles/TD2-H23-FICHIERS.dir/ListeFilms.cpp.s
-.PHONY : ListeFilms.cpp.s
-
 bibliotheque_cours.o: bibliotheque_cours.cpp.o
 .PHONY : bibliotheque_cours.o
 
@@ -251,9 +227,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... TD2-H23-FICHIERS_couverture"
 	@echo "... TD2-H23-FICHIERS"
-	@echo "... ListeFilms.o"
-	@echo "... ListeFilms.i"
-	@echo "... ListeFilms.s"
 	@echo "... bibliotheque_cours.o"
 	@echo "... bibliotheque_cours.i"
 	@echo "... bibliotheque_cours.s"
