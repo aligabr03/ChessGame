@@ -134,7 +134,16 @@ int main()
 	ListeFilms liste("films.bin");
 
 	Film skylien = *liste[0];
+	skylien.titre = "Skylien";
+	skylien.acteurs.elements[0] = liste[1]->acteurs.elements[0];
+	skylien.acteurs.elements[0]->nom = "Daniel Wroughton Craig";
 
+	cout << ligneDeSeparation;
+
+	cout << skylien;
+	cout << *liste[0];
+	cout << *liste[1];
+	
 	cout << ligneDeSeparation << "Le premier film de la liste est:" << endl;
 	// TODO: Afficher le premier film de la liste. Devrait être Alien.
 	cout << liste.getElements()[0]->titre << endl;
