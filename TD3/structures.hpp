@@ -76,6 +76,11 @@ public:
 		elements[nElements] = elementaAjouter;
 		nElements++;
 	}
+
+	shared_ptr<T> &operator[](const int &index)
+	{
+		return elements[index];
+	}
 };
 
 using ListeActeurs = Liste<Acteur>;

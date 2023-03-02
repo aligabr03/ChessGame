@@ -5,8 +5,6 @@ auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
 date: 1 mars 2023
 */
 
-
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -31,30 +29,29 @@ typedef uint16_t UInt16;
 
 #pragma region Fonctions de base pour lire le fichier binaire
 
-UInt8 lireUint8(istream& fichier)
+UInt8 lireUint8(istream &fichier)
 {
 	UInt8 valeur = 0;
-	fichier.read((char*)&valeur, sizeof(valeur));
+	fichier.read((char *)&valeur, sizeof(valeur));
 	return valeur;
 }
-UInt16 lireUint16(istream& fichier)
+UInt16 lireUint16(istream &fichier)
 {
 	UInt16 valeur = 0;
-	fichier.read((char*)&valeur, sizeof(valeur));
+	fichier.read((char *)&valeur, sizeof(valeur));
 	return valeur;
 }
-string lireString(istream& fichier)
+string lireString(istream &fichier)
 {
 	string texte;
 	texte.resize(lireUint16(fichier));
-	fichier.read((char*)&texte[0], streamsize(sizeof(texte[0])) * texte.length());
+	fichier.read((char *)&texte[0], streamsize(sizeof(texte[0])) * texte.length());
 	return texte;
 }
 
 #pragma endregion
 
-
-shared_ptr<Acteur> lireActeur(istream& fichier, ListeFilms& listeFilms)
+shared_ptr<Acteur> lireActeur(istream &fichier, ListeFilms &listeFilms)
 {
 	Acteur acteur = {};
 	acteur.nom = lireString(fichier);
@@ -72,7 +69,7 @@ shared_ptr<Acteur> lireActeur(istream& fichier, ListeFilms& listeFilms)
 	return acteurExistant;
 }
 
-Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
+Film *lireFilm(istream &fichier, ListeFilms &listeFilms)
 {
 	Film film = {};
 	film.titre = lireString(fichier);
@@ -81,17 +78,17 @@ Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 	film.recette = lireUint16(fichier);
 	int nElements = lireUint8(fichier);
 
-	Film* filmAlloue = new Film(film);
+	Film *filmAlloue = new Film(film);
 	for ([[maybe_unused]] int i : range(nElements))
 	{
 		filmAlloue->acteurs.ajouterElement(lireActeur(fichier, listeFilms));
-		//filmAlloue->acteurs.elements[i] = lireActeur(fichier, listeFilms);
-		// filmAlloue->acteurs.elements[i]->joueDans.ajouterFilm(filmAlloue);
+		// filmAlloue->acteurs.elements[i] = lireActeur(fichier, listeFilms);
+		//  filmAlloue->acteurs.elements[i]->joueDans.ajouterFilm(filmAlloue);
 	}
 	return filmAlloue;
 }
 
-void detruireFilm(Film* film)
+void detruireFilm(Film *film)
 {
 	for (int i : range(film->acteurs.nElements))
 	{
@@ -100,19 +97,19 @@ void detruireFilm(Film* film)
 		// int nElementsJoueDans = acteur->joueDans.getnElements();
 		// if ( nElementsJoueDans == 0){
 		// 	cout << " L'acteur " << acteur->nom << " va être détruit" << endl;
-			// delete[] acteur->joueDans.getElements();
+		// delete[] acteur->joueDans.getElements();
 		// delete acteur;
-		}
+	}
 	delete film;
 }
 
-ostream& operator<<(ostream& os, const Acteur& acteur)
+ostream &operator<<(ostream &os, const Acteur &acteur)
 {
 	os << "  " << acteur.nom << ", " << acteur.anneeNaissance << " " << acteur.sexe << endl;
 	return os;
 }
 
-ostream& operator<<(ostream& os, const Film& film)
+ostream &operator<<(ostream &os, const Film &film)
 {
 	os << "Les acteurs qui jouent dans le film " << film.titre << " sont" << endl;
 	for (int i : range(film.acteurs.nElements))
@@ -129,7 +126,25 @@ int main()
 	static const string ligneDeSeparation = "\n\033[35m════════════════════════════════════════\033[0m\n";
 
 	// TODO: Chaque TODO dans cette fonction devrait se faire en 1 ou 2 lignes, en appelant les fonctions écrites.
+	cout << ligneDeSeparation << endl;
 
+	Liste<string> listeTextes;
+
+	shared_ptr<string> test1 = make_shared<string>("Test1");
+	shared_ptr<string> test2 = make_shared<string>("Test2");
+
+	listeTextes.ajouterElement(test1);
+	listeTextes.ajouterElement(test2);
+	Liste<string> listeTextes2 = listeTextes;
+
+	listeTextes[0] = make_shared<string>("Remplacement Test1");
+	*listeTextes[1] += "Modification";
+
+	cout << *listeTextes[0] << endl;
+	cout << *listeTextes[1] << endl;
+	cout << *listeTextes2[0] << endl;
+	cout << *listeTextes2[1] << endl;
+	cout << ligneDeSeparation << endl;
 	// TODO: La ligne suivante devrait lire le fichier binaire en allouant la mémoire nécessaire.  Devrait afficher les noms de 20 acteurs sans doublons (par l'affichage pour fins de débogage dans votre fonction lireActeur).
 	ListeFilms liste("films.bin");
 
@@ -138,12 +153,13 @@ int main()
 	skylien.acteurs.elements[0] = liste[1]->acteurs.elements[0];
 	skylien.acteurs.elements[0].get()->nom = "Daniel Wroughton Craig";
 	cout << ligneDeSeparation << endl;
-	cout << skylien << endl; 
+	cout << skylien << endl;
 	cout << *liste[0] << endl;
 	cout << *liste[1] << endl;
 	cout << ligneDeSeparation << endl;
 
-	Film* film = liste.afficherFilmParCritere([](const Film* film){ return film->recette == 955; });
+	Film *film = liste.afficherFilmParCritere([](const Film *film)
+											  { return film->recette == 955; });
 	cout << "Le premier film ayant pour recette 955 M$ est : " << film->titre << endl;
 
 	cout << ligneDeSeparation << "Le premier film de la liste est:" << endl;
@@ -167,6 +183,6 @@ int main()
 	// TODO: Faire les appels qui manquent pour avoir 0% de lignes non exécutées dans le programme (aucune ligne rouge dans la couverture de code; c'est normal que les lignes de "new" et "delete" soient jaunes).  Vous avez aussi le droit d'effacer les lignes du programmes qui ne sont pas exécutée, si finalement vous pensez qu'elle ne sont pas utiles.
 	// liste.afficherFilmographieActeur("Ali Gabr");
 	// TODO: Détruire tout avant de terminer le programme.  La bibliothèque de verification_allocation devrait afficher "Aucune fuite detectee."
-	//a la sortie du programme; il affichera "Fuite detectee:" avec la liste des blocs, s'il manque des delete.
+	// a la sortie du programme; il affichera "Fuite detectee:" avec la liste des blocs, s'il manque des delete.
 	liste.detruire();
 }
