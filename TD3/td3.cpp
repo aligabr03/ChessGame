@@ -84,7 +84,7 @@ Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 	Film* filmAlloue = new Film(film);
 	for ([[maybe_unused]] int i : range(nElements))
 	{
-		filmAlloue->acteurs.ajouterActeur(lireActeur(fichier, listeFilms));
+		filmAlloue->acteurs.ajouterElement(lireActeur(fichier, listeFilms));
 		//filmAlloue->acteurs.elements[i] = lireActeur(fichier, listeFilms);
 		// filmAlloue->acteurs.elements[i]->joueDans.ajouterFilm(filmAlloue);
 	}

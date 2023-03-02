@@ -21,50 +21,51 @@ UInt16 lireUint16(istream &fichier);
 
 struct Film;
 struct Acteur;
-struct ListeActeurs;
 class ListeFilms;
 
 Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
 void detruireFilm(Film *film);
 
-struct ListeActeurs
+template <typename T>
+class Liste
 {
+public:
 	int capacite, nElements;
-	unique_ptr<shared_ptr<Acteur>[]> elements;
-	ListeActeurs()
+	unique_ptr<shared_ptr<T>[]> elements;
+	Liste()
 	{
 		capacite = 0;
 		nElements = 0;
-		elements = make_unique<shared_ptr<Acteur>[]>(0);
+		elements = make_unique<shared_ptr<T>[]>(0);
 	}
-	ListeActeurs(const ListeActeurs &liste)
+	Liste(const Liste &liste)
 	{
 		capacite = liste.capacite;
 		nElements = liste.nElements;
-		elements = make_unique<shared_ptr<Acteur>[]>(capacite);
+		elements = make_unique<shared_ptr<T>[]>(capacite);
 		for (int i = 0; i < nElements; i++)
 		{
 			elements[i] = liste.elements[i];
 		}
 	}
-	ListeActeurs(unsigned int cap, int n)
+	Liste(unsigned int cap, int n)
 	{
 		capacite = cap;
 		nElements = n;
-		elements = make_unique<shared_ptr<Acteur>[]>(n);
+		elements = make_unique<shared_ptr<T>[]>(n);
 	}
-	friend ostream &operator<<(ostream &os, const Acteur &acteur);
-	ListeActeurs operator=(const ListeActeurs &liste)
+	friend ostream &operator<<(ostream &os, const T &elementaAfficher);
+	Liste<T> operator=(const Liste<T> &liste)
 	{
 		return liste;
 	}
 
-	void ajouterActeur(shared_ptr<Acteur> acteur)
+	void ajouterElement(shared_ptr<T> elementaAjouter)
 	{
 		if (capacite == nElements)
 		{
 			int nouvelleCapacite = max(1, 2 * capacite);
-			unique_ptr<shared_ptr<Acteur>[]> nouvelleListe = make_unique<shared_ptr<Acteur>[]>(nouvelleCapacite);
+			unique_ptr<shared_ptr<T>[]> nouvelleListe = make_unique<shared_ptr<T>[]>(nouvelleCapacite);
 			for (int i : range(nElements))
 			{
 				nouvelleListe[i] = elements[i];
@@ -72,10 +73,12 @@ struct ListeActeurs
 			elements = move(nouvelleListe);
 			capacite = nouvelleCapacite;
 		}
-		elements[nElements] = acteur;
+		elements[nElements] = elementaAjouter;
 		nElements++;
 	}
 };
+
+using ListeActeurs = Liste<Acteur>;
 
 struct Film
 {
@@ -109,8 +112,6 @@ struct Acteur
 	// ListeFilms joueDans;
 };
 
-
-
 class ListeFilms
 {
 public:
@@ -128,7 +129,6 @@ public:
 		nElements_ = temp.nElements_;
 		elements_ = temp.elements_;
 	}
-
 
 	int getnElements()
 	{
