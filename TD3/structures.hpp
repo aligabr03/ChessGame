@@ -17,14 +17,14 @@ using namespace gsl;
 
 typedef uint16_t UInt16;
 
-UInt16 lireUint16(istream &fichier);
+UInt16 lireUint16(istream& fichier);
 
 struct Film;
 struct Acteur;
 class ListeFilms;
 
-Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
-void detruireFilm(Film *film);
+Film* lireFilm(istream& fichier, ListeFilms& listeFilms);
+void detruireFilm(Film* film);
 
 template <typename T>
 class Liste
@@ -38,7 +38,7 @@ public:
 		nElements = 0;
 		elements = make_unique<shared_ptr<T>[]>(0);
 	}
-	Liste(const Liste &liste)
+	Liste(const Liste& liste)
 	{
 		capacite = liste.capacite;
 		nElements = liste.nElements;
@@ -54,8 +54,8 @@ public:
 		nElements = n;
 		elements = make_unique<shared_ptr<T>[]>(n);
 	}
-	friend ostream &operator<<(ostream &os, const T &elementaAfficher);
-	Liste<T> operator=(const Liste<T> &liste)
+	friend ostream& operator<<(ostream& os, const T& elementaAfficher);
+	Liste<T> operator=(const Liste<T>& liste)
 	{
 		return liste;
 	}
@@ -77,7 +77,7 @@ public:
 		nElements++;
 	}
 
-	shared_ptr<T> &operator[](const int &index)
+	shared_ptr<T>& operator[](const int& index)
 	{
 		return elements[index];
 	}
@@ -106,7 +106,7 @@ struct Film
 		recette = rec;
 	}
 
-	friend ostream &operator<<(ostream &os, const Film &film);
+	friend ostream& operator<<(ostream& os, const Film& film);
 };
 
 struct Acteur
@@ -140,7 +140,7 @@ public:
 		return nElements_;
 	}
 
-	Film **getElements()
+	Film** getElements()
 	{
 		return elements_;
 	}
@@ -157,18 +157,18 @@ public:
 
 		for ([[maybe_unused]] int i : range(nElements))
 		{
-			Film *film = lireFilm(fichier, listeFilms);
+			Film* film = lireFilm(fichier, listeFilms);
 			listeFilms.ajouterFilm(film);
 		}
 		return listeFilms;
 	}
 
-	void ajouterFilm(Film *film)
+	void ajouterFilm(Film* film)
 	{
 		if (capacite_ == nElements_)
 		{
 			int nouvelleCapacite = max(1, 2 * capacite_);
-			Film **nouvelleListe = new Film *[nouvelleCapacite];
+			Film** nouvelleListe = new Film*[nouvelleCapacite];
 			for (int i : range(nElements_))
 			{
 				nouvelleListe[i] = elements_[i];
@@ -181,7 +181,7 @@ public:
 		nElements_++;
 	}
 
-	void enleverFilm(Film *filmAEnlever)
+	void enleverFilm(Film* filmAEnlever)
 	{
 		for (int i : range(nElements_))
 		{
@@ -200,12 +200,12 @@ public:
 		}
 	}
 
-	shared_ptr<Acteur> trouverActeur(const string &nomActeur)
+	shared_ptr<Acteur> trouverActeur(const string& nomActeur)
 	{
 		for (int i : range(nElements_))
 		{
-			Film *film = elements_[i];
-			for (shared_ptr<Acteur> &acteur : span<shared_ptr<Acteur>>(film->acteurs.elements.get(), film->acteurs.nElements))
+			Film* film = elements_[i];
+			for (shared_ptr<Acteur>& acteur : span<shared_ptr<Acteur>>(film->acteurs.elements.get(), film->acteurs.nElements))
 			{
 				if (acteur->nom == nomActeur)
 					return acteur;
@@ -228,20 +228,20 @@ public:
 	{
 		static const string ligneDeSeparation = "\n\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\n";
 		cout << ligneDeSeparation;
-		for (Film *film : span<Film *>(elements_, nElements_))
+		for (Film* film : span<Film*>(elements_, nElements_))
 		{
 			cout << *film;
 			cout << ligneDeSeparation;
 		}
 	}
 
-	Film *operator[](const int &index)
+	Film* operator[](const int& index)
 	{
 		return elements_[index];
 	}
 
 	template <typename T>
-	Film *afficherFilmParCritere(const T &critere)
+	Film* afficherFilmParCritere(const T& critere)
 	{
 		for (int i : range(nElements_))
 		{
@@ -253,16 +253,8 @@ public:
 		return nullptr;
 	}
 
-	// // void afficherFilmographieActeur(const string& nomActeur)
-	// // {
-	// // 	const Acteur* acteur = trouverActeur(nomActeur);
-	// // 	if (acteur == nullptr)
-	// // 		cout << "Aucun acteur de ce nom" << endl;
-	// // 	else
-	// // 		acteur->joueDans.afficher();
-	// // }
 
 private:
 	int capacite_, nElements_;
-	Film **elements_;
+	Film** elements_;
 };
