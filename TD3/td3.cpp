@@ -1,5 +1,5 @@
 ﻿/*
-nom: td2.cpp
+nom: td3.cpp
 description: Contient les fonctions pour lire un fichier et pour gerer un objet de type Film ainsi que les appels de fonction
 auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
 date: 1 mars 2023
