@@ -90,6 +90,11 @@ public:
 	string getTitre() {
 		return titre;
 	}
+
+	Item lireFichier(ifstream& fichier) {
+		fichier >> quoted(titre) >> anneeSortie;
+	}
+
 	friend Film* lireFilm(istream& fichier, ListeFilms& listeFilms);
 	friend ostream& operator<<(ostream& os, const Film& film);
 	friend vector<Item> LireLivres(const string txtLivres, vector<Item> vector);
@@ -136,6 +141,14 @@ private:
 
 class Livre : public Item {
 	friend vector<Item> LireLivres(const string txtLivres, vector<Item> vector);
+
+	Livre(ifstream& fichier) {
+		Item::lireFichier(fichier);
+		lireFichier(fichier);
+	}
+	Livre lireFichier(ifstream& fichier) {
+		fichier >> auteur >> copiesVendues >> nbPages;
+	}
 private:
 	string auteur;
 	int copiesVendues, nbPages;

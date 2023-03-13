@@ -12,6 +12,9 @@ date: 19 mars 2023
 #include <algorithm>
 #include <memory>
 
+#include <iomanip>
+#include <sstream>
+
 #include "cppitertools/range.hpp"
 #include "gsl/span"
 
@@ -110,21 +113,30 @@ ostream& operator<<(ostream& os, const Item& item) {
 vector<Item> LireLivres(const string txtLivres, vector<Item> vector)
 {
 	ifstream fichier(txtLivres);
-	string ligne;
-	Livre livre;
+	
+	//while (getline(fichier, ligne)) // !fichier.eof()
+	//{
+	//	Livre livre(fichier); 
+	//	int indexTab = ligne.find("\t");
+	//	string str = ligne.substr(0, indexTab);
 
-	while (getline(fichier, ligne))
-	{
-		int indexTab = ligne.find("\t");
-		livre.titre = ligne.substr(0, indexTab);
-		int prochainIndexTab = ligne.find("\t", indexTab + 1);
-		livre.anneeSortie = stoi(ligne.substr(indexTab + 1, prochainIndexTab - indexTab - 1));
-		livre.auteur = ligne.substr(prochainIndexTab + 1);
-		int troisiemeIndexTab = ligne.find("\t", prochainIndexTab + 1);
-		livre.copiesVendues = stoi(ligne.substr(prochainIndexTab + 1, troisiemeIndexTab - prochainIndexTab - 1));
-		livre.nbPages = stoi(ligne.substr(troisiemeIndexTab + 1));
-		vector.push_back(livre);
-	}
+	//	//livre.titre = str;
+
+	//	//int deuxiemeIndexTab = ligne.find("\t", indexTab + 1);
+	//	//livre.anneeSortie = stoi(ligne.substr(indexTab + 1, deuxiemeIndexTab - indexTab - 1));
+
+	//	//int troisiemeIndexTab = ligne.find("\t", deuxiemeIndexTab + 1);
+	//	//livre.auteur = ligne.substr(deuxiemeIndexTab + 1, troisiemeIndexTab - deuxiemeIndexTab - 1);
+
+	//	//int quatriemeIndexTab = ligne.find("\t", troisiemeIndexTab + 1);
+	//	//livre.copiesVendues = stoi(ligne.substr( troisiemeIndexTab + 1, quatriemeIndexTab - troisiemeIndexTab - 1));
+
+	//	//livre.nbPages = stoi(ligne.substr(quatriemeIndexTab + 1));
+
+	//	vector.push_back(livre);
+	//}
+
+
 	fichier.close();
 	
 	return vector;
@@ -142,7 +154,7 @@ int main()
 		bibliotheque.push_back(*liste.getElements()[i]);
 	}
 
-	LireLivres("livres.txt", bibliotheque);
+	bibliotheque = LireLivres("livres.txt", bibliotheque);
 
 	for (Item i : bibliotheque) {
 		cout << i;
