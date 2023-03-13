@@ -1,8 +1,8 @@
 /*
 nom: structures.hpp
-description: Contient les definitions des structures et de la classe ListeFilms
+description: Contient les definitions des structures et des classes
 auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-date: 12 fevrier 2023
+date: 19 mars 2023
 */
 
 #include <iostream>
@@ -92,7 +92,8 @@ public:
 	}
 	friend Film* lireFilm(istream& fichier, ListeFilms& listeFilms);
 	friend ostream& operator<<(ostream& os, const Film& film);
-
+	friend vector<Item> LireLivres(const string txtLivres, vector<Item> vector);
+	friend ostream& operator<<(ostream& os, const Item& item);
 
 private:
 	string titre = "";
@@ -112,7 +113,7 @@ class Film : public Item{
 		realisateur = rea;
 		recette = rec;
 	}
-
+		
 	void detruireFilm()
 	{
 		for (int i : range(this->acteurs.nElements))
@@ -123,7 +124,6 @@ class Film : public Item{
 	}
 
 	friend ostream& operator<<(ostream& os, const Film& film);
-
 	friend shared_ptr<Acteur> trouverActeur(const string& nomActeur);
 	friend Film* lireFilm(istream& fichier, ListeFilms& listeFilms);
 
@@ -135,9 +135,14 @@ private:
 };
 
 class Livre : public Item {
+	friend vector<Item> LireLivres(const string txtLivres, vector<Item> vector);
 private:
 	string auteur;
 	int copiesVendues, nbPages;
+};
+
+class FilmLivre {
+	
 };
 
 struct Acteur
@@ -175,6 +180,7 @@ public:
 	{
 		return elements_;
 	}
+	
 
 	ListeFilms creerListe(string nomFichier)
 	{

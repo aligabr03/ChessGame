@@ -1,8 +1,8 @@
 ﻿/*
-nom: td2.cpp
+nom: td4.cpp
 description: Contient les fonctions pour lire un fichier et pour gerer un objet de type Film ainsi que les appels de fonction
 auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-date: 1 mars 2023
+date: 19 mars 2023
 */
 
 #include <iostream>
@@ -102,12 +102,52 @@ ostream& operator<<(ostream& os, const Film& film)
 	return os;
 }
 
+ostream& operator<<(ostream& os, const Item& item) {
+	os << item.titre << endl;
+	return os;
+}
+
+vector<Item> LireLivres(const string txtLivres, vector<Item> vector)
+{
+	ifstream fichier(txtLivres);
+	string ligne;
+	Livre livre;
+
+	while (getline(fichier, ligne))
+	{
+		int indexTab = ligne.find("\t");
+		livre.titre = ligne.substr(0, indexTab);
+		int prochainIndexTab = ligne.find("\t", indexTab + 1);
+		livre.anneeSortie = stoi(ligne.substr(indexTab + 1, prochainIndexTab - indexTab - 1));
+		livre.auteur = ligne.substr(prochainIndexTab + 1);
+		int troisiemeIndexTab = ligne.find("\t", prochainIndexTab + 1);
+		livre.copiesVendues = stoi(ligne.substr(prochainIndexTab + 1, troisiemeIndexTab - prochainIndexTab - 1));
+		livre.nbPages = stoi(ligne.substr(troisiemeIndexTab + 1));
+		vector.push_back(livre);
+	}
+	fichier.close();
+	
+	return vector;
+}
+
 int main()
 {
-	bibliotheque_cours::activerCouleursAnsi(); // Permet sous Windows les "ANSI escape code" pour changer de couleurs https://en.wikipedia.org/wiki/ANSI_escape_code ; les consoles Linux/Mac les supportent normalement par défaut.
+	bibliotheque_cours::activerCouleursAnsi();
 
 	static const string ligneDeSeparation = "\n\033[35m════════════════════════════════════════\033[0m\n";
 
 	ListeFilms liste("films.bin");
+	vector<Item> bibliotheque;
+	for (int i : range(liste.getnElements())) {
+		bibliotheque.push_back(*liste.getElements()[i]);
+	}
+
+	LireLivres("livres.txt", bibliotheque);
+
+	for (Item i : bibliotheque) {
+		cout << i;
+	}
+
+
 	liste.detruire();
 }
