@@ -117,11 +117,7 @@ vector<Item> LireLivres(const string txtLivres, vector<Item> vector)
 	while (!fichier.eof()) {
 		Livre item(fichier);
 		vector.push_back(item);
-		char c;
-		fichier.get(c);
-		if (c != '\n') {
-			fichier.unget();
-		}
+
 	}
 
 	fichier.close();
