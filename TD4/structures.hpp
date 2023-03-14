@@ -10,6 +10,8 @@ date: 12 fevrier 2023
 #include <fstream>
 #include "cppitertools/range.hpp"
 #include "gsl/span"
+#include <iomanip>
+#include <sstream>
 
 using namespace iter;
 using namespace std;
@@ -86,14 +88,33 @@ public:
 
 using ListeActeurs = Liste<Acteur>;
 
-class Item
+class Affichable
 {
 public:
-	Item() = default;
+	virtual void afficher()  = 0;
+	virtual ~Affichable() {}
+};
 
+class Item : public Affichable
+{
+public:
+	Item() {}
+
+	void lireFichier(ifstream &fichier)
+	{
+		fichier >> quoted(titre_) >> annee_;
+	}
 	friend class ListeFilms;
-	friend Film* lireFilm(istream& fichier, ListeFilms& listeFilms);
-	friend ostream& operator<<(ostream& os, const Film& film);
+	friend Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
+	friend ostream &operator<<(ostream &os, const Film &film);
+	friend vector<Item> LireLivres(const string txtLivres, vector<Item> vecteur);
+	void afficher() override
+	{
+		cout << "Titre : " << titre_ << "\tAnnée: " << annee_ << endl;
+		Film::afficher();
+
+	}
+	friend ostream &operator<<(ostream &os, const Item &item);
 
 private:
 	string titre_ = "";
@@ -116,25 +137,53 @@ public:
 	}
 
 	friend class ListeFilms;
-	friend ostream& operator<<(ostream& os, const Film& film);
-	friend Film* lireFilm(istream& fichier, ListeFilms& listeFilms);
+	friend ostream &operator<<(ostream &os, const Film &film);
+	friend Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
 	friend shared_ptr<Acteur> trouverActeur(const string &nomActeur);
 	friend void detruireFilm(Film *film);
-	friend ostream& operator<<(ostream& os, const Film& film);
-	
+	friend ostream &operator<<(ostream &os, const Film &film);
+	void afficher() override
+	{
+		Item::afficher();
+		cout << "Combo :\n"
+			 << "  Réalisateur : " << realisateur_ << "\n  Recette : " << recette_ << endl;
+		cout << "Acteurs :\n" << this;
+	}
+
 private:
 	string realisateur_;
 	int recette_;
 	ListeActeurs acteurs_;
 };
 
-class Livre : Item
+class Livre : public Item
 {
 public:
+	Livre() {}
+
+	Livre(ifstream &fichier)
+	{
+		Item::lireFichier(fichier);
+		lireFichier(fichier);
+	}
+
+	void lireFichier(ifstream &fichier)
+	{
+		fichier >> quoted(auteur_) >> copiesVendues_ >> nbDePages_;
+	}
+
+	void afficher() override
+	{
+		Item::afficher();
+		Film::afficher();
+		cout << "Auteur : " << auteur_ <<"\nCopies Vendues : " << copiesVendues_<< "M" << " Pages : " << nbDePages_<< endl;
+	}
+
+	friend vector<Item> LireLivres(const string txtLivres, vector<Item> vecteur);
+
 private:
 	string auteur_;
-	int copies_;
-	int nbDePages_;
+	int copiesVendues_, nbDePages_;
 };
 
 struct Acteur

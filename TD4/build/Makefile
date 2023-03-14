@@ -51,10 +51,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /opt/homebrew/Cellar/cmake/3.25.2/bin/cmake
+CMAKE_COMMAND = /opt/homebrew/Cellar/cmake/3.25.3/bin/cmake
 
 # The command to remove a file.
-RM = /opt/homebrew/Cellar/cmake/3.25.2/bin/cmake -E rm -f
+RM = /opt/homebrew/Cellar/cmake/3.25.3/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Githu
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/opt/homebrew/Cellar/cmake/3.25.2/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/homebrew/Cellar/cmake/3.25.3/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -81,7 +81,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/opt/homebrew/Cellar/cmake/3.25.2/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/opt/homebrew/Cellar/cmake/3.25.3/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -120,37 +120,37 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named TD4-H23-FICHIERS
+# Target rules for targets named TD4
 
 # Build rule for target.
-TD4-H23-FICHIERS: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 TD4-H23-FICHIERS
-.PHONY : TD4-H23-FICHIERS
+TD4: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 TD4
+.PHONY : TD4
 
 # fast build rule for target.
-TD4-H23-FICHIERS/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4-H23-FICHIERS.dir/build.make CMakeFiles/TD4-H23-FICHIERS.dir/build
-.PHONY : TD4-H23-FICHIERS/fast
+TD4/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4.dir/build.make CMakeFiles/TD4.dir/build
+.PHONY : TD4/fast
 
 #=============================================================================
-# Target rules for targets named TD4-H23-FICHIERS_couverture
+# Target rules for targets named TD4_couverture
 
 # Build rule for target.
-TD4-H23-FICHIERS_couverture: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 TD4-H23-FICHIERS_couverture
-.PHONY : TD4-H23-FICHIERS_couverture
+TD4_couverture: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 TD4_couverture
+.PHONY : TD4_couverture
 
 # fast build rule for target.
-TD4-H23-FICHIERS_couverture/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4-H23-FICHIERS_couverture.dir/build.make CMakeFiles/TD4-H23-FICHIERS_couverture.dir/build
-.PHONY : TD4-H23-FICHIERS_couverture/fast
+TD4_couverture/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4_couverture.dir/build.make CMakeFiles/TD4_couverture.dir/build
+.PHONY : TD4_couverture/fast
 
 bibliotheque_cours.o: bibliotheque_cours.cpp.o
 .PHONY : bibliotheque_cours.o
 
 # target to build an object file
 bibliotheque_cours.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4-H23-FICHIERS.dir/build.make CMakeFiles/TD4-H23-FICHIERS.dir/bibliotheque_cours.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4.dir/build.make CMakeFiles/TD4.dir/bibliotheque_cours.cpp.o
 .PHONY : bibliotheque_cours.cpp.o
 
 bibliotheque_cours.i: bibliotheque_cours.cpp.i
@@ -158,7 +158,7 @@ bibliotheque_cours.i: bibliotheque_cours.cpp.i
 
 # target to preprocess a source file
 bibliotheque_cours.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4-H23-FICHIERS.dir/build.make CMakeFiles/TD4-H23-FICHIERS.dir/bibliotheque_cours.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4.dir/build.make CMakeFiles/TD4.dir/bibliotheque_cours.cpp.i
 .PHONY : bibliotheque_cours.cpp.i
 
 bibliotheque_cours.s: bibliotheque_cours.cpp.s
@@ -166,7 +166,7 @@ bibliotheque_cours.s: bibliotheque_cours.cpp.s
 
 # target to generate assembly for a file
 bibliotheque_cours.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4-H23-FICHIERS.dir/build.make CMakeFiles/TD4-H23-FICHIERS.dir/bibliotheque_cours.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4.dir/build.make CMakeFiles/TD4.dir/bibliotheque_cours.cpp.s
 .PHONY : bibliotheque_cours.cpp.s
 
 td4.o: td4.cpp.o
@@ -174,7 +174,7 @@ td4.o: td4.cpp.o
 
 # target to build an object file
 td4.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4-H23-FICHIERS.dir/build.make CMakeFiles/TD4-H23-FICHIERS.dir/td4.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4.dir/build.make CMakeFiles/TD4.dir/td4.cpp.o
 .PHONY : td4.cpp.o
 
 td4.i: td4.cpp.i
@@ -182,7 +182,7 @@ td4.i: td4.cpp.i
 
 # target to preprocess a source file
 td4.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4-H23-FICHIERS.dir/build.make CMakeFiles/TD4-H23-FICHIERS.dir/td4.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4.dir/build.make CMakeFiles/TD4.dir/td4.cpp.i
 .PHONY : td4.cpp.i
 
 td4.s: td4.cpp.s
@@ -190,7 +190,7 @@ td4.s: td4.cpp.s
 
 # target to generate assembly for a file
 td4.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4-H23-FICHIERS.dir/build.make CMakeFiles/TD4-H23-FICHIERS.dir/td4.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4.dir/build.make CMakeFiles/TD4.dir/td4.cpp.s
 .PHONY : td4.cpp.s
 
 verification_allocation.o: verification_allocation.cpp.o
@@ -198,7 +198,7 @@ verification_allocation.o: verification_allocation.cpp.o
 
 # target to build an object file
 verification_allocation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4-H23-FICHIERS.dir/build.make CMakeFiles/TD4-H23-FICHIERS.dir/verification_allocation.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4.dir/build.make CMakeFiles/TD4.dir/verification_allocation.cpp.o
 .PHONY : verification_allocation.cpp.o
 
 verification_allocation.i: verification_allocation.cpp.i
@@ -206,7 +206,7 @@ verification_allocation.i: verification_allocation.cpp.i
 
 # target to preprocess a source file
 verification_allocation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4-H23-FICHIERS.dir/build.make CMakeFiles/TD4-H23-FICHIERS.dir/verification_allocation.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4.dir/build.make CMakeFiles/TD4.dir/verification_allocation.cpp.i
 .PHONY : verification_allocation.cpp.i
 
 verification_allocation.s: verification_allocation.cpp.s
@@ -214,7 +214,7 @@ verification_allocation.s: verification_allocation.cpp.s
 
 # target to generate assembly for a file
 verification_allocation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4-H23-FICHIERS.dir/build.make CMakeFiles/TD4-H23-FICHIERS.dir/verification_allocation.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TD4.dir/build.make CMakeFiles/TD4.dir/verification_allocation.cpp.s
 .PHONY : verification_allocation.cpp.s
 
 # Help Target
@@ -225,8 +225,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... TD4-H23-FICHIERS_couverture"
-	@echo "... TD4-H23-FICHIERS"
+	@echo "... TD4_couverture"
+	@echo "... TD4"
 	@echo "... bibliotheque_cours.o"
 	@echo "... bibliotheque_cours.i"
 	@echo "... bibliotheque_cours.s"

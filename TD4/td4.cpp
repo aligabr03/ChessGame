@@ -11,6 +11,7 @@ date: 1 mars 2023
 #include <limits>
 #include <algorithm>
 #include <memory>
+#include <vector>
 
 #include "cppitertools/range.hpp"
 #include "gsl/span"
@@ -29,19 +30,19 @@ typedef uint16_t UInt16;
 
 #pragma region Fonctions de base pour lire le fichier binaire
 
-UInt8 lireUint8(istream& fichier)
+UInt8 lireUint8(istream &fichier)
 {
 	UInt8 valeur = 0;
 	fichier.read((char *)&valeur, sizeof(valeur));
 	return valeur;
 }
-UInt16 lireUint16(istream& fichier)
+UInt16 lireUint16(istream &fichier)
 {
 	UInt16 valeur = 0;
 	fichier.read((char *)&valeur, sizeof(valeur));
 	return valeur;
 }
-string lireString(istream& fichier)
+string lireString(istream &fichier)
 {
 	string texte;
 	texte.resize(lireUint16(fichier));
@@ -51,7 +52,7 @@ string lireString(istream& fichier)
 
 #pragma endregion
 
-shared_ptr<Acteur> lireActeur(istream& fichier, ListeFilms& listeFilms)
+shared_ptr<Acteur> lireActeur(istream &fichier, ListeFilms &listeFilms)
 {
 	Acteur acteur = {};
 	acteur.nom = lireString(fichier);
@@ -69,7 +70,7 @@ shared_ptr<Acteur> lireActeur(istream& fichier, ListeFilms& listeFilms)
 	return acteurExistant;
 }
 
-Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
+Film *lireFilm(istream &fichier, ListeFilms &listeFilms)
 {
 	Film film = {};
 	film.titre_ = lireString(fichier);
@@ -86,7 +87,7 @@ Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 	return filmAlloue;
 }
 
-void detruireFilm(Film* film)
+void detruireFilm(Film *film)
 {
 	for (int i : range(film->acteurs_.nElements))
 	{
@@ -95,20 +96,46 @@ void detruireFilm(Film* film)
 	delete film;
 }
 
-ostream& operator<<(ostream& os, const Acteur& acteur)
+ostream &operator<<(ostream &os, const Acteur &acteur)
 {
 	os << "  " << acteur.nom << ", " << acteur.anneeNaissance << " " << acteur.sexe << endl;
 	return os;
 }
 
-ostream& operator<<(ostream& os, const Film& film)
+ostream &operator<<(ostream &os, const Film &film)
 {
-	os << "Les acteurs qui jouent dans le film " << film.titre_ << " sont" << endl;
+	// os << "Les acteurs qui jouent dans le film " << film.titre_ << " sont" << endl;
 	for (int i : range(film.acteurs_.nElements))
 	{
 		os << *film.acteurs_.elements[i];
 	}
 	return os;
+}
+
+ostream &operator<<(ostream &os, const Item &item)
+{
+	os << item.titre_ << endl;
+	return os;
+}
+
+ostream &operator<<(ostream &os, const Item &item)
+{
+	os << Item::afficher();
+	return os
+}
+
+vector<Item> LireLivres(const string txtLivres, vector<Item> vecteur)
+{
+	ifstream fichier(txtLivres);
+
+	while (!fichier.eof())
+	{
+		Livre item(fichier);
+		vecteur.push_back(item);
+	}
+
+	fichier.close();
+	return vecteur;
 }
 
 int main()
@@ -117,7 +144,20 @@ int main()
 
 	static const string ligneDeSeparation = "\n\033[35m════════════════════════════════════════\033[0m\n";
 	// TODO: La ligne suivante devrait lire le fichier binaire en allouant la mémoire nécessaire.  Devrait afficher les noms de 20 acteurs sans doublons (par l'affichage pour fins de débogage dans votre fonction lireActeur).
-	ListeFilms liste("films.bin");
-	liste.detruire();
 
+	ListeFilms liste("films.bin");
+	vector<Item> bibliotheque;
+	for (int i : range(liste.getnElements()))
+	{
+		bibliotheque.push_back(*liste.getElements()[i]);
+	}
+
+	bibliotheque = LireLivres("livres.txt", bibliotheque);
+
+	for (Item i : bibliotheque)
+	{
+		cout << i;
+	}
+
+	liste.detruire();
 }

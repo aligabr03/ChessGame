@@ -6,7 +6,7 @@ if (DEFINED ENV{VCPKG_ROOT})
 endif()
 
 # Le nom du projet.
-project(TD4-H23-FICHIERS)
+project(TD4)
 
 # On met les fichiers sources (incluant les entêtes)
 set(ALL_FILES
@@ -15,6 +15,7 @@ set(ALL_FILES
     "bibliotheque_cours.cpp"
     "verification_allocation.cpp"
 	"films.bin"
+	"livres.txt"
 )
 
 
@@ -40,7 +41,7 @@ if (GCOV_PATH)
 		# COMMAND ${PROJECT_NAME}
 	 
 		# Analyse le fichier de couverture:
-		COMMAND ${GCOV_PATH} -s "${ProjetTest_SOURCE_DIR}" -r -f -m "${PROJECT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}.dir/source/*.gcda"
+		COMMAND ${GCOV_PATH} -s "${TD4_SOURCE_DIR}" -r -f -m "${PROJECT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}.dir/source/*.gcda"
 
 		WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
 		DEPENDS ${PROJECT_NAME}

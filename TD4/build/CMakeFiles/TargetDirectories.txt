@@ -1,4 +1,4 @@
-/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD4/build/CMakeFiles/TD4-H23-FICHIERS.dir
-/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD4/build/CMakeFiles/TD4-H23-FICHIERS_couverture.dir
+/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD4/build/CMakeFiles/TD4.dir
+/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD4/build/CMakeFiles/TD4_couverture.dir
 /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD4/build/CMakeFiles/edit_cache.dir
 /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD4/build/CMakeFiles/rebuild_cache.dir
