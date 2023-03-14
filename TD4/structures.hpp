@@ -87,11 +87,12 @@ using ListeActeurs = Liste<Acteur>;
 class Item {
 public:
 	Item(){}
+
 	string getTitre() {
 		return titre;
 	}
 
-	Item lireFichier(ifstream& fichier) {
+	void lireFichier(ifstream& fichier) {
 		fichier >> quoted(titre) >> anneeSortie;
 	}
 
@@ -140,15 +141,16 @@ private:
 };
 
 class Livre : public Item {
-	friend vector<Item> LireLivres(const string txtLivres, vector<Item> vector);
+	Livre() {}
 
 	Livre(ifstream& fichier) {
 		Item::lireFichier(fichier);
 		lireFichier(fichier);
 	}
-	Livre lireFichier(ifstream& fichier) {
-		fichier >> auteur >> copiesVendues >> nbPages;
+	void lireFichier(ifstream& fichier) {
+		fichier >> quoted(auteur) >> copiesVendues >> nbPages;
 	}
+
 private:
 	string auteur;
 	int copiesVendues, nbPages;
