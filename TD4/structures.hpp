@@ -141,13 +141,14 @@ private:
 };
 
 class Livre : public Item {
+public:
 	Livre() {}
 
 	Livre(ifstream& fichier) {
 		Item::lireFichier(fichier);
 		lireFichier(fichier);
 	}
-	void lireFichier(ifstream& fichier) {
+	void lireFichier(ifstream& fichier){
 		fichier >> quoted(auteur) >> copiesVendues >> nbPages;
 	}
 
