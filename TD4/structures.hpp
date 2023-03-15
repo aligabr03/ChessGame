@@ -10,6 +10,7 @@ date: 19 mars 2023
 #include <fstream>
 #include "cppitertools/range.hpp"
 #include "gsl/span"
+#include <iomanip>
 
 using namespace iter;
 using namespace std;
@@ -92,13 +93,15 @@ public:
 		return titre;
 	}
 
+	int getAnnee() {
+		return anneeSortie;
+	}
+
 	void lireFichier(ifstream& fichier) {
 		fichier >> quoted(titre) >> anneeSortie;
 	}
 
 	friend Film* lireFilm(istream& fichier, ListeFilms& listeFilms);
-	friend ostream& operator<<(ostream& os, const Film& film);
-	friend vector<Item> LireLivres(const string txtLivres, vector<Item> vector);
 	friend ostream& operator<<(ostream& os, const Item& item);
 
 private:
@@ -107,7 +110,7 @@ private:
 };
 
 class Film : public Item{
-
+public:
 	Film()
 	{
 		realisateur = "";
@@ -129,21 +132,20 @@ class Film : public Item{
 		delete this;
 	}
 
-	friend ostream& operator<<(ostream& os, const Film& film);
 	friend shared_ptr<Acteur> trouverActeur(const string& nomActeur);
 	friend Film* lireFilm(istream& fichier, ListeFilms& listeFilms);
 
 private:
-	std::string realisateur;
+	string realisateur;
 	int recette;
 	ListeActeurs acteurs;
+
 	friend class ListeFilms;
 };
 
 class Livre : public Item {
 public:
 	Livre() {}
-
 	Livre(ifstream& fichier) {
 		Item::lireFichier(fichier);
 		lireFichier(fichier);
@@ -153,12 +155,23 @@ public:
 	}
 
 private:
-	string auteur;
-	int copiesVendues, nbPages;
+	string auteur = "";
+	int copiesVendues = 0, nbPages= 0;
 };
 
-class FilmLivre {
-	
+class FilmLivre : public Livre, public Film {
+public:
+	FilmLivre(Film film, Livre livre) {
+		titre = film.getTitre();
+		anneeSortie = film.getAnnee();
+
+	}
+
+
+private:
+	string titre = "", realisateur = "", auteur = "";
+	int anneeSortie = 0, recette = 0, copiesVendues = 0, nbPages = 0;
+	ListeActeurs acteurs;
 };
 
 struct Acteur

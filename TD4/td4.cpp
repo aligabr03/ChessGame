@@ -12,9 +12,6 @@ date: 19 mars 2023
 #include <algorithm>
 #include <memory>
 
-#include <iomanip>
-#include <sstream>
-
 #include "cppitertools/range.hpp"
 #include "gsl/span"
 
@@ -95,17 +92,8 @@ ostream& operator<<(ostream& os, const Acteur& acteur)
 	return os;
 }
 
-ostream& operator<<(ostream& os, const Film& film)
+ostream& operator<<(ostream& os, const Item& item)
 {
-	os << "Les acteurs qui jouent dans le film " << film.titre << " sont" << endl;
-	for (int i : range(film.acteurs.nElements))
-	{
-		os << *film.acteurs.elements[i];
-	}
-	return os;
-}
-
-ostream& operator<<(ostream& os, const Item& item) {
 	os << item.titre << endl;
 	return os;
 }
@@ -117,7 +105,6 @@ vector<Item> LireLivres(const string txtLivres, vector<Item> vector)
 	while (!fichier.eof()) {
 		Livre item(fichier);
 		vector.push_back(item);
-
 	}
 
 	fichier.close();
@@ -141,7 +128,6 @@ int main()
 	for (Item i : bibliotheque) {
 		cout << i;
 	}
-
 
 	liste.detruire();
 }
