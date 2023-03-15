@@ -110,7 +110,7 @@ public:
 	friend class ListeFilms;
 	friend Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
 	friend ostream &operator<<(ostream &os, const Film &film);
-	friend vector<Item&> LireLivres(const string txtLivres, vector<Item> vecteur);
+	friend vector<Item*> LireLivres(const string txtLivres, vector<Item*> vecteur);
 	void afficher() const override
 	{
 		cout << "Titre : " << titre_ << "\tAnnée: " << annee_ << endl;
@@ -186,7 +186,7 @@ public:
 			 << " Pages : " << nbDePages_ << endl;
 	}
 
-	friend vector<Item&> LireLivres(const string txtLivres, vector<Item&> vecteur);
+	friend vector<Item*> LireLivres(const string txtLivres, vector<Item*> vecteur);
 
 private:
 	string auteur_;

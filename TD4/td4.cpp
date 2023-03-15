@@ -108,27 +108,27 @@ ostream &operator<<(ostream &os, const Item &item)
 	return os;
 }
 
-vector<Item&> LireLivres(const string txtLivres, vector<Item&> vecteur)
+vector<Item*> LireLivres(const string txtLivres, vector<Item*> vecteur)
 {
 	ifstream fichier(txtLivres);
 
 	while (!fichier.eof())
 	{
 		Livre item(fichier);
-		vecteur.push_back(item);
+		vecteur.push_back(&item);
 	}
 
 	fichier.close();
 	return vecteur;
 }
 
-void afficherListeItem(vector<Item&> vecteurItem)
+void afficherListeItem(vector<Item*> vecteurItem)
 {
 	static const string ligneDeSeparation = "\n\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\n";
 	cout << ligneDeSeparation;
 	for (auto&& item : vecteurItem)
 	{
-		cout << &item;
+		cout << *item;
 		cout << ligneDeSeparation;
 	}
 }
@@ -141,10 +141,10 @@ int main()
 	// TODO: La ligne suivante devrait lire le fichier binaire en allouant la mémoire nécessaire.  Devrait afficher les noms de 20 acteurs sans doublons (par l'affichage pour fins de débogage dans votre fonction lireActeur).
 
 	ListeFilms liste("films.bin");
-	vector<Item&> bibliotheque;
+	vector<Item*> bibliotheque;
 	for (int i : range(liste.getnElements()))
 	{
-		bibliotheque.push_back(*liste.getElements()[i]);
+		bibliotheque.push_back(liste.getElements()[i]);
 	}
 
 	bibliotheque = LireLivres("livres.txt", bibliotheque);
