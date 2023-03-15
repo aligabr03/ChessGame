@@ -28,6 +28,8 @@ class ListeFilms;
 
 Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
 void detruireFilm(Film *film);
+ostream &operator<<(ostream &os, const Acteur &acteur);
+
 
 template <typename T>
 class Liste
@@ -91,7 +93,7 @@ using ListeActeurs = Liste<Acteur>;
 class Affichable
 {
 public:
-	virtual void afficher()  = 0;
+	virtual void afficher() const = 0;
 	virtual ~Affichable() {}
 };
 
@@ -104,17 +106,16 @@ public:
 	{
 		fichier >> quoted(titre_) >> annee_;
 	}
+	
 	friend class ListeFilms;
 	friend Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
 	friend ostream &operator<<(ostream &os, const Film &film);
-	friend vector<Item> LireLivres(const string txtLivres, vector<Item> vecteur);
-	void afficher() override
+	friend vector<Item&> LireLivres(const string txtLivres, vector<Item> vecteur);
+	void afficher() const override
 	{
 		cout << "Titre : " << titre_ << "\tAnnée: " << annee_ << endl;
-		Film::afficher();
-
 	}
-	friend ostream &operator<<(ostream &os, const Item &item);
+
 
 private:
 	string titre_ = "";
@@ -141,14 +142,20 @@ public:
 	friend Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
 	friend shared_ptr<Acteur> trouverActeur(const string &nomActeur);
 	friend void detruireFilm(Film *film);
-	friend ostream &operator<<(ostream &os, const Film &film);
-	void afficher() override
+
+	void afficher() const override
 	{
 		Item::afficher();
 		cout << "Combo :\n"
 			 << "  Réalisateur : " << realisateur_ << "\n  Recette : " << recette_ << endl;
-		cout << "Acteurs :\n" << this;
+		cout << "Acteurs : " << endl;
+		for (shared_ptr<Acteur> &acteur : span<shared_ptr<Acteur>>(this->acteurs_.elements.get(), this->acteurs_.nElements))
+		{
+			cout << *acteur ;
+		}
+
 	}
+	friend ostream &operator<<(ostream &os, const Film &film);
 
 private:
 	string realisateur_;
@@ -172,14 +179,14 @@ public:
 		fichier >> quoted(auteur_) >> copiesVendues_ >> nbDePages_;
 	}
 
-	void afficher() override
+	void afficher() const override
 	{
 		Item::afficher();
-		Film::afficher();
-		cout << "Auteur : " << auteur_ <<"\nCopies Vendues : " << copiesVendues_<< "M" << " Pages : " << nbDePages_<< endl;
+		cout << "Auteur : " << auteur_ << "\nCopies Vendues : " << copiesVendues_ << "M"
+			 << " Pages : " << nbDePages_ << endl;
 	}
 
-	friend vector<Item> LireLivres(const string txtLivres, vector<Item> vecteur);
+	friend vector<Item&> LireLivres(const string txtLivres, vector<Item&> vecteur);
 
 private:
 	string auteur_;

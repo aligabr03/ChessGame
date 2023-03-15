@@ -102,29 +102,13 @@ ostream &operator<<(ostream &os, const Acteur &acteur)
 	return os;
 }
 
-ostream &operator<<(ostream &os, const Film &film)
+ostream &operator<<(ostream &os, const Item &item)
 {
-	// os << "Les acteurs qui jouent dans le film " << film.titre_ << " sont" << endl;
-	for (int i : range(film.acteurs_.nElements))
-	{
-		os << *film.acteurs_.elements[i];
-	}
+	item.afficher() ;
 	return os;
 }
 
-ostream &operator<<(ostream &os, const Item &item)
-{
-	os << item.titre_ << endl;
-	return os;
-}
-
-ostream &operator<<(ostream &os, const Item &item)
-{
-	os << Item::afficher();
-	return os
-}
-
-vector<Item> LireLivres(const string txtLivres, vector<Item> vecteur)
+vector<Item&> LireLivres(const string txtLivres, vector<Item&> vecteur)
 {
 	ifstream fichier(txtLivres);
 
@@ -138,6 +122,17 @@ vector<Item> LireLivres(const string txtLivres, vector<Item> vecteur)
 	return vecteur;
 }
 
+void afficherListeItem(vector<Item&> vecteurItem)
+{
+	static const string ligneDeSeparation = "\n\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\n";
+	cout << ligneDeSeparation;
+	for (auto&& item : vecteurItem)
+	{
+		cout << &item;
+		cout << ligneDeSeparation;
+	}
+}
+
 int main()
 {
 	bibliotheque_cours::activerCouleursAnsi(); // Permet sous Windows les "ANSI escape code" pour changer de couleurs https://en.wikipedia.org/wiki/ANSI_escape_code ; les consoles Linux/Mac les supportent normalement par défaut.
@@ -146,18 +141,16 @@ int main()
 	// TODO: La ligne suivante devrait lire le fichier binaire en allouant la mémoire nécessaire.  Devrait afficher les noms de 20 acteurs sans doublons (par l'affichage pour fins de débogage dans votre fonction lireActeur).
 
 	ListeFilms liste("films.bin");
-	vector<Item> bibliotheque;
+	vector<Item&> bibliotheque;
 	for (int i : range(liste.getnElements()))
 	{
 		bibliotheque.push_back(*liste.getElements()[i]);
 	}
 
 	bibliotheque = LireLivres("livres.txt", bibliotheque);
+	afficherListeItem(bibliotheque);
 
-	for (Item i : bibliotheque)
-	{
-		cout << i;
-	}
+	// cout << *liste.getElements()[2];
 
 	liste.detruire();
 }
