@@ -162,11 +162,10 @@ private:
 class FilmLivre : public Livre, public Film {
 public:
 	FilmLivre(Film film, Livre livre) {
-		titre = film.getTitre();
-		anneeSortie = film.getAnnee();
-
+		Item::Item(film);
+		Film::Film(film);
+		Livre::Livre(livre);
 	}
-
 
 private:
 	string titre = "", realisateur = "", auteur = "";
