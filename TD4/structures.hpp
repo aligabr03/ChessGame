@@ -109,7 +109,7 @@ public:
 	friend class ListeFilms;
 	friend Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
 	friend ostream &operator<<(ostream &os, const Film &film);
-	friend vector<Item *> LireLivres(const string txtLivres, vector<Item *> vecteur);
+	vector<unique_ptr<Item>> LireLivres(const string txtLivres, vector<unique_ptr<Item>> vecteur);
 	void afficher() const override
 	{
 		cout << "Titre : " << titre_ << "\tAnnée: " << annee_ << endl;
@@ -145,7 +145,7 @@ public:
 	{
 		Item::afficher();
 		cout << "Combo :\n"
-			 << "  Réalisateur : " << realisateur_ << "\n  Recette : " << recette_ << endl;
+			 << "  Réalisateur : " << realisateur_ << "\n  Recette : " << recette_ << "M$" << endl;
 		cout << "Acteurs : " << endl;
 		for (shared_ptr<Acteur> &acteur : span<shared_ptr<Acteur>>(this->acteurs_.elements.get(), this->acteurs_.nElements))
 		{
@@ -183,7 +183,7 @@ public:
 			 << " Pages : " << nbDePages_ << endl;
 	}
 
-	friend vector<Item *> LireLivres(const string txtLivres, vector<Item *> vecteur);
+	vector<unique_ptr<Item>> LireLivres(const string txtLivres, vector<unique_ptr<Item>> vecteur);
 
 private:
 	string auteur_;
