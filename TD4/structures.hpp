@@ -109,7 +109,8 @@ public:
 	friend class ListeFilms;
 	friend Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
 	friend ostream &operator<<(ostream &os, const Film &film);
-	vector<unique_ptr<Item>> LireLivres(const string txtLivres, vector<unique_ptr<Item>> vecteur);
+	void LireLivres(const string nomFichier, vector<unique_ptr<Item>> &vecteur);
+
 	void afficher() const override
 	{
 		cout << "Titre : " << titre_ << "\tAnnée: " << annee_ << endl;
@@ -180,10 +181,10 @@ public:
 	{
 		Item::afficher();
 		cout << "Auteur : " << auteur_ << "\nCopies Vendues : " << copiesVendues_ << "M"
-			 << " Pages : " << nbDePages_ << endl;
+			 << "\tPages : " << nbDePages_ << endl;
 	}
 
-	vector<unique_ptr<Item>> LireLivres(const string txtLivres, vector<unique_ptr<Item>> vecteur);
+	void LireLivres(const string nomFichier, vector<unique_ptr<Item>> &vecteur);
 
 private:
 	string auteur_;
@@ -195,14 +196,14 @@ private:
 // public:
 // 	FilmLivre(Film film, Livre livre)
 // 	{
-// 		titre_ = film.getTitre();
-// 		anneeSortie_ = film.getAnnee();
+// 		film.afficher();
+// 		livre.afficher();
 // 	}
 
 // private:
-// 	string titre_ = "", realisateur_ = "", auteur_ = "";
-// 	int anneeSortie_ = 0, recette_ = 0, copiesVendues_ = 0, nbDePages_ = 0;
-// 	ListeActeurs acteurs_;
+// 	string titre = "", realisateur = "", auteur = "";
+// 	int anneeSortie = 0, recette = 0, copiesVendues = 0, nbPages = 0;
+// 	ListeActeurs acteurs;
 // };
 
 struct Acteur

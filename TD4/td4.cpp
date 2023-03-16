@@ -108,18 +108,17 @@ ostream &operator<<(ostream &os, const Item &item)
 	return os;
 }
 
-vector<unique_ptr<Item>> LireLivres(const string txtLivres, vector<unique_ptr<Item>> vecteur)
+
+void LireLivres(const string nomFichier, vector<unique_ptr<Item>>& vecteur)
 {
-	ifstream fichier(txtLivres);
+	ifstream fichier(nomFichier);
 	while (!fichier.eof())
 	{
-		Livre item(fichier);
-		unique_ptr<Livre> livre = make_unique<Livre>(item);
+		unique_ptr<Livre> livre = make_unique<Livre>(Livre(fichier));
 		vecteur.push_back(move(livre));
 	}
 
 	fichier.close();
-	return vecteur;
 }
 
 void afficherListeItem(vector<unique_ptr<Item>> &vecteurItem)
@@ -148,9 +147,9 @@ int main()
 		bibliotheque.push_back(move(film));
 	}
 
-	bibliotheque = LireLivres("livres.txt", bibliotheque);
+	LireLivres("livres.txt", bibliotheque);
 	afficherListeItem(bibliotheque);
-	// cout << *liste.getElements()[2];
+
 
 	liste.detruire();
 }
