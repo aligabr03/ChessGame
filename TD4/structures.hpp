@@ -121,7 +121,7 @@ private:
 	int annee_ = 0;
 };
 
-class Film : public Item
+class Film : virtual public Item
 {
 public:
 	Film()
@@ -161,7 +161,7 @@ private:
 	ListeActeurs acteurs_;
 };
 
-class Livre : public Item
+class Livre : virtual public Item
 {
 public:
 	Livre() {}
@@ -191,20 +191,18 @@ private:
 	int copiesVendues_, nbDePages_;
 };
 
-// class FilmLivre : public Livre, public Film
-// {
-// public:
-// 	FilmLivre(Film film, Livre livre)
-// 	{
-// 		film.afficher();
-// 		livre.afficher();
-// 	}
+class FilmLivre : public Film, public  Livre
+{
+public:
+	FilmLivre(const Film& film, const Livre& livre) : Film(film), Livre(livre) {}
 
-// private:
-// 	string titre = "", realisateur = "", auteur = "";
-// 	int anneeSortie = 0, recette = 0, copiesVendues = 0, nbPages = 0;
-// 	ListeActeurs acteurs;
-// };
+	void afficher() const override
+	{
+		Film::afficher();
+		Livre::afficher();
+	}
+
+};
 
 struct Acteur
 {

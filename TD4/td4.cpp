@@ -108,8 +108,7 @@ ostream &operator<<(ostream &os, const Item &item)
 	return os;
 }
 
-
-void LireLivres(const string nomFichier, vector<unique_ptr<Item>>& vecteur)
+void LireLivres(const string nomFichier, vector<unique_ptr<Item>> &vecteur)
 {
 	ifstream fichier(nomFichier);
 	while (!fichier.eof())
@@ -148,8 +147,11 @@ int main()
 	}
 
 	LireLivres("livres.txt", bibliotheque);
-	afficherListeItem(bibliotheque);
 
+	unique_ptr<FilmLivre> filmLivreLeHobbit = make_unique<FilmLivre>(dynamic_cast<Film &>(*bibliotheque[4]), dynamic_cast<Livre &>(*bibliotheque[9]));
+	bibliotheque.push_back(move(filmLivreLeHobbit));
+
+	afficherListeItem(bibliotheque);
 
 	liste.detruire();
 }
