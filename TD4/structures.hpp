@@ -109,7 +109,7 @@ public:
 	friend class ListeFilms;
 	friend Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
 	friend ostream &operator<<(ostream &os, const Film &film);
-	void LireLivres(const string nomFichier, vector<unique_ptr<Item>> &vecteur);
+	// void LireLivres(const string nomFichier, vector<unique_ptr<Item>> &vecteur);
 
 	void afficher() const override
 	{
@@ -137,9 +137,9 @@ public:
 	}
 
 	friend class ListeFilms;
-	friend ostream &operator<<(ostream &os, const Film &film);
+	// friend ostream &operator<<(ostream &os, const Film &film);
 	friend Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
-	friend shared_ptr<Acteur> trouverActeur(const string &nomActeur);
+	// friend shared_ptr<Acteur> trouverActeur(const string &nomActeur);
 	friend void detruireFilm(Film *film);
 
 	void afficher() const override
@@ -153,7 +153,7 @@ public:
 			cout << *acteur;
 		}
 	}
-	friend ostream &operator<<(ostream &os, const Film &film);
+	// friend ostream &operator<<(ostream &os, const Film &film);
 
 private:
 	string realisateur_;
@@ -184,7 +184,7 @@ public:
 			 << "\tPages : " << nbDePages_ << endl;
 	}
 
-	void LireLivres(const string nomFichier, vector<unique_ptr<Item>> &vecteur);
+	// void LireLivres(const string nomFichier, vector<unique_ptr<Item>> &vecteur);
 
 private:
 	string auteur_;
@@ -194,7 +194,7 @@ private:
 class FilmLivre : public Film, public  Livre
 {
 public:
-	FilmLivre(const Film& film, const Livre& livre) : Film(film), Livre(livre) {}
+	FilmLivre(const Film& film, const Livre& livre) : Item(film),Film(film), Livre(livre) {}
 
 	void afficher() const override
 	{
