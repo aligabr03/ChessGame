@@ -30,19 +30,19 @@ typedef uint16_t UInt16;
 
 #pragma region Fonctions de base pour lire le fichier binaire
 
-UInt8 lireUint8(istream &fichier)
+UInt8 lireUint8(istream& fichier)
 {
 	UInt8 valeur = 0;
 	fichier.read((char *)&valeur, sizeof(valeur));
 	return valeur;
 }
-UInt16 lireUint16(istream &fichier)
+UInt16 lireUint16(istream& fichier)
 {
 	UInt16 valeur = 0;
 	fichier.read((char *)&valeur, sizeof(valeur));
 	return valeur;
 }
-string lireString(istream &fichier)
+string lireString(istream& fichier)
 {
 	string texte;
 	texte.resize(lireUint16(fichier));
@@ -52,7 +52,7 @@ string lireString(istream &fichier)
 
 #pragma endregion
 
-shared_ptr<Acteur> lireActeur(istream &fichier, ListeFilms &listeFilms)
+shared_ptr<Acteur> lireActeur(istream& fichier, ListeFilms& listeFilms)
 {
 	Acteur acteur = {};
 	acteur.nom = lireString(fichier);
@@ -70,7 +70,7 @@ shared_ptr<Acteur> lireActeur(istream &fichier, ListeFilms &listeFilms)
 	return acteurExistant;
 }
 
-Film *lireFilm(istream &fichier, ListeFilms &listeFilms)
+Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 {
 	Film film = {};
 	film.titre_ = lireString(fichier);
@@ -79,7 +79,7 @@ Film *lireFilm(istream &fichier, ListeFilms &listeFilms)
 	film.recette_ = lireUint16(fichier);
 	int nElements = lireUint8(fichier);
 
-	Film *filmAlloue = new Film(film);
+	Film* filmAlloue = new Film(film);
 	for ([[maybe_unused]] int i : range(nElements))
 	{
 		filmAlloue->acteurs_.ajouterElement(lireActeur(fichier, listeFilms));
@@ -87,7 +87,7 @@ Film *lireFilm(istream &fichier, ListeFilms &listeFilms)
 	return filmAlloue;
 }
 
-void detruireFilm(Film *film)
+void detruireFilm(Film* film)
 {
 	for (int i : range(film->acteurs_.nElements))
 	{
@@ -96,19 +96,19 @@ void detruireFilm(Film *film)
 	delete film;
 }
 
-ostream &operator<<(ostream &os, const Acteur &acteur)
+ostream& operator<<(ostream& os, const Acteur& acteur)
 {
 	os << "  " << acteur.nom << ", " << acteur.anneeNaissance << " " << acteur.sexe << endl;
 	return os;
 }
 
-ostream &operator<<(ostream &os, const Item &item)
+ostream& operator<<(ostream& os, const Item& item)
 {
 	item.afficher();
 	return os;
 }
 
-void LireLivres(const string nomFichier, vector<unique_ptr<Item>> &vecteur)
+void LireLivres(const string nomFichier, vector<unique_ptr<Item>>& vecteur)
 {
 	ifstream fichier(nomFichier);
 	while (!fichier.eof())
@@ -120,7 +120,7 @@ void LireLivres(const string nomFichier, vector<unique_ptr<Item>> &vecteur)
 	fichier.close();
 }
 
-void afficherListeItem(vector<unique_ptr<Item>> &vecteurItem)
+void afficherListeItem(vector<unique_ptr<Item>>& vecteurItem)
 {
 	static const string ligneDeSeparation = "\n\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\n";
 	cout << ligneDeSeparation;

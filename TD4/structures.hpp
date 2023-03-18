@@ -26,9 +26,9 @@ class Livre;
 struct Acteur;
 class ListeFilms;
 
-Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
-void detruireFilm(Film *film);
-ostream &operator<<(ostream &os, const Acteur &acteur);
+Film* lireFilm(istream& fichier, ListeFilms& listeFilms);
+void detruireFilm(Film* film);
+ostream& operator<<(ostream& os, const Acteur& acteur);
 
 template <typename T>
 class Liste
@@ -42,7 +42,7 @@ public:
 		nElements = 0;
 		elements = make_unique<shared_ptr<T>[]>(0);
 	}
-	Liste(const Liste &liste)
+	Liste(const Liste& liste)
 	{
 		capacite = liste.capacite;
 		nElements = liste.nElements;
@@ -58,8 +58,8 @@ public:
 		nElements = n;
 		elements = make_unique<shared_ptr<T>[]>(n);
 	}
-	friend ostream &operator<<(ostream &os, const T &elementaAfficher);
-	Liste<T> operator=(const Liste<T> &liste)
+	friend ostream& operator<<(ostream& os, const T& elementaAfficher);
+	Liste<T> operator=(const Liste<T>& liste)
 	{
 		return liste;
 	}
@@ -81,7 +81,7 @@ public:
 		nElements++;
 	}
 
-	shared_ptr<T> &operator[](const int &index)
+	shared_ptr<T>& operator[](const int& index)
 	{
 		return elements[index];
 	}
@@ -101,15 +101,14 @@ class Item : public Affichable
 public:
 	Item() {}
 
-	void lireFichier(ifstream &fichier)
+	void lireFichier(ifstream& fichier)
 	{
 		fichier >> quoted(titre_) >> annee_;
 	}
 
 	friend class ListeFilms;
-	friend Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
-	friend ostream &operator<<(ostream &os, const Film &film);
-	// void LireLivres(const string nomFichier, vector<unique_ptr<Item>> &vecteur);
+	friend Film* lireFilm(istream& fichier, ListeFilms& listeFilms);
+	friend ostream& operator<<(ostream& os, const Film& film);
 
 	void afficher() const override
 	{
@@ -137,10 +136,8 @@ public:
 	}
 
 	friend class ListeFilms;
-	// friend ostream &operator<<(ostream &os, const Film &film);
-	friend Film *lireFilm(istream &fichier, ListeFilms &listeFilms);
-	// friend shared_ptr<Acteur> trouverActeur(const string &nomActeur);
-	friend void detruireFilm(Film *film);
+	friend Film* lireFilm(istream& fichier, ListeFilms& listeFilms);
+	friend void detruireFilm(Film* film);
 
 	void afficher() const override
 	{
@@ -153,7 +150,6 @@ public:
 			cout << *acteur;
 		}
 	}
-	// friend ostream &operator<<(ostream &os, const Film &film);
 
 private:
 	string realisateur_;
@@ -164,13 +160,13 @@ private:
 class Livre : virtual public Item
 {
 public:
-	Livre(ifstream &fichier)
+	Livre(ifstream& fichier)
 	{
 		Item::lireFichier(fichier);
 		lireFichier(fichier);
 	}
 
-	void lireFichier(ifstream &fichier)
+	void lireFichier(ifstream& fichier)
 	{
 		fichier >> quoted(auteur_) >> copiesVendues_ >> nbDePages_;
 	}
@@ -178,37 +174,39 @@ public:
 	void afficher() const override
 	{
 		Item::afficher();
-		cout << "Auteur : " << auteur_ << "\nCopies Vendues : " << copiesVendues_ << "M"
+		cout << "  Auteur : " << auteur_ << "\n  Copies Vendues : " << copiesVendues_ << "M"
 			 << "\tPages : " << nbDePages_ << endl;
 	}
 
-	// void LireLivres(const string nomFichier, vector<unique_ptr<Item>> &vecteur);
+	void afficherInfo() const
+	{
+		cout << "Livre :\n"
+			 << "  Auteur : " << auteur_ << "\n  Copies Vendues : " << copiesVendues_ << "M"
+			 << "\tPages : " << nbDePages_ << endl;
+	}
 
 private:
 	string auteur_;
 	int copiesVendues_, nbDePages_;
 };
 
-class FilmLivre : public Film, public  Livre
+class FilmLivre : public Film, public Livre
 {
 public:
-	FilmLivre(const Film& film, const Livre& livre) : Item(film),Film(film), Livre(livre) {}
+	FilmLivre(const Film& film, const Livre& livre) : Item(film), Film(film), Livre(livre) {}
 
 	void afficher() const override
 	{
 		Film::afficher();
-		Livre::afficher();
-
+		Livre::afficherInfo();
 	}
-
 };
 
 struct Acteur
 {
-	std::string nom;
+	string nom;
 	int anneeNaissance;
 	char sexe;
-	// ListeFilms joueDans;
 };
 
 class ListeFilms
@@ -234,7 +232,7 @@ public:
 		return nElements_;
 	}
 
-	Film **getElements()
+	Film** getElements()
 	{
 		return elements_;
 	}
@@ -251,18 +249,18 @@ public:
 
 		for ([[maybe_unused]] int i : range(nElements))
 		{
-			Film *film = lireFilm(fichier, listeFilms);
+			Film* film = lireFilm(fichier, listeFilms);
 			listeFilms.ajouterFilm(film);
 		}
 		return listeFilms;
 	}
 
-	void ajouterFilm(Film *film)
+	void ajouterFilm(Film* film)
 	{
 		if (capacite_ == nElements_)
 		{
 			int nouvelleCapacite = max(1, 2 * capacite_);
-			Film **nouvelleListe = new Film *[nouvelleCapacite];
+			Film** nouvelleListe = new Film*[nouvelleCapacite];
 			for (int i : range(nElements_))
 			{
 				nouvelleListe[i] = elements_[i];
@@ -275,7 +273,7 @@ public:
 		nElements_++;
 	}
 
-	void enleverFilm(Film *filmAEnlever)
+	void enleverFilm(Film* filmAEnlever)
 	{
 		for (int i : range(nElements_))
 		{
@@ -329,13 +327,13 @@ public:
 		}
 	}
 
-	Film *operator[](const int &index)
+	Film* operator[](const int& index)
 	{
 		return elements_[index];
 	}
 
 	template <typename T>
-	Film *afficherFilmParCritere(const T &critere)
+	Film* afficherFilmParCritere(const T& critere)
 	{
 		for (int i : range(nElements_))
 		{
@@ -349,5 +347,5 @@ public:
 
 private:
 	int capacite_, nElements_;
-	Film **elements_;
+	Film** elements_;
 };
