@@ -1,8 +1,9 @@
 /*
-nom: structures.hpp
-description: Contient les definitions des structures et de la classe ListeFilms
-auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-date: 12 fevrier 2023
+Nom: structures.hpp
+Description: 
+  Contient les definitions des classes et des méthodes de Film, Livre, Item, Liste et ListeFilm ainis que de la structure Acteurs. 
+Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
+Date: 18 mars 2023
 */
 
 #include <iostream>

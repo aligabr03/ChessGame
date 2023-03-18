@@ -1,8 +1,10 @@
 ﻿/*
-nom: td3.cpp
-description: Contient les fonctions pour lire un fichier et pour gerer un objet de type Film ainsi que les appels de fonction
-auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-date: 1 mars 2023
+Nom: td4.cpp
+Description: Programme contenant des définitions pour les méthodes de lecture du fichier binaire ainsi que des surcharges d'opérateurs
+et des fonctions de Lectures. De plus, on y fait des appels de fonctions afin de créer une liste de Film et créer et afficher
+un vecteur contenant des films et des livres auquel on y ajoute un FilmLivre.
+Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
+Date: 18 mars 2023
 */
 
 #include <iostream>
