@@ -113,7 +113,7 @@ public:
 
 	void afficher() const override
 	{
-		cout << "Titre : " << titre_ << "\tAnnée: " << annee_ << endl;
+		cout << "Titre : " << titre_ << "\tAnnee: " << annee_ << endl;
 	}
 
 private:
@@ -146,7 +146,7 @@ public:
 	{
 		Item::afficher();
 		cout << "Combo :\n"
-			 << "  Réalisateur : " << realisateur_ << "\n  Recette : " << recette_ << "M$" << endl;
+			 << "  Realisateur : " << realisateur_ << "\n  Recette : " << recette_ << "M$" << endl;
 		cout << "Acteurs : " << endl;
 		for (shared_ptr<Acteur> &acteur : span<shared_ptr<Acteur>>(this->acteurs_.elements.get(), this->acteurs_.nElements))
 		{
@@ -164,8 +164,6 @@ private:
 class Livre : virtual public Item
 {
 public:
-	Livre() {}
-
 	Livre(ifstream &fichier)
 	{
 		Item::lireFichier(fichier);
@@ -200,6 +198,7 @@ public:
 	{
 		Film::afficher();
 		Livre::afficher();
+
 	}
 
 };
