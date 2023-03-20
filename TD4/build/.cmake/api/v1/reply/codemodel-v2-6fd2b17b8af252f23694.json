@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "TD4",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "TD4::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TD4-Debug-61c0a89d558bfb885a96.json",
+					"name" : "TD4",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TD4_couverture::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TD4_couverture-Debug-60d455d416751dddb998.json",
+					"name" : "TD4_couverture",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD4/build",
+		"source" : "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD4"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
