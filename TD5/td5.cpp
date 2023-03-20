@@ -75,25 +75,25 @@ shared_ptr<Acteur> lireActeur(istream& fichier, ListeFilms& listeFilms)
 Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 {
 	Film film = {};
-	film.titre_ = lireString(fichier);
-	film.realisateur_ = lireString(fichier);
-	film.annee_ = lireUint16(fichier);
-	film.recette_ = lireUint16(fichier);
+	film.titre = lireString(fichier);
+	film.realisateur = lireString(fichier);
+	film.annee = lireUint16(fichier);
+	film.recette = lireUint16(fichier);
 	int nElements = lireUint8(fichier);
 
 	Film* filmAlloue = new Film(film);
 	for ([[maybe_unused]] int i : range(nElements))
 	{
-		filmAlloue->acteurs_.ajouterElement(lireActeur(fichier, listeFilms));
+		filmAlloue->acteurs.ajouterElement(lireActeur(fichier, listeFilms));
 	}
 	return filmAlloue;
 }
 
 void detruireFilm(Film* film)
 {
-	for (int i : range(film->acteurs_.nElements))
+	for (int i : range(film->acteurs.nElements))
 	{
-		shared_ptr<Acteur> acteur = film->acteurs_.elements[i];
+		shared_ptr<Acteur> acteur = film->acteurs.elements[i];
 	}
 	delete film;
 }
@@ -122,13 +122,14 @@ void LireLivres(const string nomFichier, vector<unique_ptr<Item>>& vecteur)
 	fichier.close();
 }
 
-void afficherListeItem(vector<unique_ptr<Item>>& vecteurItem)
+template <typename C>
+void afficherListeItem(C& conteneur)
 {
 	static const string ligneDeSeparation = "\n\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\n";
 	cout << ligneDeSeparation;
-	for (const auto &item : vecteurItem)
+	for (const auto &item : conteneur )
 	{
-		cout << *item;
+		item.get()->afficher();
 		cout << ligneDeSeparation;
 	}
 }

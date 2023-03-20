@@ -101,10 +101,12 @@ class Item : public Affichable
 {
 public:
 	Item() {}
+	string titre = "";
+	int annee = 0;
 
 	void lireFichier(ifstream& fichier)
 	{
-		fichier >> quoted(titre_) >> annee_;
+		fichier >> quoted(titre) >> annee;
 	}
 
 	friend class ListeFilms;
@@ -113,27 +115,27 @@ public:
 
 	void afficher() const override
 	{
-		cout << "Titre : " << titre_ << "\tAnnee: " << annee_ << endl;
+		cout << titre ;
 	}
-
-private:
-	string titre_ = "";
-	int annee_ = 0;
+	
 };
 
 class Film : virtual public Item
 {
 public:
+	string realisateur;
+	int recette;
+	ListeActeurs acteurs;
 	Film()
 	{
-		realisateur_ = "";
-		recette_ = 0;
+		realisateur = "";
+		recette = 0;
 	}
 	Film(unsigned int capacite, int nElements, string rea, int rec)
 	{
-		acteurs_ = ListeActeurs(capacite, nElements);
-		realisateur_ = rea;
-		recette_ = rec;
+		acteurs = ListeActeurs(capacite, nElements);
+		realisateur = rea;
+		recette = rec;
 	}
 
 	friend class ListeFilms;
@@ -143,24 +145,21 @@ public:
 	void afficher() const override
 	{
 		Item::afficher();
-		cout << "Combo :\n"
-			 << "  Realisateur : " << realisateur_ << "\n  Recette : " << recette_ << "M$" << endl;
-		cout << "Acteurs : " << endl;
-		for (shared_ptr<Acteur> &acteur : span<shared_ptr<Acteur>>(this->acteurs_.elements.get(), this->acteurs_.nElements))
-		{
-			cout << *acteur;
-		}
+		cout << ", par le réalisateur : " << realisateur << endl;
+		// cout << "Acteurs : " << endl;
+		// for (shared_ptr<Acteur> &acteur : span<shared_ptr<Acteur>>(this->acteurs.elements.get(), this->acteurs.nElements))
+		// {
+		// 	cout << *acteur;
+		// }
 	}
 
-private:
-	string realisateur_;
-	int recette_;
-	ListeActeurs acteurs_;
 };
 
 class Livre : virtual public Item
 {
 public:
+	string auteur;
+	int copiesVendues, nbDePages;
 	Livre(ifstream& fichier)
 	{
 		Item::lireFichier(fichier);
@@ -169,26 +168,20 @@ public:
 
 	void lireFichier(ifstream& fichier)
 	{
-		fichier >> quoted(auteur_) >> copiesVendues_ >> nbDePages_;
+		fichier >> quoted(auteur) >> copiesVendues >> nbDePages;
 	}
 
 	void afficher() const override
 	{
 		Item::afficher();
-		cout << "  Auteur : " << auteur_ << "\n  Copies Vendues : " << copiesVendues_ << "M"
-			 << "\tPages : " << nbDePages_ << endl;
+		cout << ", par l'auteur : " << auteur << endl;
 	}
 
 	void afficherInfo() const
 	{
-		cout << "Livre :\n"
-			 << "  Auteur : " << auteur_ << "\n  Copies Vendues : " << copiesVendues_ << "M"
-			 << "\tPages : " << nbDePages_ << endl;
+		cout << "Et de l'auteur : " << auteur << endl;
 	}
 
-private:
-	string auteur_;
-	int copiesVendues_, nbDePages_;
 };
 
 class FilmLivre : public Film, public Livre
@@ -298,7 +291,7 @@ public:
 		for (int i : range(nElements_))
 		{
 			Film *film = elements_[i];
-			for (shared_ptr<Acteur> &acteur : span<shared_ptr<Acteur>>(film->acteurs_.elements.get(), film->acteurs_.nElements))
+			for (shared_ptr<Acteur> &acteur : span<shared_ptr<Acteur>>(film->acteurs.elements.get(), film->acteurs.nElements))
 			{
 				if (acteur->nom == nomActeur)
 					return acteur;
