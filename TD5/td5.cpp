@@ -174,28 +174,27 @@ int main()
 
 	//1.3
 	forward_list<Item*> forwardListTrois;
-	forwardList.reverse();
+	int j = 0;
 	for (auto i : forwardList) {
-		forwardListTrois.push_front(i);
+		forwardListTrois.insert_after(forwardListTrois.before_begin(), i);
+		j++;
 	}
-	forwardList.reverse();
 
 
 	//1.4 Optimiser l'ordre O(..)
-	vector<Item*> vectorUnPointTrois;
-	for (auto i : forwardList) {
-		vectorUnPointTrois.push_back(i);
-	}
-	
+	//vector<Item*> vectorUnPointTrois;
+	//for (auto i : forwardList) {
+	//	vectorUnPointTrois.push_back(i);
+	//}
+	//afficherListeItem(forwardListTrois);
 	//1.5
 	//for (auto acteur : (*liste.elements_[1]).acteurs)
 
 	//2.1
-	set<Item*, decltype(Item::compareItems)> listeTriee;
+	set<Item*, decltype([](Item* p1, Item* p2) { return p1->titre < p2->titre; })> listeTriee;
 	for (auto i : forwardList) {
 		listeTriee.insert(i);
 	}
-
 	afficherListeItem(listeTriee);
 
 	liste.detruire();

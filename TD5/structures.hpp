@@ -108,9 +108,7 @@ public:
 	string titre = "";
 	int annee = 0;
 
-	bool compareItems(const Item& p1, const Item& p2) {
-		return p1.titre < p2.titre;
-	}
+
 
 	void lireFichier(ifstream& fichier)
 	{
