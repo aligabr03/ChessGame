@@ -170,11 +170,6 @@ public:
 	{
 		Item::afficher();
 		cout << ", par le réalisateur : " << realisateur << endl;
-		// cout << "Acteurs : " << endl;
-		// for (shared_ptr<Acteur> &acteur : span<shared_ptr<Acteur>>(this->acteurs.elements.get(), this->acteurs.nElements))
-		// {
-		// 	cout << *acteur;
-		// }
 	}
 };
 

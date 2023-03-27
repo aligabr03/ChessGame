@@ -15,7 +15,8 @@ Date: 18 mars 2023
 #include <memory>
 #include <vector>
 #include <forward_list>
-
+#include <set>
+#include <numeric>
 
 #include "cppitertools/range.hpp"
 #include "gsl/span"
@@ -138,10 +139,8 @@ void afficherListeItem(C &conteneur)
 
 int main()
 {
-	bibliotheque_cours::activerCouleursAnsi(); // Permet sous Windows les "ANSI escape code" pour changer de couleurs https://en.wikipedia.org/wiki/ANSI_escape_code ; les consoles Linux/Mac les supportent normalement par défaut.
-
+	bibliotheque_cours::activerCouleursAnsi();
 	static const string ligneDeSeparation = "\n\033[35m════════════════════════════════════════\033[0m\n";
-	// TODO: La ligne suivante devrait lire le fichier binaire en allouant la mémoire nécessaire.  Devrait afficher les noms de 20 acteurs sans doublons (par l'affichage pour fins de débogage dans votre fonction lireActeur).
 
 	ListeFilms liste("films.bin");
 	vector<unique_ptr<Item>> bibliotheque;
@@ -156,62 +155,115 @@ int main()
 	unique_ptr<FilmLivre> filmLivreLeHobbit = make_unique<FilmLivre>(dynamic_cast<Film &>(*bibliotheque[4]), dynamic_cast<Livre &>(*bibliotheque[9]));
 	bibliotheque.push_back(move(filmLivreLeHobbit));
 
-	// afficherListeItem(bibliotheque);
+	cout << ligneDeSeparation << "Affichage de la bibliothèque d'Items" << endl;
+	afficherListeItem(bibliotheque);
 
-//1
-	// 1.1
+// 1
+	//  1.1
 	forward_list<Item *> listeLiee;
 	for (int i = size(bibliotheque) - 1; i >= 0; --i)
 	{
 		listeLiee.push_front(bibliotheque[i].get());
 	}
-	// afficherListeItem(listeLiee);
-	
+
+	cout << ligneDeSeparation << " La liste demandée en 1.1 est la suivante" << endl;
+	afficherListeItem(listeLiee);
+
 	// 1.2
 	forward_list<Item *> listeLieeInverse;
 	for (auto pointeurs : listeLiee)
 	{
 		listeLieeInverse.push_front(pointeurs);
 	}
-	// afficherListeItem(listeLieeInverse);
 
-	// 1.3 faux utiliser que des boucles et opérations en O(1)
+	cout << ligneDeSeparation << " La liste demandée en 1.2 est la suivante" << endl;
+	afficherListeItem(listeLieeInverse);
+
+	// 1.3
 	forward_list<Item *> listeLieeDeux;
-	// for (auto pointeurs : listeLiee)
-	// {
-	// 	listeLieeDeux.push_front(pointeurs);
-	// }
-	// listeLieeDeux.reverse();
-	// afficherListeItem(listeLieeDeux);
-
-	// 1.4
-	vector<Item*> bibliotheque2;
+	auto iterateurPrecedent = listeLieeDeux.before_begin();
 	for (auto pointeurs : listeLiee)
 	{
-		bibliotheque2.push_back(pointeurs);
+		iterateurPrecedent = listeLieeDeux.insert_after(iterateurPrecedent, pointeurs);
 	}
+
+	cout << ligneDeSeparation << " La liste demandée en 1.3 est la suivante" << endl;
+	afficherListeItem(listeLieeDeux);
+
+	// 1.4
+
+	int nbElementListe = 0;
+	for (auto pointeurs : listeLiee) // On parcours la liste triee en O(n)
+	{
+		nbElementListe++;
+	}
+
+	vector<Item *> bibliotheque2(nbElementListe);
+	int index = nbElementListe;
+	for (auto pointeurs : listeLiee) // On reparcours la liste triee en O(n) mais O(n) + O(n) = O(n)
+	{
+		bibliotheque2[index - 1] = pointeurs;
+		index--;
+	}
+
+	cout << ligneDeSeparation << " La liste demandée en 1.4 est la suivante" << endl;
 	afficherListeItem(bibliotheque2);
 
-	//1.5 (itérer sur la listeFilm initiale)
-	
+	// 1.5
+	cout << ligneDeSeparation << "Les acteurs du premier film (Alien) sont :" << endl;
+
 	Film premierFilm = *liste[0];
-	for (auto&& acteur : premierFilm.acteurs)
+	for (auto &&acteur : premierFilm.acteurs)
 	{
 		cout << *acteur << endl;
 	}
 
-//2
-	//2.1
-	// forward_list<Item *> listeTriee;
-	// for (int i = 0; i != size(listeLiee) - 1; i++)
-	// {
-	// 	for (int j = i+1; j != size(listeLiee) - 1; j++)
-	// 	{
+// 2
+	// 2.1
+	set<Item *, decltype([](Item *p1, Item *p2)
+						 { return p1->titre < p2->titre; })>
+		listeTriee;
+	for (auto i : listeLiee)
+	{
+		listeTriee.insert(i);
+	}
+	cout << ligneDeSeparation << " La liste triée en ordre alphabétique demandée en 2.1 est la suivante" << endl;
+	afficherListeItem(listeTriee);
 
-	// 	}
-		
-	// }
+	// 2.2
 
+	unordered_map<string, Item *> mapTitreItem;
+	for (auto &item : bibliotheque)
+	{
+		mapTitreItem[item->titre] = item.get();
+	}
+
+	auto iterateur = mapTitreItem.find("The Hobbit");
+	if (iterateur != mapTitreItem.end())
+	{
+		cout << ligneDeSeparation << endl;
+		cout << "Item trouve : " << endl;
+		(*iterateur->second).afficher();
+	}
+	else
+	{
+		cout << ligneDeSeparation << endl;
+		cout << "Item non trouve." << endl;
+	}
+
+// 3
+	// 3.1
+	vector<Item *> vecteurFilms;
+	copy_if(listeLiee.begin(), listeLiee.end(), back_inserter(vecteurFilms), [](Item *item)
+			{ return dynamic_cast<Film *>(item) != nullptr; });
+	cout << ligneDeSeparation << "La liste demandée en 3.1 est :" << endl;
+	afficherListeItem(vecteurFilms);
+
+	// 3.2
+	int recetteTotale = reduce(vecteurFilms.begin(), vecteurFilms.end(), 0, [](int sum, Item *film1)
+							   { return sum + dynamic_cast<Film *>(film1)->recette; });
+	cout << ligneDeSeparation << endl;
+	cout << "La recette Totale de tous les films est de :" << recetteTotale << "M$" << endl;
 
 	liste.detruire();
 }
