@@ -16,6 +16,8 @@ Date: 18 mars 2023
 #include <vector>
 #include <forward_list>
 #include <set>
+#include <map>
+#include <numeric>
 
 #include "cppitertools/range.hpp"
 #include "gsl/span"
@@ -191,11 +193,18 @@ int main()
 	//for (auto acteur : (*liste.elements_[1]).acteurs)
 
 	//2.1
-	set<Item*, decltype([](Item* p1, Item* p2) { return p1->titre < p2->titre; })> listeTriee;
+	set < Item*, decltype([](Item* p1, Item* p2) { return p1->titre < p2->titre; }) > listeTriee;
 	for (auto i : forwardList) {
 		listeTriee.insert(i);
 	}
-	afficherListeItem(listeTriee);
 
+
+	vector<Item*> test;
+	copy_if(listeTriee.begin(), listeTriee.end(), back_inserter(test), [](Item* item) {return dynamic_cast<Film*>(item) != nullptr; });
+
+
+	int recetteTotale = accumulate(test.begin(), test.end(), 0, [](int sum, Item* film) {return sum + dynamic_cast<Film*>(film)->recette;});
+
+	cout << recetteTotale;
 	liste.detruire();
 }
