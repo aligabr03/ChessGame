@@ -1,8 +1,9 @@
 ﻿/*
-Nom: td4.cpp
+Nom: td5.cpp
 Description: Programme contenant des définitions pour les méthodes de lecture du fichier binaire ainsi que des surcharges d'opérateurs
 et des fonctions de Lectures. De plus, on y fait des appels de fonctions afin de créer une liste de Film et créer et afficher
-un vecteur contenant des films et des livres auquel on y ajoute un FilmLivre.
+un vecteur contenant des films et des livres auquel on y ajoute un FilmLivre. De plus, on use de liste liée et de manipulation de différents
+types de conteneurs.
 Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
 Date: 18 mars 2023
 */

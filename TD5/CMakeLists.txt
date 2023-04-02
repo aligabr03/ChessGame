@@ -13,7 +13,7 @@ set(ALL_FILES
     "td5.cpp"
 	"structures.hpp"
     "bibliotheque_cours.cpp"
-    "verification_allocation.cpp"
+	"verification_allocation.cpp"
 	"films.bin"
 	"livres.txt"
 )
@@ -28,7 +28,7 @@ add_custom_command(TARGET ${targetName} PRE_BUILD
 )  
 
 # Les flags de compilation. Ceux-ci reproduisent un peu le comportement de MSVC avec /W4.
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a -fsigned-char -Wall -Wextra -Wpedantic -Woverloaded-virtual -Wno-unknown-pragmas -Wno-enum-compare --coverage")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++2a -fsigned-char -Wall -Wextra -Wpedantic -Woverloaded-virtual -Wno-unknown-pragmas -Wno-enum-compare ")
 
 # On ajoute le dossier include/ fourni, comme des fichiers d'inclusion du système.
 target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE "include")
