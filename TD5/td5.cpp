@@ -1,8 +1,7 @@
 ﻿/*
-Nom: td4.cpp
+Nom: td5.cpp
 Description: Programme contenant des définitions pour les méthodes de lecture du fichier binaire ainsi que des surcharges d'opérateurs
-et des fonctions de Lectures. De plus, on y fait des appels de fonctions afin de créer une liste de Film et créer et afficher
-un vecteur contenant des films et des livres auquel on y ajoute un FilmLivre.
+et des fonctions de Lectures. De plus, on y répond a toutes les questions concernant les listes liées
 Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
 Date: 18 mars 2023
 */
@@ -16,7 +15,6 @@ Date: 18 mars 2023
 #include <vector>
 #include <forward_list>
 #include <set>
-#include <map>
 #include <numeric>
 
 #include "cppitertools/range.hpp"
@@ -36,19 +34,19 @@ typedef uint16_t UInt16;
 
 #pragma region Fonctions de base pour lire le fichier binaire
 
-UInt8 lireUint8(istream& fichier)
+UInt8 lireUint8(istream &fichier)
 {
 	UInt8 valeur = 0;
 	fichier.read((char *)&valeur, sizeof(valeur));
 	return valeur;
 }
-UInt16 lireUint16(istream& fichier)
+UInt16 lireUint16(istream &fichier)
 {
 	UInt16 valeur = 0;
 	fichier.read((char *)&valeur, sizeof(valeur));
 	return valeur;
 }
-string lireString(istream& fichier)
+string lireString(istream &fichier)
 {
 	string texte;
 	texte.resize(lireUint16(fichier));
@@ -58,7 +56,7 @@ string lireString(istream& fichier)
 
 #pragma endregion
 
-shared_ptr<Acteur> lireActeur(istream& fichier, ListeFilms& listeFilms)
+shared_ptr<Acteur> lireActeur(istream &fichier, ListeFilms &listeFilms)
 {
 	Acteur acteur = {};
 	acteur.nom = lireString(fichier);
@@ -76,7 +74,7 @@ shared_ptr<Acteur> lireActeur(istream& fichier, ListeFilms& listeFilms)
 	return acteurExistant;
 }
 
-Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
+Film *lireFilm(istream &fichier, ListeFilms &listeFilms)
 {
 	Film film = {};
 	film.titre = lireString(fichier);
@@ -85,7 +83,7 @@ Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 	film.recette = lireUint16(fichier);
 	int nElements = lireUint8(fichier);
 
-	Film* filmAlloue = new Film(film);
+	Film *filmAlloue = new Film(film);
 	for ([[maybe_unused]] int i : range(nElements))
 	{
 		filmAlloue->acteurs.ajouterElement(lireActeur(fichier, listeFilms));
@@ -93,7 +91,7 @@ Film* lireFilm(istream& fichier, ListeFilms& listeFilms)
 	return filmAlloue;
 }
 
-void detruireFilm(Film* film)
+void detruireFilm(Film *film)
 {
 	for (int i : range(film->acteurs.nElements))
 	{
@@ -102,19 +100,19 @@ void detruireFilm(Film* film)
 	delete film;
 }
 
-ostream& operator<<(ostream& os, const Acteur& acteur)
+ostream &operator<<(ostream &os, const Acteur &acteur)
 {
 	os << "  " << acteur.nom << ", " << acteur.anneeNaissance << " " << acteur.sexe << endl;
 	return os;
 }
 
-ostream& operator<<(ostream& os, const Item& item)
+ostream &operator<<(ostream &os, const Item &item)
 {
 	item.afficher();
 	return os;
 }
 
-void LireLivres(const string nomFichier, vector<unique_ptr<Item>>& vecteur)
+void LireLivres(const string nomFichier, vector<unique_ptr<Item>> &vecteur)
 {
 	ifstream fichier(nomFichier);
 	while (!fichier.eof())
@@ -127,11 +125,11 @@ void LireLivres(const string nomFichier, vector<unique_ptr<Item>>& vecteur)
 }
 
 template <typename C>
-void afficherListeItem(C& conteneur)
+void afficherListeItem(C &conteneur)
 {
 	static const string ligneDeSeparation = "\n\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\u007C\n";
 	cout << ligneDeSeparation;
-	for (const auto &item : conteneur )
+	for (const auto &item : conteneur)
 	{
 		item->afficher();
 		cout << ligneDeSeparation;
@@ -140,10 +138,8 @@ void afficherListeItem(C& conteneur)
 
 int main()
 {
-	bibliotheque_cours::activerCouleursAnsi(); // Permet sous Windows les "ANSI escape code" pour changer de couleurs https://en.wikipedia.org/wiki/ANSI_escape_code ; les consoles Linux/Mac les supportent normalement par défaut.
-
+	bibliotheque_cours::activerCouleursAnsi();
 	static const string ligneDeSeparation = "\n\033[35m════════════════════════════════════════\033[0m\n";
-	// TODO: La ligne suivante devrait lire le fichier binaire en allouant la mémoire nécessaire.  Devrait afficher les noms de 20 acteurs sans doublons (par l'affichage pour fins de débogage dans votre fonction lireActeur).
 
 	ListeFilms liste("films.bin");
 	vector<unique_ptr<Item>> bibliotheque;
@@ -158,53 +154,115 @@ int main()
 	unique_ptr<FilmLivre> filmLivreLeHobbit = make_unique<FilmLivre>(dynamic_cast<Film &>(*bibliotheque[4]), dynamic_cast<Livre &>(*bibliotheque[9]));
 	bibliotheque.push_back(move(filmLivreLeHobbit));
 
+	cout << ligneDeSeparation << "Affichage de la bibliothèque d'Items" << endl;
+	afficherListeItem(bibliotheque);
 
-	//1.1
-	forward_list<Item*> forwardList;
-
-	for (int i = size(bibliotheque) - 1; i >= 0; --i) {
-		forwardList.push_front(bibliotheque[i].get());
+// 1
+	//  1.1
+	forward_list<Item *> listeLiee;
+	for (int i = size(bibliotheque) - 1; i >= 0; --i)
+	{
+		listeLiee.push_front(bibliotheque[i].get());
 	}
 
+	cout << ligneDeSeparation << " La liste demandée en 1.1 est la suivante" << endl;
+	afficherListeItem(listeLiee);
 
-	//1.2
-	forward_list<Item*> forwardListDeux;
-
-	for (auto i : forwardList) {
-		forwardListDeux.push_front(i);
+	// 1.2
+	forward_list<Item *> listeLieeInverse;
+	for (auto pointeurs : listeLiee)
+	{
+		listeLieeInverse.push_front(pointeurs);
 	}
 
-	//1.3
-	forward_list<Item*> forwardListTrois;
-	int j = 0;
-	for (auto i : forwardList) {
-		forwardListTrois.insert_after(forwardListTrois.before_begin(), i);
-		j++;
+	cout << ligneDeSeparation << " La liste demandée en 1.2 est la suivante" << endl;
+	afficherListeItem(listeLieeInverse);
+
+	// 1.3
+	forward_list<Item *> listeLieeDeux;
+	auto iterateurPrecedent = listeLieeDeux.before_begin();
+	for (auto pointeurs : listeLiee)
+	{
+		iterateurPrecedent = listeLieeDeux.insert_after(iterateurPrecedent, pointeurs);
 	}
 
+	cout << ligneDeSeparation << " La liste demandée en 1.3 est la suivante" << endl;
+	afficherListeItem(listeLieeDeux);
 
-	//1.4 Optimiser l'ordre O(..)
-	//vector<Item*> vectorUnPointTrois;
-	//for (auto i : forwardList) {
-	//	vectorUnPointTrois.push_back(i);
-	//}
-	//afficherListeItem(forwardListTrois);
-	//1.5
-	//for (auto acteur : (*liste.elements_[1]).acteurs)
+	// 1.4
 
-	//2.1
-	set < Item*, decltype([](Item* p1, Item* p2) { return p1->titre < p2->titre; }) > listeTriee;
-	for (auto i : forwardList) {
+	int nbElementListe = 0;
+	for (auto pointeurs : listeLiee) // On parcours la liste triee en O(n)
+	{
+		nbElementListe++;
+	}
+
+	vector<Item *> bibliotheque2(nbElementListe);
+	int index = nbElementListe;
+	for (auto pointeurs : listeLiee) // On reparcours la liste triee en O(n) mais O(n) + O(n) = O(n)
+	{
+		bibliotheque2[index - 1] = pointeurs;
+		index--;
+	}
+
+	cout << ligneDeSeparation << " La liste demandée en 1.4 est la suivante" << endl;
+	afficherListeItem(bibliotheque2);
+
+	// 1.5
+	cout << ligneDeSeparation << "Les acteurs du premier film (Alien) sont :" << endl;
+
+	Film premierFilm = *liste[0];
+	for (auto &&acteur : premierFilm.acteurs)
+	{
+		cout << *acteur << endl;
+	}
+
+// 2
+	// 2.1
+	set<Item *, decltype([](Item *p1, Item *p2)
+						 { return p1->titre < p2->titre; })>
+		listeTriee;
+	for (auto i : listeLiee)
+	{
 		listeTriee.insert(i);
 	}
+	cout << ligneDeSeparation << " La liste triée en ordre alphabétique demandée en 2.1 est la suivante" << endl;
+	afficherListeItem(listeTriee);
 
+	// 2.2
 
-	vector<Item*> test;
-	copy_if(listeTriee.begin(), listeTriee.end(), back_inserter(test), [](Item* item) {return dynamic_cast<Film*>(item) != nullptr; });
+	unordered_map<string, Item *> mapTitreItem;
+	for (auto &item : bibliotheque)
+	{
+		mapTitreItem[item->titre] = item.get();
+	}
 
+	auto iterateur = mapTitreItem.find("The Hobbit");
+	if (iterateur != mapTitreItem.end())
+	{
+		cout << ligneDeSeparation << endl;
+		cout << "Item trouve : " << endl;
+		(*iterateur->second).afficher();
+	}
+	else
+	{
+		cout << ligneDeSeparation << endl;
+		cout << "Item non trouve." << endl;
+	}
 
-	int recetteTotale = accumulate(test.begin(), test.end(), 0, [](int sum, Item* film) {return sum + dynamic_cast<Film*>(film)->recette;});
+// 3
+	// 3.1
+	vector<Item *> vecteurFilms;
+	copy_if(listeLiee.begin(), listeLiee.end(), back_inserter(vecteurFilms), [](Item *item)
+			{ return dynamic_cast<Film *>(item) != nullptr; });
+	cout << ligneDeSeparation << "La liste demandée en 3.1 est :" << endl;
+	afficherListeItem(vecteurFilms);
 
-	cout << recetteTotale;
+	// 3.2
+	int recetteTotale = reduce(vecteurFilms.begin(), vecteurFilms.end(), 0, [](int sum, Item *film1)
+							   { return sum + dynamic_cast<Film *>(film1)->recette; });
+	cout << ligneDeSeparation << endl;
+	cout << "La recette Totale de tous les films est de :" << recetteTotale << "M$" << endl;
+
 	liste.detruire();
 }
