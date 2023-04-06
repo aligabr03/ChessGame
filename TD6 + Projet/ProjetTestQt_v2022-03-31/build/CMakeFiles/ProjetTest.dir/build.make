@@ -53,10 +53,10 @@ RM = /opt/homebrew/Cellar/cmake/3.25.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31"
+CMAKE_SOURCE_DIR = "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build"
+CMAKE_BINARY_DIR = "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ProjetTest.dir/depend.make
@@ -72,146 +72,114 @@ include CMakeFiles/ProjetTest.dir/flags.make
 CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
 CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o: ProjetTest_autogen/mocs_compilation.cpp
 CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o -MF CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/ProjetTest_autogen/mocs_compilation.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o -MF CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build/ProjetTest_autogen/mocs_compilation.cpp"
 
 CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/ProjetTest_autogen/mocs_compilation.cpp" > CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build/ProjetTest_autogen/mocs_compilation.cpp" > CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.i
 
 CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/ProjetTest_autogen/mocs_compilation.cpp" -o CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.s
-
-CMakeFiles/ProjetTest.dir/Calc.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
-CMakeFiles/ProjetTest.dir/Calc.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/Calc.cpp
-CMakeFiles/ProjetTest.dir/Calc.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ProjetTest.dir/Calc.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/Calc.cpp.o -MF CMakeFiles/ProjetTest.dir/Calc.cpp.o.d -o CMakeFiles/ProjetTest.dir/Calc.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/Calc.cpp"
-
-CMakeFiles/ProjetTest.dir/Calc.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ProjetTest.dir/Calc.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/Calc.cpp" > CMakeFiles/ProjetTest.dir/Calc.cpp.i
-
-CMakeFiles/ProjetTest.dir/Calc.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProjetTest.dir/Calc.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/Calc.cpp" -o CMakeFiles/ProjetTest.dir/Calc.cpp.s
-
-CMakeFiles/ProjetTest.dir/CalcWindow.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
-CMakeFiles/ProjetTest.dir/CalcWindow.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/CalcWindow.cpp
-CMakeFiles/ProjetTest.dir/CalcWindow.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ProjetTest.dir/CalcWindow.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/CalcWindow.cpp.o -MF CMakeFiles/ProjetTest.dir/CalcWindow.cpp.o.d -o CMakeFiles/ProjetTest.dir/CalcWindow.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/CalcWindow.cpp"
-
-CMakeFiles/ProjetTest.dir/CalcWindow.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ProjetTest.dir/CalcWindow.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/CalcWindow.cpp" > CMakeFiles/ProjetTest.dir/CalcWindow.cpp.i
-
-CMakeFiles/ProjetTest.dir/CalcWindow.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProjetTest.dir/CalcWindow.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/CalcWindow.cpp" -o CMakeFiles/ProjetTest.dir/CalcWindow.cpp.s
-
-CMakeFiles/ProjetTest.dir/TestCalc.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
-CMakeFiles/ProjetTest.dir/TestCalc.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/TestCalc.cpp
-CMakeFiles/ProjetTest.dir/TestCalc.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ProjetTest.dir/TestCalc.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/TestCalc.cpp.o -MF CMakeFiles/ProjetTest.dir/TestCalc.cpp.o.d -o CMakeFiles/ProjetTest.dir/TestCalc.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/TestCalc.cpp"
-
-CMakeFiles/ProjetTest.dir/TestCalc.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ProjetTest.dir/TestCalc.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/TestCalc.cpp" > CMakeFiles/ProjetTest.dir/TestCalc.cpp.i
-
-CMakeFiles/ProjetTest.dir/TestCalc.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProjetTest.dir/TestCalc.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/TestCalc.cpp" -o CMakeFiles/ProjetTest.dir/TestCalc.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build/ProjetTest_autogen/mocs_compilation.cpp" -o CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.s
 
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
-CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/bibliotheque_cours.cpp
+CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6\ +\ Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/bibliotheque_cours.cpp
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o -MF CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o.d -o CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/bibliotheque_cours.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o -MF CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o.d -o CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/bibliotheque_cours.cpp"
 
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/bibliotheque_cours.cpp" > CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/bibliotheque_cours.cpp" > CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.i
 
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/bibliotheque_cours.cpp" -o CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/bibliotheque_cours.cpp" -o CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.s
 
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
-CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/verification_allocation.cpp
+CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6\ +\ Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/verification_allocation.cpp
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o -MF CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o.d -o CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/verification_allocation.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o -MF CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o.d -o CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/verification_allocation.cpp"
 
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/verification_allocation.cpp" > CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/verification_allocation.cpp" > CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.i
 
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/verification_allocation.cpp" -o CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/verification_allocation.cpp" -o CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.s
 
 CMakeFiles/ProjetTest.dir/echecs.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
-CMakeFiles/ProjetTest.dir/echecs.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/echecs.cpp
+CMakeFiles/ProjetTest.dir/echecs.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6\ +\ Projet/ProjetTestQt_v2022-03-31/echecs.cpp
 CMakeFiles/ProjetTest.dir/echecs.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ProjetTest.dir/echecs.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/echecs.cpp.o -MF CMakeFiles/ProjetTest.dir/echecs.cpp.o.d -o CMakeFiles/ProjetTest.dir/echecs.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/echecs.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ProjetTest.dir/echecs.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/echecs.cpp.o -MF CMakeFiles/ProjetTest.dir/echecs.cpp.o.d -o CMakeFiles/ProjetTest.dir/echecs.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/echecs.cpp"
 
 CMakeFiles/ProjetTest.dir/echecs.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ProjetTest.dir/echecs.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/echecs.cpp" > CMakeFiles/ProjetTest.dir/echecs.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/echecs.cpp" > CMakeFiles/ProjetTest.dir/echecs.cpp.i
 
 CMakeFiles/ProjetTest.dir/echecs.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProjetTest.dir/echecs.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/echecs.cpp" -o CMakeFiles/ProjetTest.dir/echecs.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/echecs.cpp" -o CMakeFiles/ProjetTest.dir/echecs.cpp.s
+
+CMakeFiles/ProjetTest.dir/echecsWindow.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
+CMakeFiles/ProjetTest.dir/echecsWindow.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6\ +\ Projet/ProjetTestQt_v2022-03-31/echecsWindow.cpp
+CMakeFiles/ProjetTest.dir/echecsWindow.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ProjetTest.dir/echecsWindow.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/echecsWindow.cpp.o -MF CMakeFiles/ProjetTest.dir/echecsWindow.cpp.o.d -o CMakeFiles/ProjetTest.dir/echecsWindow.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/echecsWindow.cpp"
+
+CMakeFiles/ProjetTest.dir/echecsWindow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ProjetTest.dir/echecsWindow.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/echecsWindow.cpp" > CMakeFiles/ProjetTest.dir/echecsWindow.cpp.i
+
+CMakeFiles/ProjetTest.dir/echecsWindow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProjetTest.dir/echecsWindow.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/echecsWindow.cpp" -o CMakeFiles/ProjetTest.dir/echecsWindow.cpp.s
 
 CMakeFiles/ProjetTest.dir/main.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
-CMakeFiles/ProjetTest.dir/main.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/main.cpp
+CMakeFiles/ProjetTest.dir/main.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6\ +\ Projet/ProjetTestQt_v2022-03-31/main.cpp
 CMakeFiles/ProjetTest.dir/main.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ProjetTest.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/main.cpp.o -MF CMakeFiles/ProjetTest.dir/main.cpp.o.d -o CMakeFiles/ProjetTest.dir/main.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ProjetTest.dir/main.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/main.cpp.o -MF CMakeFiles/ProjetTest.dir/main.cpp.o.d -o CMakeFiles/ProjetTest.dir/main.cpp.o -c "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/main.cpp"
 
 CMakeFiles/ProjetTest.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ProjetTest.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/main.cpp" > CMakeFiles/ProjetTest.dir/main.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/main.cpp" > CMakeFiles/ProjetTest.dir/main.cpp.i
 
 CMakeFiles/ProjetTest.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProjetTest.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/main.cpp" -o CMakeFiles/ProjetTest.dir/main.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/main.cpp" -o CMakeFiles/ProjetTest.dir/main.cpp.s
 
 # Object files for target ProjetTest
 ProjetTest_OBJECTS = \
 "CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o" \
-"CMakeFiles/ProjetTest.dir/Calc.cpp.o" \
-"CMakeFiles/ProjetTest.dir/CalcWindow.cpp.o" \
-"CMakeFiles/ProjetTest.dir/TestCalc.cpp.o" \
 "CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o" \
 "CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o" \
 "CMakeFiles/ProjetTest.dir/echecs.cpp.o" \
+"CMakeFiles/ProjetTest.dir/echecsWindow.cpp.o" \
 "CMakeFiles/ProjetTest.dir/main.cpp.o"
 
 # External object files for target ProjetTest
 ProjetTest_EXTERNAL_OBJECTS =
 
 ProjetTest: CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o
-ProjetTest: CMakeFiles/ProjetTest.dir/Calc.cpp.o
-ProjetTest: CMakeFiles/ProjetTest.dir/CalcWindow.cpp.o
-ProjetTest: CMakeFiles/ProjetTest.dir/TestCalc.cpp.o
 ProjetTest: CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o
 ProjetTest: CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o
 ProjetTest: CMakeFiles/ProjetTest.dir/echecs.cpp.o
+ProjetTest: CMakeFiles/ProjetTest.dir/echecsWindow.cpp.o
 ProjetTest: CMakeFiles/ProjetTest.dir/main.cpp.o
 ProjetTest: CMakeFiles/ProjetTest.dir/build.make
 ProjetTest: /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Versions/A/QtWidgets
 ProjetTest: /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Versions/A/QtGui
 ProjetTest: /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Versions/A/QtCore
 ProjetTest: CMakeFiles/ProjetTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable ProjetTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable ProjetTest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ProjetTest.dir/link.txt --verbose=$(VERBOSE)
-	rm -f /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/build//CMakeFiles/ProjetTest.dir/*.gcda
-	rm -f /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/build//CMakeFiles/ProjetTest.dir/**/*.gcda
+	rm -f /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6\ +\ Projet/ProjetTestQt_v2022-03-31/build//CMakeFiles/ProjetTest.dir/*.gcda
+	rm -f /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6\ +\ Projet/ProjetTestQt_v2022-03-31/build//CMakeFiles/ProjetTest.dir/**/*.gcda
 
 # Rule to build all files generated by this target.
 CMakeFiles/ProjetTest.dir/build: ProjetTest
@@ -222,6 +190,6 @@ CMakeFiles/ProjetTest.dir/clean:
 .PHONY : CMakeFiles/ProjetTest.dir/clean
 
 CMakeFiles/ProjetTest.dir/depend:
-	cd "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31" "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31" "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build" "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build" "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles/ProjetTest.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31" "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31" "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build" "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build" "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles/ProjetTest.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/ProjetTest.dir/depend
 

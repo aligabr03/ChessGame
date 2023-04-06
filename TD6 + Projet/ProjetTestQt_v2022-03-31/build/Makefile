@@ -57,10 +57,10 @@ RM = /opt/homebrew/Cellar/cmake/3.25.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31"
+CMAKE_SOURCE_DIR = "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build"
+CMAKE_BINARY_DIR = "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/ProjetTestQt_v2022-03-31/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -155,54 +155,6 @@ ProjetTest_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest_autogen.dir/build.make CMakeFiles/ProjetTest_autogen.dir/build
 .PHONY : ProjetTest_autogen/fast
 
-Calc.o: Calc.cpp.o
-.PHONY : Calc.o
-
-# target to build an object file
-Calc.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/Calc.cpp.o
-.PHONY : Calc.cpp.o
-
-Calc.i: Calc.cpp.i
-.PHONY : Calc.i
-
-# target to preprocess a source file
-Calc.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/Calc.cpp.i
-.PHONY : Calc.cpp.i
-
-Calc.s: Calc.cpp.s
-.PHONY : Calc.s
-
-# target to generate assembly for a file
-Calc.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/Calc.cpp.s
-.PHONY : Calc.cpp.s
-
-CalcWindow.o: CalcWindow.cpp.o
-.PHONY : CalcWindow.o
-
-# target to build an object file
-CalcWindow.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/CalcWindow.cpp.o
-.PHONY : CalcWindow.cpp.o
-
-CalcWindow.i: CalcWindow.cpp.i
-.PHONY : CalcWindow.i
-
-# target to preprocess a source file
-CalcWindow.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/CalcWindow.cpp.i
-.PHONY : CalcWindow.cpp.i
-
-CalcWindow.s: CalcWindow.cpp.s
-.PHONY : CalcWindow.s
-
-# target to generate assembly for a file
-CalcWindow.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/CalcWindow.cpp.s
-.PHONY : CalcWindow.cpp.s
-
 ProjetTest_autogen/mocs_compilation.o: ProjetTest_autogen/mocs_compilation.cpp.o
 .PHONY : ProjetTest_autogen/mocs_compilation.o
 
@@ -226,30 +178,6 @@ ProjetTest_autogen/mocs_compilation.s: ProjetTest_autogen/mocs_compilation.cpp.s
 ProjetTest_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.s
 .PHONY : ProjetTest_autogen/mocs_compilation.cpp.s
-
-TestCalc.o: TestCalc.cpp.o
-.PHONY : TestCalc.o
-
-# target to build an object file
-TestCalc.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/TestCalc.cpp.o
-.PHONY : TestCalc.cpp.o
-
-TestCalc.i: TestCalc.cpp.i
-.PHONY : TestCalc.i
-
-# target to preprocess a source file
-TestCalc.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/TestCalc.cpp.i
-.PHONY : TestCalc.cpp.i
-
-TestCalc.s: TestCalc.cpp.s
-.PHONY : TestCalc.s
-
-# target to generate assembly for a file
-TestCalc.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/TestCalc.cpp.s
-.PHONY : TestCalc.cpp.s
 
 bibliotheque_cours/bibliotheque_cours.o: bibliotheque_cours/bibliotheque_cours.cpp.o
 .PHONY : bibliotheque_cours/bibliotheque_cours.o
@@ -323,6 +251,30 @@ echecs.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/echecs.cpp.s
 .PHONY : echecs.cpp.s
 
+echecsWindow.o: echecsWindow.cpp.o
+.PHONY : echecsWindow.o
+
+# target to build an object file
+echecsWindow.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/echecsWindow.cpp.o
+.PHONY : echecsWindow.cpp.o
+
+echecsWindow.i: echecsWindow.cpp.i
+.PHONY : echecsWindow.i
+
+# target to preprocess a source file
+echecsWindow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/echecsWindow.cpp.i
+.PHONY : echecsWindow.cpp.i
+
+echecsWindow.s: echecsWindow.cpp.s
+.PHONY : echecsWindow.s
+
+# target to generate assembly for a file
+echecsWindow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/echecsWindow.cpp.s
+.PHONY : echecsWindow.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -358,18 +310,9 @@ help:
 	@echo "... ProjetTest_autogen"
 	@echo "... ProjetTest_couverture"
 	@echo "... ProjetTest"
-	@echo "... Calc.o"
-	@echo "... Calc.i"
-	@echo "... Calc.s"
-	@echo "... CalcWindow.o"
-	@echo "... CalcWindow.i"
-	@echo "... CalcWindow.s"
 	@echo "... ProjetTest_autogen/mocs_compilation.o"
 	@echo "... ProjetTest_autogen/mocs_compilation.i"
 	@echo "... ProjetTest_autogen/mocs_compilation.s"
-	@echo "... TestCalc.o"
-	@echo "... TestCalc.i"
-	@echo "... TestCalc.s"
 	@echo "... bibliotheque_cours/bibliotheque_cours.o"
 	@echo "... bibliotheque_cours/bibliotheque_cours.i"
 	@echo "... bibliotheque_cours/bibliotheque_cours.s"
@@ -379,6 +322,9 @@ help:
 	@echo "... echecs.o"
 	@echo "... echecs.i"
 	@echo "... echecs.s"
+	@echo "... echecsWindow.o"
+	@echo "... echecsWindow.i"
+	@echo "... echecsWindow.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

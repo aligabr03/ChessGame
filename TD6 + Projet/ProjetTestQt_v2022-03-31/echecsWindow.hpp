@@ -1,44 +1,37 @@
-#include <QtWidgets>
-#include <QApplication>
+#include <qmainwindow>
+#include <qgridlayout.h>
+#include <qpushbutton.h>
+#include <qtwidgets>
+#include <qlabel.h>
 
-class ChessBoard : public QWidget
+class FenetreEchecs : public QMainWindow
 {
+    Q_OBJECT
 public:
-    ChessBoard(QWidget *parent = nullptr) : QWidget(parent)
+    FenetreEchecs()
     {
-        setFixedSize(400, 400);
-    }
+        QWidget *central_widget = new QWidget();
+        setCentralWidget(central_widget);
 
-protected:
-    void paintEvent(QPaintEvent *) override
-    {
-        QPainter painter(this);
-        painter.setRenderHint(QPainter::Antialiasing, true);
+        QGridLayout *grid_layout = new QGridLayout(central_widget);
 
-        int size = 50; // taille d'une case en pixels
         for (int row = 0; row < 8; row++)
         {
             for (int col = 0; col < 8; col++)
             {
+                QPushButton *button = new QPushButton();
+                button->setFixedSize(50, 50);
                 if ((row + col) % 2 == 0)
                 {
-                    painter.fillRect(col * size, row * size, size, size, Qt::lightGray);
+                    button->setStyleSheet("background-color: white");
                 }
                 else
                 {
-                    painter.fillRect(col * size, row * size, size, size, Qt::darkGray);
+                    button->setStyleSheet("background-color: gray");
                 }
+                grid_layout->addWidget(button, row, col);
             }
         }
+        setFixedSize(400, 400);
     }
 };
-
-int main(int argc, char *argv[])
-{
-    QApplication app(argc, argv);
-
-    ChessBoard board;
-    board.show();
-
-    return app.exec();
-}

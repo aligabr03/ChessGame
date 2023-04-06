@@ -1,7 +1,7 @@
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o: \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/bibliotheque_cours.cpp \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/include/CodeCoverage_bugfix.h \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/include/bibliotheque_cours.hpp \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6\ +\ Projet/ProjetTestQt_v2022-03-31/bibliotheque_cours/bibliotheque_cours.cpp \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6\ +\ Projet/ProjetTestQt_v2022-03-31/include/CodeCoverage_bugfix.h \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6\ +\ Projet/ProjetTestQt_v2022-03-31/include/bibliotheque_cours.hpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__config_site \
@@ -404,6 +404,6 @@ CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__split_buffer \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/iomanip \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/array \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/include/gsl/span \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/include/gsl/gsl_assert \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/LAB/TP6\ +\ Projet/ProjetTestQt_v2022-03-31/include/gsl/gsl_byte
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6\ +\ Projet/ProjetTestQt_v2022-03-31/include/gsl/span \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6\ +\ Projet/ProjetTestQt_v2022-03-31/include/gsl/gsl_assert \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6\ +\ Projet/ProjetTestQt_v2022-03-31/include/gsl/gsl_byte
