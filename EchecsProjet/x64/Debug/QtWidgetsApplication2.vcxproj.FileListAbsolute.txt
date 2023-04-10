@@ -1,0 +1,2 @@
+C:\Users\aliga\Git Repos\INF1015\QtWidgetsApplication2\x64\Debug\EchecsProjet.exe
+C:\Users\aliga\Git Repos\INF1015\EchecsProjet\x64\Debug\EchecsProjet.exe
