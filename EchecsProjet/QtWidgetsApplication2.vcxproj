@@ -67,7 +67,7 @@
       <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -86,7 +86,7 @@
   <ItemGroup>
     <QtRcc Include="QtWidgetsApplication2.qrc" />
     <QtUic Include="QtWidgetsApplication2.ui" />
-    <ClInclude Include="Controller.h" />
+    <QtMoc Include="Controller.h" />
     <ClInclude Include="Piece.h" />
     <ClInclude Include="ChessWindow.h" />
     <ClCompile Include="Controller.cpp" />

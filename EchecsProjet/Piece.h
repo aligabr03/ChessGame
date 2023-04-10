@@ -4,11 +4,12 @@
 #include <qtwidgets>
 #include <qlabel.h>
 
-
 class Piece {
 public:
     enum Color { White, Black };
     enum Type { King, Queen, Bishop };
+
+    Piece(){}
 
     Piece(Color color, Type type, int row, int col) :
         m_color(color), m_type(type), m_row(row), m_col(col) {}
@@ -21,8 +22,8 @@ public:
     void setCol(int col) { m_col = col; }
 
 private:
-    Color m_color;
-    Type m_type;
-    int m_row;
-    int m_col;
+    Color m_color = Color::White;
+    Type m_type = Type::King;
+    int m_row = 99;
+    int m_col = 99;
 };

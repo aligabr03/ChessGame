@@ -1,5 +1,8 @@
 #include "Controller.h"
 
+
+
+
 bool Controller::validMoveBishop(Piece bishop, std::vector<Piece> pieces, int rowDest, int colDest) {
     int rowSrc = bishop.row();
     int colSrc = bishop.col();

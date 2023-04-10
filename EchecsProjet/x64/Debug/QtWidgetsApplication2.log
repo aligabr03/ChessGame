@@ -1,6 +1,4 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (QtWidgetsApplication2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Controller.cpp
   ChessWindow.cpp
   main.cpp
-  qrc_QtWidgetsApplication2.cpp
   QtWidgetsApplication2.vcxproj -> C:\Users\aliga\Git Repos\INF1015\EchecsProjet\x64\Debug\EchecsProjet.exe
