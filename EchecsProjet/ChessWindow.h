@@ -10,10 +10,12 @@
 class ChessWindow : public QMainWindow {
 public:
     ChessWindow();
-    void initializeWhitePieces(Controller& controller);
-    void initializeBlackPieces(Controller& controller);
-    void initializeBoard(Controller& controller);
-    void addPiece(Controller& controller, QPixmap icon, Piece::Color color, Piece::Type type, int row, int col);
+    void initializeWhitePieces();
+    void initializeBlackPieces();
+    void initializeBoard();
+    void addPiece(QPixmap icon, Piece::Color color, Piece::Type type, int row, int col);
+
+    void movePiece();
 
 private slots:
     void pieceClick();
@@ -21,7 +23,9 @@ private:
     QPushButton* buttons[8][8];
     std::vector<Piece> pieces;
     QPushButton* selectedButton = nullptr;
-    bool pieceSelected = false;
+    bool isPieceSelected = false;
     bool whiteTurn = true;
-    Piece selectedPiece;
+    Piece* selectedPiece;
+    QString originalStyle;
+
 };

@@ -1,22 +1,38 @@
 #include "Controller.h"
 
+bool Controller::validMove(Piece piece, std::vector<Piece> pieces, int rowDest, int colDest) {
+    
 
-
+    switch (piece.type()) {
+    case Piece::King:
+        return validMoveKing(piece, pieces, rowDest, colDest);
+        break;
+    case Piece::Queen:
+        return validMoveQueen(piece, pieces, rowDest, colDest);
+        break;
+    case Piece::Bishop:
+        return validMoveBishop(piece, pieces, rowDest, colDest);
+        break;
+    }
+}
 
 bool Controller::validMoveBishop(Piece bishop, std::vector<Piece> pieces, int rowDest, int colDest) {
     int rowSrc = bishop.row();
     int colSrc = bishop.col();
 
+    // verifier que source != destination
     if (rowSrc == rowDest && colSrc == colDest) {
         return false;
     }
 
+    // verifier que le mouvement est bien diagonal
     int rowDiff = std::abs(rowSrc - rowDest);
     int colDiff = std::abs(colSrc - colDest);
     if (rowDiff != colDiff) {
         return false;
     }
 
+    // verifier qu'il n'y a pas de pieces qui bloquent le trajet
     int rowDir = (rowSrc < rowDest) ? 1 : -1;
     int colDir = (colSrc < colDest) ? 1 : -1;
     int i = rowSrc + rowDir;
@@ -29,6 +45,7 @@ bool Controller::validMoveBishop(Piece bishop, std::vector<Piece> pieces, int ro
         j += colDir;
     }
 
+    // verifier qu'il n'y a pas de piece de la meme couleur a la destination
     if (isPieceAt(rowDest, colDest, pieces) == 1 && bishop.color() == Piece::Color::White) {
         return false;
     } else if (isPieceAt(rowDest, colDest, pieces) == 2 && bishop.color() == Piece::Color::Black) {
@@ -46,6 +63,7 @@ bool Controller::validMoveQueen(Piece queen, std::vector<Piece> pieces, int rowD
     return false;
 }
 
+// retourne 0 pour aucune piece, 1 pour blanc, 2 pour noire
 int Controller::isPieceAt(int row, int col, std::vector<Piece> pieces) {
     for (Piece& piece : pieces) {
         if (piece.row() == row && piece.col() == col) {
@@ -58,4 +76,17 @@ int Controller::isPieceAt(int row, int col, std::vector<Piece> pieces) {
         }
     }
     return 0;
+}
+
+// verifie que la piece jouee correspond a la bonne couleur, si oui, colorie la case en jaune pour indiquer la selection
+bool Controller::checkTurn(bool whiteTurn, Piece* selectedPiece, QPushButton* selectedButton) {
+    if (selectedPiece->row() != 99 && whiteTurn == true && selectedPiece->color() == Piece::White) {
+        selectedButton->setStyleSheet("background-color: yellow");
+        return true;
+    }
+    else if (selectedPiece->row() != 99 && whiteTurn == false && selectedPiece->color() == Piece::Black) {
+        selectedButton->setStyleSheet("background-color: yellow");
+        return true;
+    }
+    return false;
 }
