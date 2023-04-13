@@ -1,22 +1,21 @@
 #include "Controller.h"
 
-bool Controller::validMove(Piece piece, std::vector<Piece> pieces, int rowDest, int colDest) {
+bool Controller::validMove(Piece* piece, std::list<Piece> pieces, int rowDest, int colDest) {
     
-
-    switch (piece.type()) {
+    switch (piece->type()) {
     case Piece::King:
-        return validMoveKing(piece, pieces, rowDest, colDest);
+        return validMoveKing(*piece, pieces, rowDest, colDest);
         break;
     case Piece::Queen:
-        return validMoveQueen(piece, pieces, rowDest, colDest);
+        return validMoveQueen(*piece, pieces, rowDest, colDest);
         break;
     case Piece::Bishop:
-        return validMoveBishop(piece, pieces, rowDest, colDest);
+        return validMoveBishop(*piece, pieces, rowDest, colDest);
         break;
     }
 }
 
-bool Controller::validMoveBishop(Piece bishop, std::vector<Piece> pieces, int rowDest, int colDest) {
+bool Controller::validMoveBishop(Piece bishop, std::list<Piece> pieces, int rowDest, int colDest) {
     int rowSrc = bishop.row();
     int colSrc = bishop.col();
 
@@ -55,17 +54,17 @@ bool Controller::validMoveBishop(Piece bishop, std::vector<Piece> pieces, int ro
     return true;
 }
 
-bool Controller::validMoveKing(Piece king, std::vector<Piece> pieces, int rowDest, int colDest) {
-    return false;
+bool Controller::validMoveKing(Piece king, std::list<Piece> pieces, int rowDest, int colDest) {
+    return true;
 }
 
-bool Controller::validMoveQueen(Piece queen, std::vector<Piece> pieces, int rowDest, int colDest) {
-    return false;
+bool Controller::validMoveQueen(Piece queen, std::list<Piece> pieces, int rowDest, int colDest) {
+    return true;
 }
 
 // retourne 0 pour aucune piece, 1 pour blanc, 2 pour noire
-int Controller::isPieceAt(int row, int col, std::vector<Piece> pieces) {
-    for (Piece& piece : pieces) {
+int Controller::isPieceAt(int row, int col, std::list<Piece> pieces) {
+    for (Piece piece : pieces) {
         if (piece.row() == row && piece.col() == col) {
             if (piece.color() == Piece::Color::White) {
                 return 1;
@@ -81,11 +80,11 @@ int Controller::isPieceAt(int row, int col, std::vector<Piece> pieces) {
 // verifie que la piece jouee correspond a la bonne couleur, si oui, colorie la case en jaune pour indiquer la selection
 bool Controller::checkTurn(bool whiteTurn, Piece* selectedPiece, QPushButton* selectedButton) {
     if (selectedPiece->row() != 99 && whiteTurn == true && selectedPiece->color() == Piece::White) {
-        selectedButton->setStyleSheet("background-color: yellow");
+        selectedButton->setStyleSheet("background-color: rgb(200,200,100)");
         return true;
     }
     else if (selectedPiece->row() != 99 && whiteTurn == false && selectedPiece->color() == Piece::Black) {
-        selectedButton->setStyleSheet("background-color: yellow");
+        selectedButton->setStyleSheet("background-color: rgb(200,200,100)");
         return true;
     }
     return false;
