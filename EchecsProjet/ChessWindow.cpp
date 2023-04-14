@@ -23,7 +23,7 @@ void ChessWindow::initializeBoard() {
                 button->setStyleSheet("background-color: rgb(220,220,220)");
             }
             else {
-                button->setStyleSheet("background-color: green");
+                button->setStyleSheet("background-color: rgb(50,50,50)");
             }
             grid_layout->addWidget(button, row, col);
         }
@@ -85,42 +85,112 @@ void ChessWindow::addPiece(QPixmap icon, Piece::Color color, Piece::Type type, i
     pieces.push_back(piece);
 }
 
-void ChessWindow::movePiece(){
+void ChessWindow::movePiece(int row, int col){
     selectedButton->setIcon(selectedPiece->icon());
-    
+    selectedPiece->setCol(col);
+    selectedPiece->setRow(row);
+    isPieceSelected = false;
+    lastValidButton->setIcon(QIcon());
+    whiteTurn = !whiteTurn;
+
+    qDebug() << whiteTurn;
+
+    for (auto i : pieces) {
+        qDebug() << i.type() << i.color() << "ligne:" << i.row() << "colonne:" << i.col() << "\n";
+    }
+}
+
+void ChessWindow::selectPiece(int row, int col) {
+    Controller controller;
+    for (auto it = pieces.begin(); it != pieces.end(); it++) {
+        if ((*it).row() == row && (*it).col() == col) {
+            selectedPiece = &(*it);
+            isPieceSelected = controller.checkTurn(whiteTurn, selectedPiece, selectedButton);
+            lastValidButton = selectedButton;
+            break;
+        }
+    }
+}
+
+void ChessWindow::highlightValidByTurn(Piece* piece, QGridLayout* gridLayout) {
+    Controller controller;
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            if (controller.validMove(piece, pieces, row, col)) {
+                QLayoutItem* item = gridLayout->itemAtPosition(row, col);
+                if (item != nullptr) {
+                    QPushButton* button = qobject_cast<QPushButton*>(item->widget());
+                    button->setStyleSheet("background-color: rgb(100,200,200)");
+                }
+            }
+        }
+    }
+}
+
+void ChessWindow::highlightValid(Piece* piece, QGridLayout* gridLayout) {
+    Controller controller;
+    if (selectedPiece != nullptr) {
+        if (selectedPiece->row() != 99 && whiteTurn == true && selectedPiece->color() == Piece::White) {
+            highlightValidByTurn(piece, gridLayout);
+        }
+        else if (selectedPiece->row() != 99 && whiteTurn == false && selectedPiece->color() == Piece::Black) {
+            highlightValidByTurn(piece, gridLayout);
+        }
+    }
+}
+
+void ChessWindow::resetColors(QGridLayout* gridLayout) {
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            QLayoutItem* item = gridLayout->itemAtPosition(row, col);
+            if (item != nullptr) {
+                QPushButton* button = qobject_cast<QPushButton*>(item->widget());
+                if ((row + col) % 2 == 0) {
+                    button->setStyleSheet("background-color: rgb(220,220,220)");
+                }
+                else {
+                    button->setStyleSheet("background-color: rgb(50,50,50)");
+                }
+            }
+        }
+    }
+}
+
+void ChessWindow::capture(int row, int col) {
+    Controller controller;
+    if (controller.isPieceAt(row, col, pieces) != 0) {
+        for (auto it = pieces.begin(); it != pieces.end(); it++) {
+            if ((*it).row() == row && (*it).col() == col) {
+                pieces.erase(it); 
+                break;
+            }
+        }
+    }
 }
 
 void ChessWindow::pieceClick() {
-    qDebug() << "pieceClick Called\n";
     int row, col;
     int rowSpan, colSpan;
     Controller controller;
-    QPushButton* previousButton;
 
-    previousButton = selectedButton;
     selectedButton = qobject_cast<QPushButton*>(sender());
+    QGridLayout* gridLayout = qobject_cast<QGridLayout*>(selectedButton->parentWidget()->layout());
+    gridLayout->getItemPosition(gridLayout->indexOf(selectedButton), &row, &col, &rowSpan, &colSpan);
 
-    QGridLayout* grid_layout = qobject_cast<QGridLayout*>(selectedButton->parentWidget()->layout());
-    grid_layout->getItemPosition(grid_layout->indexOf(selectedButton), &row, &col, &rowSpan, &colSpan);
-
-    if (isPieceSelected == false) {
-        for (int i = 0; i < pieces.size(); i++) {
-            if (pieces[i].row() == row && pieces[i].col() == col) {
-                selectedPiece = &pieces[i];
-            }
+    if (isPieceSelected == false)
+    {
+        selectPiece(row, col);
+        highlightValid(selectedPiece, gridLayout);
+    }
+    else if (isPieceSelected == true)
+    {
+        if (controller.validMove(selectedPiece, pieces, row, col)) {
+            capture(row, col);
+            movePiece(row, col);
+            resetColors(gridLayout);
         }
-        originalStyle = selectedButton->styleSheet();
-        isPieceSelected = controller.checkTurn(whiteTurn, selectedPiece, selectedButton);
-
-    } else if (isPieceSelected == true) {
-        if (controller.validMove((*selectedPiece), pieces, row, col)) {
-            selectedButton->setIcon(selectedPiece->icon());
-            selectedPiece->setCol(col);
-            selectedPiece->setRow(row);
-            isPieceSelected = false;
-            previousButton->setStyleSheet(originalStyle);
+        else {
+            selectedButton->setStyleSheet("background-color: red");
         }
     }
-    qDebug() << isPieceSelected;
-
 }
