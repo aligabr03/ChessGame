@@ -1,0 +1,5 @@
+/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/Projet Echecs/build/CMakeFiles/ProjetTest.dir
+/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/Projet Echecs/build/CMakeFiles/ProjetTest_couverture.dir
+/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/Projet Echecs/build/CMakeFiles/edit_cache.dir
+/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/Projet Echecs/build/CMakeFiles/rebuild_cache.dir
+/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD6 + Projet/Projet Echecs/build/CMakeFiles/ProjetTest_autogen.dir
