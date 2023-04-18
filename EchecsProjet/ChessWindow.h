@@ -11,33 +11,36 @@ Date: 14 Avril 2023
 
 #include "Piece.h"
 
-class ChessWindow : public QMainWindow {
-public:
-    ChessWindow();
-    void initializeWhitePieces();
-    void initializeBlackPieces();
-    void initializeBoard();
+namespace view
+{
+    class ChessWindow : public QMainWindow {
+    public:
+        ChessWindow();
+        void initializeWhitePieces();
+        void initializeBlackPieces();
+        void initializeBoard();
 
-    void movePiece(int row, int col);
-    void selectPiece(int row, int col);
-    void capture(int row, int col);
+        void movePiece(int row, int col);
+        void selectPiece(int row, int col);
+        void capture(int row, int col);
 
-    void highlightValid(std::shared_ptr<Piece> piece, QGridLayout* gridLayout);
-    void highlightValidByTurn(std::shared_ptr<Piece> piece, QGridLayout* gridLayout);
-    void resetColors(QGridLayout* gridLayout);
-    bool checkTurn(bool whiteTurn, std::shared_ptr<Piece> selectedPiece, QPushButton* selectedButton);
+        void highlightValid(std::shared_ptr<model::Piece> piece, QGridLayout* gridLayout);
+        void highlightValidByTurn(std::shared_ptr<model::Piece> piece, QGridLayout* gridLayout);
+        void resetColors(QGridLayout* gridLayout);
+        bool checkTurn(bool whiteTurn, std::shared_ptr<model::Piece> selectedPiece, QPushButton* selectedButton);
 
-private slots:
-    void pieceClick();
+    private slots:
+        void pieceClick();
 
-private:
-    QPushButton* buttons[8][8];
-    std::list<std::shared_ptr<Piece>> pieces;
+    private:
+        QPushButton* buttons[8][8];
+        std::list<std::shared_ptr<model::Piece>> pieces;
 
-    QPushButton* selectedButton = nullptr;
-    QPushButton* lastValidButton = nullptr;
-    std::shared_ptr<Piece> selectedPiece = nullptr;
+        QPushButton* selectedButton = nullptr;
+        QPushButton* lastValidButton = nullptr;
+        std::shared_ptr<model::Piece> selectedPiece = nullptr;
 
-    bool isPieceSelected = false;
-    bool whiteTurn = true;
-};
+        bool isPieceSelected = false;
+        bool whiteTurn = true;
+    };
+}

@@ -7,13 +7,13 @@ Date: 14 Avril 2023
 
 #include "ChessWindow.h"
 
-ChessWindow::ChessWindow() {
+view::ChessWindow::ChessWindow() {
     initializeBoard();
     initializeWhitePieces();
     initializeBlackPieces();
 }
 
-void ChessWindow::initializeBoard() {
+void view::ChessWindow::initializeBoard() {
     QWidget* central_widget = new QWidget();
     setCentralWidget(central_widget);
 
@@ -37,7 +37,7 @@ void ChessWindow::initializeBoard() {
     setFixedSize(600, 600);
 }
 
-void ChessWindow::initializeBlackPieces() {
+void view::ChessWindow::initializeBlackPieces() {
     QPixmap bishopb("bishop1.png");
     QPixmap queenb("queen1.png");
     QPixmap kingb("king1.png");
@@ -49,19 +49,19 @@ void ChessWindow::initializeBlackPieces() {
                 case 5: {
                     buttons[row][col]->setIcon(bishopb);
                     buttons[row][col]->setIconSize(QSize(45, 45));
-                    pieces.push_back(std::make_shared<Bishop>(bishopb, Piece::Black, row, col));
+                    pieces.push_back(std::make_shared<model::Bishop>(bishopb, model::Piece::Black, row, col));
                     break;
                 }
                 case 3: {
                     buttons[row][col]->setIcon(queenb);
                     buttons[row][col]->setIconSize(QSize(45, 45));
-                    pieces.push_back(std::make_shared<Queen>(queenb, Piece::Black, row, col));
+                    pieces.push_back(std::make_shared<model::Queen>(queenb, model::Piece::Black, row, col));
                     break;
                 }
                 case 4: {
                     buttons[row][col]->setIcon(kingb);
                     buttons[row][col]->setIconSize(QSize(45, 45));
-                    pieces.push_back(std::make_shared<King>(kingb, Piece::Black, row, col));
+                    pieces.push_back(std::make_shared<model::King>(kingb, model::Piece::Black, row, col));
                     break;
                 }
                 }
@@ -70,7 +70,7 @@ void ChessWindow::initializeBlackPieces() {
     }
 }
 
-void ChessWindow::initializeWhitePieces() {
+void view::ChessWindow::initializeWhitePieces() {
     QPixmap bishop("bishop.png");
     QPixmap queen("queen.png");
     QPixmap king("king.png");
@@ -82,19 +82,19 @@ void ChessWindow::initializeWhitePieces() {
                 case 5: {
                     buttons[row][col]->setIcon(bishop);
                     buttons[row][col]->setIconSize(QSize(45, 45));
-                    pieces.push_back(std::make_shared<Bishop>(bishop, Piece::White, row, col));
+                    pieces.push_back(std::make_shared<model::Bishop>(bishop, model::Piece::White, row, col));
                     break;
                 }
                 case 3: {
                     buttons[row][col]->setIcon(queen);
                     buttons[row][col]->setIconSize(QSize(45, 45));
-                    pieces.push_back(std::make_shared<Queen>(queen, Piece::White, row, col));
+                    pieces.push_back(std::make_shared<model::Queen>(queen, model::Piece::White, row, col));
                     break;
                 }
                 case 4: {
                     buttons[row][col]->setIcon(king);
                     buttons[row][col]->setIconSize(QSize(45, 45));
-                    pieces.push_back(std::make_shared<King>(king, Piece::White, row, col));
+                    pieces.push_back(std::make_shared<model::King>(king, model::Piece::White, row, col));
                     break;
                 }
                 }
@@ -103,7 +103,7 @@ void ChessWindow::initializeWhitePieces() {
     }
 }
 
-void ChessWindow::movePiece(int row, int col){
+void view::ChessWindow::movePiece(int row, int col){
     selectedButton->setIcon(selectedPiece->icon());
     selectedButton->setIconSize(QSize(45, 45));
     selectedPiece->setCol(col);
@@ -112,7 +112,7 @@ void ChessWindow::movePiece(int row, int col){
     whiteTurn = !whiteTurn;
 }
 
-void ChessWindow::selectPiece(int row, int col) {
+void view::ChessWindow::selectPiece(int row, int col) {
     for (auto it = pieces.begin(); it != pieces.end(); it++) {
         if ((*it)->row() == row && (*it)->col() == col) {
             selectedPiece = *it;
@@ -123,19 +123,19 @@ void ChessWindow::selectPiece(int row, int col) {
     }
 }
 
-bool ChessWindow::checkTurn(bool whiteTurn, std::shared_ptr<Piece> selectedPiece, QPushButton* selectedButton) {
-    if (selectedPiece->row() != 99 && whiteTurn == true && selectedPiece->color() == Piece::White) {
+bool view::ChessWindow::checkTurn(bool whiteTurn, std::shared_ptr<model::Piece> selectedPiece, QPushButton* selectedButton) {
+    if (selectedPiece->row() != 99 && whiteTurn == true && selectedPiece->color() == model::Piece::White) {
         selectedButton->setStyleSheet("background-color: rgb(200,200,100)");
         return true;
     }
-    else if (selectedPiece->row() != 99 && whiteTurn == false && selectedPiece->color() == Piece::Black) {
+    else if (selectedPiece->row() != 99 && whiteTurn == false && selectedPiece->color() == model::Piece::Black) {
         selectedButton->setStyleSheet("background-color: rgb(200,200,100)");
         return true;
     }
     return false;
 }
 
-void ChessWindow::highlightValidByTurn(std::shared_ptr<Piece> piece, QGridLayout* gridLayout) {
+void view::ChessWindow::highlightValidByTurn(std::shared_ptr<model::Piece> piece, QGridLayout* gridLayout) {
     for (int row = 0; row < 8; row++) {
         for (int col = 0; col < 8; col++) {
             if (piece->validMove(pieces, row, col)) {
@@ -149,18 +149,18 @@ void ChessWindow::highlightValidByTurn(std::shared_ptr<Piece> piece, QGridLayout
     }
 }
 
-void ChessWindow::highlightValid(std::shared_ptr<Piece> piece, QGridLayout* gridLayout) {
+void view::ChessWindow::highlightValid(std::shared_ptr<model::Piece> piece, QGridLayout* gridLayout) {
     if (selectedPiece != nullptr) {
-        if (selectedPiece->row() != 99 && whiteTurn == true && selectedPiece->color() == Piece::White) {
+        if (selectedPiece->row() != 99 && whiteTurn == true && selectedPiece->color() == model::Piece::White) {
             highlightValidByTurn(piece, gridLayout);
         }
-        else if (selectedPiece->row() != 99 && whiteTurn == false && selectedPiece->color() == Piece::Black) {
+        else if (selectedPiece->row() != 99 && whiteTurn == false && selectedPiece->color() == model::Piece::Black) {
             highlightValidByTurn(piece, gridLayout);
         }
     }
 }
 
-void ChessWindow::resetColors(QGridLayout* gridLayout) {
+void view::ChessWindow::resetColors(QGridLayout* gridLayout) {
     for (int row = 0; row < 8; row++) {
         for (int col = 0; col < 8; col++) {
             QLayoutItem* item = gridLayout->itemAtPosition(row, col);
@@ -177,7 +177,7 @@ void ChessWindow::resetColors(QGridLayout* gridLayout) {
     }
 }
 
-void ChessWindow::capture(int row, int col) {
+void view::ChessWindow::capture(int row, int col) {
     if (selectedPiece->isPieceAt(row, col, pieces) != 0) {
         for (auto it = pieces.begin(); it != pieces.end(); it++) {
             if ((*it)->row() == row && (*it)->col() == col) {
@@ -188,7 +188,7 @@ void ChessWindow::capture(int row, int col) {
     }
 }
 
-void ChessWindow::pieceClick() {
+void view::ChessWindow::pieceClick() {
     int row, col;
     int rowSpan, colSpan;
 

@@ -7,7 +7,9 @@ Date: 14 Avril 2023
 
 #include "Piece.h"
 
-int Piece::isPieceAt(int row, int col, std::list<std::shared_ptr<Piece>> pieces) {
+int model::Piece::s_kingCount = 0;
+
+int model::Piece::isPieceAt(int row, int col, std::list<std::shared_ptr<Piece>> pieces) {
     for (const std::shared_ptr<Piece> piece : pieces) {
         if (piece->row() == row && piece->col() == col) {
             if (piece->color() == Piece::Color::White) {
@@ -21,7 +23,7 @@ int Piece::isPieceAt(int row, int col, std::list<std::shared_ptr<Piece>> pieces)
     return 0;
 }
 
-bool King::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) {
+bool model::King::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) {
     // verifier que source != destination
     if (m_row == rowDest && m_col == colDest)
     {
@@ -57,7 +59,7 @@ bool King::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int 
     return true;
 }
 
-bool Queen::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) {
+bool model::Queen::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) {
     // verifier que source != destination
     if (m_row == rowDest && m_col == colDest)
     {
@@ -102,7 +104,7 @@ bool Queen::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int
     return true;
 }
 
-bool Bishop::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) {
+bool model::Bishop::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) {
     // verifier que source != destination
     if (m_row == rowDest && m_col == colDest) {
         return false;
