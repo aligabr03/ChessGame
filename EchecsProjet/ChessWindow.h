@@ -27,7 +27,8 @@ namespace view
         void highlightValid(std::shared_ptr<model::Piece> piece, QGridLayout* gridLayout);
         void highlightValidByTurn(std::shared_ptr<model::Piece> piece, QGridLayout* gridLayout);
         void resetColors(QGridLayout* gridLayout);
-        bool checkTurn(bool whiteTurn, std::shared_ptr<model::Piece> selectedPiece, QPushButton* selectedButton);
+        bool checkTurn();
+        int isChecked();
 
     private slots:
         void pieceClick();

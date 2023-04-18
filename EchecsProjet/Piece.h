@@ -12,6 +12,7 @@ namespace model
 {
     class Piece {
     public:
+        enum Type { King, Queen, Bishop };
         enum Color { White, Black };
 
         Piece() = default;
@@ -23,6 +24,7 @@ namespace model
         Color color() const { return m_color; }
         int row() const { return m_row; }
         int col() const { return m_col; }
+        virtual Type type() = 0;
         QPixmap icon() const { return m_icon; }
         void setRow(int row) { m_row = row; }
         void setCol(int col) { m_col = col; }
@@ -52,6 +54,7 @@ namespace model
                 }
         }
 
+        Type type() override { return Piece::King; }
         bool validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) override;
     };
 
@@ -59,6 +62,8 @@ namespace model
     {
     public:
         Bishop(QPixmap icon, Color color, int row, int col) : Piece(icon, color, row, col) {}
+
+        Type type() override { return Piece::Bishop; }
         bool validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) override;
     };
 
@@ -66,6 +71,8 @@ namespace model
     {
     public:
         Queen(QPixmap icon, Color color, int row, int col) : Piece(icon, color, row, col) {}
+
+        Type type() override { return Piece::Queen; }
         bool validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) override;
     };
 }

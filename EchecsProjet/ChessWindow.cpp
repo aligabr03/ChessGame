@@ -1,6 +1,6 @@
 /*
 Nom: ChessWindow.cpp
-Description: Gere la vue du jeu et implemente les fonctions definit dans la classe ChessWindows.h
+Description: Gere la vue du jeu et implemente les methodes definies dans la classe ChessWindow.h
 Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
 Date: 14 Avril 2023
 */
@@ -115,20 +115,22 @@ void view::ChessWindow::movePiece(int row, int col){
 void view::ChessWindow::selectPiece(int row, int col) {
     for (auto it = pieces.begin(); it != pieces.end(); it++) {
         if ((*it)->row() == row && (*it)->col() == col) {
-            selectedPiece = *it;
-            isPieceSelected = checkTurn(whiteTurn, selectedPiece, selectedButton);
-            lastValidButton = selectedButton;
-            break;
+            if ( (isChecked() && (*it)->type() == model::Piece::King) or (!isChecked()) ){
+                selectedPiece = *it;
+                isPieceSelected = checkTurn();
+                lastValidButton = selectedButton;
+                break;
+            }
         }
     }
 }
 
-bool view::ChessWindow::checkTurn(bool whiteTurn, std::shared_ptr<model::Piece> selectedPiece, QPushButton* selectedButton) {
-    if (selectedPiece->row() != 99 && whiteTurn == true && selectedPiece->color() == model::Piece::White) {
+bool view::ChessWindow::checkTurn() {
+    if (selectedPiece->row() != 99 && whiteTurn && selectedPiece->color() == model::Piece::White) {
         selectedButton->setStyleSheet("background-color: rgb(200,200,100)");
         return true;
     }
-    else if (selectedPiece->row() != 99 && whiteTurn == false && selectedPiece->color() == model::Piece::Black) {
+    else if (selectedPiece->row() != 99 && !whiteTurn && selectedPiece->color() == model::Piece::Black) {
         selectedButton->setStyleSheet("background-color: rgb(200,200,100)");
         return true;
     }
@@ -158,6 +160,22 @@ void view::ChessWindow::highlightValid(std::shared_ptr<model::Piece> piece, QGri
             highlightValidByTurn(piece, gridLayout);
         }
     }
+}
+
+int view::ChessWindow::isChecked() {
+    for (std::shared_ptr<model::Piece> king : pieces) {
+        if (king->type() == model::Piece::King) {
+            for (std::shared_ptr<model::Piece> piece : pieces) {
+                if (piece->color() == model::Piece::Black && whiteTurn && king->color() == model::Piece::White) {
+                    if(piece->validMove(pieces, king->row(), king->col())) { return true; }
+                }
+                else if (piece->color() == model::Piece::White && !whiteTurn && king->color() == model::Piece::Black) {
+                    if (piece->validMove(pieces, king->row(), king->col())) { return true; }
+                }
+            }
+        }
+    }
+    return false;
 }
 
 void view::ChessWindow::resetColors(QGridLayout* gridLayout) {
