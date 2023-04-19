@@ -4,8 +4,6 @@ file(REMOVE_RECURSE
   "ProjetTest_autogen"
   "CMakeFiles/ProjetTest.dir/ChessWindow.cpp.o"
   "CMakeFiles/ProjetTest.dir/ChessWindow.cpp.o.d"
-  "CMakeFiles/ProjetTest.dir/Controller.cpp.o"
-  "CMakeFiles/ProjetTest.dir/Controller.cpp.o.d"
   "CMakeFiles/ProjetTest.dir/Piece.cpp.o"
   "CMakeFiles/ProjetTest.dir/Piece.cpp.o.d"
   "CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o"

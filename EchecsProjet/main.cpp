@@ -1,10 +1,23 @@
 #include "ChessWindow.h"
 #include <QtWidgets/QApplication>
+#include <QMessageBox>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    ChessWindow w;
-    w.show();
-    return a.exec();
+    try
+    {
+        // Creer la fenetre de jeu
+        view::ChessWindow w;
+        w.show();
+
+        // Executer l'application
+        return a.exec();
+    }
+    catch (const std::runtime_error& error)
+    {
+        // Afficher un message d'erreur
+        QMessageBox::critical(nullptr, "Error", error.what());
+        return 1;
+    }
 }

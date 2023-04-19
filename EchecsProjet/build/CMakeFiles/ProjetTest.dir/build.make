@@ -97,24 +97,10 @@ CMakeFiles/ProjetTest.dir/ChessWindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProjetTest.dir/ChessWindow.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/ChessWindow.cpp -o CMakeFiles/ProjetTest.dir/ChessWindow.cpp.s
 
-CMakeFiles/ProjetTest.dir/Controller.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
-CMakeFiles/ProjetTest.dir/Controller.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Controller.cpp
-CMakeFiles/ProjetTest.dir/Controller.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ProjetTest.dir/Controller.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/Controller.cpp.o -MF CMakeFiles/ProjetTest.dir/Controller.cpp.o.d -o CMakeFiles/ProjetTest.dir/Controller.cpp.o -c /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Controller.cpp
-
-CMakeFiles/ProjetTest.dir/Controller.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ProjetTest.dir/Controller.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Controller.cpp > CMakeFiles/ProjetTest.dir/Controller.cpp.i
-
-CMakeFiles/ProjetTest.dir/Controller.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ProjetTest.dir/Controller.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Controller.cpp -o CMakeFiles/ProjetTest.dir/Controller.cpp.s
-
 CMakeFiles/ProjetTest.dir/Piece.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
 CMakeFiles/ProjetTest.dir/Piece.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Piece.cpp
 CMakeFiles/ProjetTest.dir/Piece.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ProjetTest.dir/Piece.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ProjetTest.dir/Piece.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/Piece.cpp.o -MF CMakeFiles/ProjetTest.dir/Piece.cpp.o.d -o CMakeFiles/ProjetTest.dir/Piece.cpp.o -c /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Piece.cpp
 
 CMakeFiles/ProjetTest.dir/Piece.cpp.i: cmake_force
@@ -128,7 +114,7 @@ CMakeFiles/ProjetTest.dir/Piece.cpp.s: cmake_force
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/bibliotheque_cours/bibliotheque_cours.cpp
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o -MF CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o.d -o CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o -c /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/bibliotheque_cours/bibliotheque_cours.cpp
 
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.i: cmake_force
@@ -142,7 +128,7 @@ CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.s: cmake_for
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/bibliotheque_cours/verification_allocation.cpp
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o -MF CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o.d -o CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o -c /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/bibliotheque_cours/verification_allocation.cpp
 
 CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.i: cmake_force
@@ -156,7 +142,7 @@ CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.s: cmak
 CMakeFiles/ProjetTest.dir/main.cpp.o: CMakeFiles/ProjetTest.dir/flags.make
 CMakeFiles/ProjetTest.dir/main.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/main.cpp
 CMakeFiles/ProjetTest.dir/main.cpp.o: CMakeFiles/ProjetTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ProjetTest.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ProjetTest.dir/main.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ProjetTest.dir/main.cpp.o -MF CMakeFiles/ProjetTest.dir/main.cpp.o.d -o CMakeFiles/ProjetTest.dir/main.cpp.o -c /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/main.cpp
 
 CMakeFiles/ProjetTest.dir/main.cpp.i: cmake_force
@@ -171,7 +157,6 @@ CMakeFiles/ProjetTest.dir/main.cpp.s: cmake_force
 ProjetTest_OBJECTS = \
 "CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/ProjetTest.dir/ChessWindow.cpp.o" \
-"CMakeFiles/ProjetTest.dir/Controller.cpp.o" \
 "CMakeFiles/ProjetTest.dir/Piece.cpp.o" \
 "CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o" \
 "CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o" \
@@ -182,7 +167,6 @@ ProjetTest_EXTERNAL_OBJECTS =
 
 ProjetTest: CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.o
 ProjetTest: CMakeFiles/ProjetTest.dir/ChessWindow.cpp.o
-ProjetTest: CMakeFiles/ProjetTest.dir/Controller.cpp.o
 ProjetTest: CMakeFiles/ProjetTest.dir/Piece.cpp.o
 ProjetTest: CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.o
 ProjetTest: CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o
@@ -192,7 +176,7 @@ ProjetTest: /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Versions/A/Q
 ProjetTest: /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Versions/A/QtGui
 ProjetTest: /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Versions/A/QtCore
 ProjetTest: CMakeFiles/ProjetTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable ProjetTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable ProjetTest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ProjetTest.dir/link.txt --verbose=$(VERBOSE)
 	rm -f /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/build//CMakeFiles/ProjetTest.dir/*.gcda
 	rm -f /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/build//CMakeFiles/ProjetTest.dir/**/*.gcda

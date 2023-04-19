@@ -1,31 +1,47 @@
-#include <qmainwindow>
+/*
+Nom: ChessWindow.h
+Description: Gere la vue du jeu
+Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
+Date: 14 Avril 2023
+*/
+
+#include <qmainwindow.h>
 #include <qgridlayout.h>
 #include <qpushbutton.h>
-#include <qtwidgets>
-#include <qlabel.h>
-#include <qobject.h>
 
-#include "Controller.h"
+#include "Piece.h"
 
-class ChessWindow : public QMainWindow {
-public:
-    ChessWindow();
-    void initializeWhitePieces();
-    void initializeBlackPieces();
-    void initializeBoard();
-    void addPiece(QPixmap icon, Piece::Color color, int row, int col);
+namespace view
+{
+    class ChessWindow : public QMainWindow {
+    public:
+        ChessWindow();
+        void initializeWhitePieces();
+        void initializeBlackPieces();
+        void initializeBoard();
 
-    void movePiece();
+        void movePiece(int row, int col);
+        void selectPiece(int row, int col);
+        void capture(int row, int col);
 
-private slots:
-    void pieceClick();
-private:
-    QPushButton* buttons[8][8];
-    std::vector<Piece> pieces;
-    QPushButton* selectedButton = nullptr;
-    bool isPieceSelected = false;
-    bool whiteTurn = true;
-    Piece* selectedPiece;
-    QString originalStyle;
+        void highlightValid(std::shared_ptr<model::Piece> piece, QGridLayout* gridLayout);
+        void highlightValidByTurn(std::shared_ptr<model::Piece> piece, QGridLayout* gridLayout);
+        void resetColors(QGridLayout* gridLayout);
+        bool checkTurn();
+        int isChecked();
 
-};
+    private slots:
+        void pieceClick();
+
+    private:
+        QPushButton* buttons[8][8];
+        std::list<std::shared_ptr<model::Piece>> pieces;
+
+        QPushButton* selectedButton = nullptr;
+        QPushButton* lastValidButton = nullptr;
+        std::shared_ptr<model::Piece> selectedPiece = nullptr;
+
+        bool isPieceSelected = false;
+        bool whiteTurn = true;
+    };
+}
