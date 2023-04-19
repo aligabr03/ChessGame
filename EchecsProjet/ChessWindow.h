@@ -13,7 +13,8 @@ Date: 14 Avril 2023
 
 namespace view
 {
-    class ChessWindow : public QMainWindow {
+    class ChessWindow : public QMainWindow
+    {
     public:
         ChessWindow();
         void initializeWhitePieces();
@@ -24,21 +25,21 @@ namespace view
         void selectPiece(int row, int col);
         void capture(int row, int col);
 
-        void highlightValid(std::shared_ptr<model::Piece> piece, QGridLayout* gridLayout);
-        void highlightValidByTurn(std::shared_ptr<model::Piece> piece, QGridLayout* gridLayout);
-        void resetColors(QGridLayout* gridLayout);
+        void highlightValid(std::shared_ptr<model::Piece> piece, QGridLayout *gridLayout);
+        void highlightValidByTurn(std::shared_ptr<model::Piece> piece, QGridLayout *gridLayout);
+        void resetColors(QGridLayout *gridLayout);
         bool checkTurn();
-        int isChecked();
+        bool isChecked();
 
     private slots:
         void pieceClick();
 
     private:
-        QPushButton* buttons[8][8];
+        QPushButton *buttons[8][8];
         std::list<std::shared_ptr<model::Piece>> pieces;
 
-        QPushButton* selectedButton = nullptr;
-        QPushButton* lastValidButton = nullptr;
+        QPushButton *selectedButton = nullptr;
+        QPushButton *lastValidButton = nullptr;
         std::shared_ptr<model::Piece> selectedPiece = nullptr;
 
         bool isPieceSelected = false;

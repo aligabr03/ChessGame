@@ -9,13 +9,18 @@ Date: 14 Avril 2023
 
 int model::Piece::s_kingCount = 0;
 
-int model::Piece::isPieceAt(int row, int col, std::list<std::shared_ptr<Piece>> pieces) {
-    for (const std::shared_ptr<Piece> piece : pieces) {
-        if (piece->row() == row && piece->col() == col) {
-            if (piece->color() == Piece::Color::White) {
+int model::Piece::isPieceAt(int row, int col, std::list<std::shared_ptr<Piece>> pieces)
+{
+    for (const std::shared_ptr<Piece> piece : pieces)
+    {
+        if (piece->row() == row && piece->col() == col)
+        {
+            if (piece->color() == Piece::Color::White)
+            {
                 return 1;
             }
-            else {
+            else
+            {
                 return 2;
             }
         }
@@ -23,7 +28,8 @@ int model::Piece::isPieceAt(int row, int col, std::list<std::shared_ptr<Piece>> 
     return 0;
 }
 
-bool model::King::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) {
+bool model::King::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest)
+{
     // verifier que source != destination
     if (m_row == rowDest && m_col == colDest)
     {
@@ -47,9 +53,12 @@ bool model::King::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDes
     }
 
     // Verification que le mouvement ne mettrai pas le roi en echec
-    for (const std::shared_ptr<Piece> piece : pieces) {
-        if (piece->color() != m_color) {
-            if (piece->validMove(pieces, rowDest, colDest)) {
+    for (const std::shared_ptr<Piece> piece : pieces)
+    {
+        if (piece->color() != m_color)
+        {
+            if (piece->validMove(pieces, rowDest, colDest))
+            {
                 return false;
             }
         }
@@ -59,7 +68,8 @@ bool model::King::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDes
     return true;
 }
 
-bool model::Queen::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) {
+bool model::Queen::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest)
+{
     // verifier que source != destination
     if (m_row == rowDest && m_col == colDest)
     {
@@ -104,16 +114,19 @@ bool model::Queen::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDe
     return true;
 }
 
-bool model::Bishop::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) {
+bool model::Bishop::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest)
+{
     // verifier que source != destination
-    if (m_row == rowDest && m_col == colDest) {
+    if (m_row == rowDest && m_col == colDest)
+    {
         return false;
     }
 
     // verifier que le mouvement est bien diagonal
     int rowDiff = std::abs(m_row - rowDest);
     int colDiff = std::abs(m_col - colDest);
-    if (rowDiff != colDiff) {
+    if (rowDiff != colDiff)
+    {
         return false;
     }
 
@@ -122,8 +135,10 @@ bool model::Bishop::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowD
     int colDir = (m_col < colDest) ? 1 : -1;
     int i = m_row + rowDir;
     int j = m_col + colDir;
-    while (i != rowDest && j != colDest) {
-        if (isPieceAt(i, j, pieces) != 0) {
+    while (i != rowDest && j != colDest)
+    {
+        if (isPieceAt(i, j, pieces) != 0)
+        {
             return false;
         }
         i += rowDir;
@@ -131,10 +146,12 @@ bool model::Bishop::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowD
     }
 
     // verifier qu'il n'y a pas de piece de la meme couleur a la destination
-    if (isPieceAt(rowDest, colDest, pieces) == 1 && m_color == Piece::Color::White) {
+    if (isPieceAt(rowDest, colDest, pieces) == 1 && m_color == Piece::Color::White)
+    {
         return false;
     }
-    else if (isPieceAt(rowDest, colDest, pieces) == 2 && m_color == Piece::Color::Black) {
+    else if (isPieceAt(rowDest, colDest, pieces) == 2 && m_color == Piece::Color::Black)
+    {
         return false;
     }
 

@@ -10,16 +10,26 @@ Date: 14 Avril 2023
 
 namespace model
 {
-    class Piece {
+    class Piece
+    {
     public:
-        enum Type { King, Queen, Bishop };
-        enum Color { White, Black };
+        enum Type
+        {
+            King,
+            Queen,
+            Bishop
+        };
+        enum Color
+        {
+            White,
+            Black
+        };
 
         Piece() = default;
 
         Piece(QPixmap icon, Color color, int row, int col) : m_icon(icon), m_color(color), m_row(row), m_col(col) {}
 
-        virtual ~Piece() {};
+        virtual ~Piece(){};
 
         Color color() const { return m_color; }
         int row() const { return m_row; }
@@ -46,12 +56,12 @@ namespace model
     public:
         King(QPixmap icon, Color color, int row, int col) : Piece(icon, color, row, col)
         {
-                ++s_kingCount;
-                if (s_kingCount > 2)
-                {
-                    --s_kingCount;
-                    throw std::runtime_error("cannot create more than two kings.");
-                }
+            ++s_kingCount;
+            if (s_kingCount > 2)
+            {
+                --s_kingCount;
+                throw std::runtime_error("cannot create more than two kings.");
+            }
         }
 
         Type type() override { return Piece::King; }
@@ -76,5 +86,3 @@ namespace model
         bool validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) override;
     };
 }
-
-
