@@ -127,11 +127,11 @@ void view::ChessWindow::selectPiece(int row, int col) {
 
 bool view::ChessWindow::checkTurn() {
     if (selectedPiece->row() != 99 && whiteTurn && selectedPiece->color() == model::Piece::White) {
-        selectedButton->setStyleSheet("background-color: rgb(200,200,100)");
+        selectedButton->setStyleSheet("background-color: rgb(233,233,108)");
         return true;
     }
     else if (selectedPiece->row() != 99 && !whiteTurn && selectedPiece->color() == model::Piece::Black) {
-        selectedButton->setStyleSheet("background-color: rgb(200,200,100)");
+        selectedButton->setStyleSheet("background-color: rgb(233,233,108)");
         return true;
     }
     return false;
@@ -144,7 +144,7 @@ void view::ChessWindow::highlightValidByTurn(std::shared_ptr<model::Piece> piece
                 QLayoutItem* item = gridLayout->itemAtPosition(row, col);
                 if (item != nullptr) {
                     QPushButton* button = qobject_cast<QPushButton*>(item->widget());
-                    button->setStyleSheet("background-color: rgb(200,200,100)");
+                    button->setStyleSheet("background-color: rgb(233,233,108)");
                 }
             }
         }
@@ -221,11 +221,18 @@ void view::ChessWindow::pieceClick() {
     }
     else if (isPieceSelected == true)
     {
-        if (selectedPiece->validMove(pieces, row, col)) {
+        if (selectedPiece->row() == row && selectedPiece->col() == col) {
+            resetColors(gridLayout);
+            isPieceSelected = false;
+            selectedPiece = nullptr;
+        }
+            
+        else if (selectedPiece->validMove(pieces, row, col)) {
             capture(row, col);
             movePiece(row, col);
             resetColors(gridLayout);
             isPieceSelected = false;
+            qDebug() << isChecked();
         }
         else {
             selectedButton->setStyleSheet("background-color: red");

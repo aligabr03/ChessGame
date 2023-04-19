@@ -30,6 +30,9 @@ namespace view
         bool checkTurn();
         int isChecked();
 
+        std::list<std::shared_ptr<model::Piece>> getPieces() { return pieces; }
+        bool getTurn() { return whiteTurn; }
+
     private slots:
         void pieceClick();
 
