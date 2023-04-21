@@ -2,8 +2,11 @@
 Nom: ChessWindow.h
 Description: Gere la vue du jeu
 Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-Date: 14 Avril 2023
+Date: 20 Avril 2023
 */
+
+#ifndef CHESSWINDOW_H
+#define CHESSWINDOW_H
 
 #include <qmainwindow.h>
 #include <qgridlayout.h>
@@ -45,3 +48,5 @@ namespace view
         bool whiteTurn = true;
     };
 }
+
+#endif

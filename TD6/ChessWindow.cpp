@@ -2,7 +2,7 @@
 Nom: ChessWindow.cpp
 Description: Gere la vue du jeu et implemente les methodes definies dans la classe ChessWindow.h
 Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-Date: 14 Avril 2023
+Date: 20 Avril 2023
 */
 
 #include "ChessWindow.h"
@@ -105,7 +105,7 @@ void view::ChessWindow::initializeWhitePieces() {
 
 void view::ChessWindow::movePiece(int row, int col){
     bool* undo;
-    MoveGuard guard(selectedButton, lastValidButton, selectedPiece, row, col, undo);
+    model::MoveGuard guard(selectedButton, lastValidButton, selectedPiece, row, col, undo);
     if (isChecked()) {
         *undo = true;
     }
@@ -113,11 +113,6 @@ void view::ChessWindow::movePiece(int row, int col){
         *undo = false;
         whiteTurn = !whiteTurn;
     }
-    //selectedButton->setIcon(selectedPiece->icon());
-    //selectedButton->setIconSize(QSize(45, 45));
-    //selectedPiece->setCol(col);
-    //selectedPiece->setRow(row);
-    //lastValidButton->setIcon(QIcon());
 }
 
 void view::ChessWindow::selectPiece(int row, int col) {
