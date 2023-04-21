@@ -241,6 +241,7 @@ void view::ChessWindow::pieceClick() {
             movePiece(row, col);
             resetColors(gridLayout);
             isPieceSelected = false;
+            selectedPiece = nullptr;
         }
         else {
             selectedButton->setStyleSheet("background-color: red");
