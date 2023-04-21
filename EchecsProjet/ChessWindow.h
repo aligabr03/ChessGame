@@ -11,6 +11,9 @@ Date: 14 Avril 2023
 
 #include "MoveGuard.h"
 
+#ifndef CHESSWINDOW_H
+#define MCHESSWINDOW_H
+
 namespace view
 {
     class ChessWindow : public QMainWindow
@@ -46,3 +49,4 @@ namespace view
         bool whiteTurn = true;
     };
 }
+#endif

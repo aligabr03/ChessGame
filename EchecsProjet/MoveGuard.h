@@ -9,13 +9,12 @@
 // Date: 14 Avril 2023
 // */
 
-#ifndef MOVEGUARD_H
-#define MOVEGUARD_H
-
-#endif MOVEGUARD_H
 
 #include "Piece.h"
 #include <qpushbutton.h>
+
+#ifndef MOVEGUARD_H
+#define MOVEGUARD_H
 
 // Classe RAII
 class MoveGuard
@@ -49,3 +48,5 @@ private:
     QPushButton *m_lastValidButton;
     bool *m_undo;
 };
+
+#endif

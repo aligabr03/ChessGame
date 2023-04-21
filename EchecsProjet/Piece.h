@@ -8,6 +8,8 @@ Date: 14 Avril 2023
 #include <qpixmap.h>
 #include <stdexcept>
 
+#ifndef PIECE_H
+#define PIECE_H
 namespace model
 {
     class Piece
@@ -86,3 +88,5 @@ namespace model
         bool validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) override;
     };
 }
+
+#endif
