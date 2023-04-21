@@ -9,7 +9,7 @@ Date: 14 Avril 2023
 #include <qgridlayout.h>
 #include <qpushbutton.h>
 
-#include "Piece.h"
+#include "MoveGuard.h"
 
 namespace view
 {
@@ -28,8 +28,8 @@ namespace view
         void highlightValid(std::shared_ptr<model::Piece> piece, QGridLayout *gridLayout);
         void highlightValidByTurn(std::shared_ptr<model::Piece> piece, QGridLayout *gridLayout);
         void resetColors(QGridLayout *gridLayout);
-        bool checkTurn();
         bool isChecked();
+        bool checkTurn();
 
     private slots:
         void pieceClick();

@@ -1,3 +1,9 @@
+/*
+Nom: Piece.h
+Description: Main permettant de lancer le jeu.
+Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
+Date: 14 Avril 2023
+*/
 #include "ChessWindow.h"
 #include <QtWidgets/QApplication>
 #include <QMessageBox>
@@ -14,7 +20,7 @@ int main(int argc, char *argv[])
         // Executer l'application
         return a.exec();
     }
-    catch (const std::runtime_error& error)
+    catch (const std::runtime_error &error)
     {
         // Afficher un message d'erreur
         QMessageBox::critical(nullptr, "Error", error.what());

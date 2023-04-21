@@ -488,13 +488,8 @@ CMakeFiles/ProjetTest.dir/ChessWindow.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Piece.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/QMessageBox \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/raii.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/stack \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/deque
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/MoveGuard.h \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Piece.h
 
 CMakeFiles/ProjetTest.dir/Piece.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Piece.cpp \
   /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Piece.h \
@@ -2257,6 +2252,7 @@ CMakeFiles/ProjetTest.dir/main.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SE
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/MoveGuard.h \
   /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Piece.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/QApplication \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qapplication.h \
@@ -2282,6 +2278,10 @@ CMakeFiles/ProjetTest.dir/main.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SE
 
 /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/QApplication:
 
+/Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/QMessageBox:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/signal.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/csignal:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__hash_table:
@@ -2291,6 +2291,12 @@ CMakeFiles/ProjetTest.dir/main.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SE
 /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/include/gsl/gsl_byte:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/iomanip:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/stack:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/deque:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/iostream:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_fsfilcnt_t.h:
 
@@ -2355,16 +2361,6 @@ CMakeFiles/ProjetTest.dir/main.cpp.o: /Users/rayaneoth/Desktop/Cours/LOG/2eme_SE
 ProjetTest_autogen/mocs_compilation.cpp:
 
 /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Piece.cpp:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/iostream:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/deque:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/stack:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/signal.h:
-
-/Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/QMessageBox:
 
 /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h:
 
@@ -2459,8 +2455,6 @@ ProjetTest_autogen/mocs_compilation.cpp:
 /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qtextstream.h:
 
 /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qalgorithms.h:
-
-/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/raii.h:
 
 /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qbytearraylist.h:
 
@@ -3123,6 +3117,8 @@ ProjetTest_autogen/mocs_compilation.cpp:
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__utility/rel_ops.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__functional/ranges_operations.h:
+
+/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/MoveGuard.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__utility/piecewise_construct.h:
 

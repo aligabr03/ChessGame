@@ -486,6 +486,7 @@ CMakeFiles/ProjetTest.dir/main.cpp.o: \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/MoveGuard.h \
   /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Piece.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/QApplication \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qapplication.h \

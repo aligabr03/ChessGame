@@ -6,8 +6,6 @@ Date: 14 Avril 2023
 */
 
 #include "ChessWindow.h"
-#include <QMessageBox>
-#include "raii.h"
 
 view::ChessWindow::ChessWindow()
 {
@@ -129,12 +127,22 @@ void view::ChessWindow::initializeWhitePieces()
 
 void view::ChessWindow::movePiece(int row, int col)
 {
-    selectedButton->setIcon(selectedPiece->icon());
-    selectedButton->setIconSize(QSize(45, 45));
-    selectedPiece->setCol(col);
-    selectedPiece->setRow(row);
-    lastValidButton->setIcon(QIcon());
-    whiteTurn = !whiteTurn;
+    bool *undo;
+    MoveGuard guard(selectedButton, lastValidButton, selectedPiece, row, col, undo);
+    if (isChecked())
+    {
+        *undo = true;
+    }
+    else
+    {
+        *undo = false;
+        whiteTurn = !whiteTurn;
+    }
+    // selectedButton->setIcon(selectedPiece->icon());
+    // selectedButton->setIconSize(QSize(45, 45));
+    // selectedPiece->setCol(col);
+    // selectedPiece->setRow(row);
+    // lastValidButton->setIcon(QIcon());
 }
 
 void view::ChessWindow::selectPiece(int row, int col)
@@ -143,15 +151,43 @@ void view::ChessWindow::selectPiece(int row, int col)
     {
         if ((*it)->row() == row && (*it)->col() == col)
         {
-            if ((isChecked() && (*it)->type() == model::Piece::King) or (!isChecked()))
+            selectedPiece = *it;
+            isPieceSelected = checkTurn();
+            lastValidButton = selectedButton;
+            break;
+        }
+    }
+}
+
+bool view::ChessWindow::isChecked()
+{
+    for (std::shared_ptr<model::Piece> king : pieces)
+    {
+        if (king->type() == model::Piece::King)
+        {
+            for (std::shared_ptr<model::Piece> piece : pieces)
             {
-                selectedPiece = *it;
-                isPieceSelected = checkTurn();
-                lastValidButton = selectedButton;
-                break;
+                if (piece->type() != model::Piece::King)
+                {
+                    if (piece->color() == model::Piece::Black && whiteTurn && king->color() == model::Piece::White)
+                    {
+                        if (piece->validMove(pieces, king->row(), king->col()))
+                        {
+                            return true;
+                        }
+                    }
+                    else if (piece->color() == model::Piece::White && !whiteTurn && king->color() == model::Piece::Black)
+                    {
+                        if (piece->validMove(pieces, king->row(), king->col()))
+                        {
+                            return true;
+                        }
+                    }
+                }
             }
         }
     }
+    return false;
 }
 
 bool view::ChessWindow::checkTurn()
@@ -201,144 +237,6 @@ void view::ChessWindow::highlightValid(std::shared_ptr<model::Piece> piece, QGri
             highlightValidByTurn(piece, gridLayout);
         }
     }
-}
-
-// bool view::ChessWindow::isChecked()
-// {
-//     for (std::shared_ptr<model::Piece> king : pieces)
-//     {
-//         if (king->type() == model::Piece::King)
-//         {
-//             for (std::shared_ptr<model::Piece> piece : pieces)
-//             {
-//                 if (piece->color() == model::Piece::Black && whiteTurn && king->color() == model::Piece::White)
-//                 {
-//                     if (piece->validMove(pieces, king->row(), king->col()))
-//                     {
-//                         return true;
-//                     }
-//                 }
-//                 else if (piece->color() == model::Piece::White && !whiteTurn && king->color() == model::Piece::Black)
-//                 {
-//                     if (piece->validMove(pieces, king->row(), king->col()))
-//                     {
-//                         return true;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     return false;
-// }
-
-bool view::ChessWindow::isChecked()
-{
-    bool isCheck = false;
-    // bool isCheckmate = true;
-    std::shared_ptr<model::Piece> checkingPiece = nullptr;
-    // Vérifie si un roi est en échec
-    for (std::shared_ptr<model::Piece> king : pieces)
-    {
-        if (king->type() == model::Piece::King)
-        {
-            for (std::shared_ptr<model::Piece> piece : pieces)
-            {
-                // if (piece->color() != king->color() && piece->validMove(pieces, king->row(), king->col()))
-                // {
-                //     isCheck = true;
-                //     checkingPiece = piece;
-                //     QMessageBox::warning(this, tr("Échec"), tr("Le roi blanc est en échec."));
-                //     break;
-                // }
-                if (piece->color() == model::Piece::Black && whiteTurn && king->color() == model::Piece::White)
-                {
-                    if (piece->validMove(pieces, king->row(), king->col()))
-                    {
-                        isCheck = true;
-                        checkingPiece = piece;
-                        QMessageBox::warning(this, tr("Échec"), tr("Le roi blanc est en échec."));
-                        
-                        // return true;
-                    }
-                }
-                else if (piece->color() == model::Piece::White && !whiteTurn && king->color() == model::Piece::Black)
-                {
-                    if (piece->validMove(pieces, king->row(), king->col()))
-                    {
-                        isCheck = true;
-                        checkingPiece = piece;
-                        QMessageBox::warning(this, tr("Échec"), tr("Le roi noir est en échec."));
-                        // return true;
-                    }
-                }
-            }
-            break;
-        }
-    }
-
-    // Si le roi n'est pas en échec, la partie n'est pas en échec et mat
-    if (!isCheck)
-    {
-        return false;
-    }
-
-    // Vérifie si une pièce peut être bougée pour annuler l'échec
-    for (std::shared_ptr<model::Piece> piece : pieces)
-    {
-        if (piece->color() == checkingPiece->color())
-        {
-            for (int row = 0; row < 8; row++)
-            {
-                for (int col = 0; col < 8; col++)
-                {
-                    if (piece->validMove(pieces, row, col))
-                    {
-                        // Déplace temporairement la pièce pour vérifier si cela annule l'échec
-                        movePiece(row, col);
-                        bool isTempCheck = isChecked();
-
-                        // Annule le déplacement temporaire
-                        movePiece(piece->row(), piece->col());
-
-                        // Si le déplacement annule l'échec, la partie n'est pas en échec et mat
-                        if (!isTempCheck)
-                        {
-                            return false;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // Vérifie si une pièce peut manger la pièce causant l'échec
-    for (std::shared_ptr<model::Piece> piece : pieces)
-    {
-        if (piece->color() == checkingPiece->color())
-        {
-            for (std::shared_ptr<model::Piece> opponentPiece : pieces)
-            {
-                if (opponentPiece->color() != piece->color() && opponentPiece->validMove(pieces, checkingPiece->row(), checkingPiece->col()))
-                {
-                    // Déplace temporairement la pièce pour vérifier si cela annule l'échec
-                    movePiece(checkingPiece->row(), checkingPiece->col());
-                    bool isTempCheck = isChecked();
-
-                    // Annule le déplacement temporaire
-                    movePiece(opponentPiece->row(), opponentPiece->col());
-
-                    // Si le déplacement annule l'échec, la partie n'est pas en échec et mat
-                    if (!isTempCheck)
-                    {
-                        return false;
-                    }
-                }
-            }
-        }
-    }
-
-    // Si aucune pièce ne peut être bougée ou manger la pièce causant l'échec, la partie est en échec et mat
-    return true;
 }
 
 void view::ChessWindow::resetColors(QGridLayout *gridLayout)
@@ -408,7 +306,7 @@ void view::ChessWindow::pieceClick()
             movePiece(row, col);
             resetColors(gridLayout);
             isPieceSelected = false;
-            qDebug() << isChecked();
+            selectedPiece = nullptr;
         }
         else
         {
