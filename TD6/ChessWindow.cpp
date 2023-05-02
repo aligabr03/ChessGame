@@ -9,15 +9,62 @@ Date: 20 Avril 2023
 
 view::ChessWindow::ChessWindow() {
     initializeBoard();
+    startNormal();
+}
+
+void view::ChessWindow::clearBoard() {
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            buttons[row][col]->setIcon(QIcon());
+        }
+    }
+    pieces.clear();
+    whiteTurn = true;
+}
+
+void view::ChessWindow::startNormal() {
+    clearBoard();
     initializeWhitePieces();
     initializeBlackPieces();
 }
 
+void view::ChessWindow::startKingOnly() {
+    clearBoard();
+    QPixmap kingb("king1.png");
+    QPixmap king("king.png");
+
+    buttons[0][4]->setIcon(kingb);
+    buttons[0][4]->setIconSize(QSize(45, 45));
+    pieces.push_back(std::make_shared<model::King>(kingb, model::Piece::Black, 0, 4));
+    
+    buttons[7][4]->setIcon(king);
+    buttons[7][4]->setIconSize(QSize(45, 45));
+    pieces.push_back(std::make_shared<model::King>(king, model::Piece::White, 7, 4));
+}
+
 void view::ChessWindow::initializeBoard() {
+    QPushButton* menuButton = new QPushButton("Menu", this);
+
+    QAction* onlyKings = new QAction("Only kings", this);
+    QAction* normal = new QAction("New Game", this);
+
+    connect(onlyKings, &QAction::triggered, this, &ChessWindow::startKingOnly);
+    connect(normal, &QAction::triggered, this, &ChessWindow::startNormal);
+
+    QMenu* menu = new QMenu(this);
+    menu->addAction(normal);
+    menu->addAction(onlyKings);
+
+    connect(menuButton, &QPushButton::clicked, menu, [=]() {
+        menu->popup(menuButton->mapToGlobal(QPoint(0, menuButton->height())));
+        });
+
     QWidget* central_widget = new QWidget();
     setCentralWidget(central_widget);
 
     QGridLayout* grid_layout = new QGridLayout(central_widget);
+
+    grid_layout->addWidget(menuButton, 8, 0);
 
     for (int row = 0; row < 8; row++) {
         for (int col = 0; col < 8; col++) {
@@ -68,6 +115,22 @@ void view::ChessWindow::initializeBlackPieces() {
             }
         }
     }
+
+    //buttons[0][2]->setIcon(bishopb);
+    //buttons[0][2]->setIconSize(QSize(45, 45));
+    //pieces.push_back(std::make_shared<model::Bishop>(bishopb, model::Piece::Black, 0, 2));
+
+    //buttons[0][5]->setIcon(bishopb);
+    //buttons[0][5]->setIconSize(QSize(45, 45));
+    //pieces.push_back(std::make_shared<model::Bishop>(bishopb, model::Piece::Black, 0, 5));
+
+    //buttons[0][3]->setIcon(queenb);
+    //buttons[0][3]->setIconSize(QSize(45, 45));
+    //pieces.push_back(std::make_shared<model::Queen>(queenb, model::Piece::Black, 0, 3));
+
+    //buttons[0][4]->setIcon(kingb);
+    //buttons[0][4]->setIconSize(QSize(45, 45));
+    //pieces.push_back(std::make_shared<model::King>(kingb, model::Piece::Black, 0, 4));
 }
 
 void view::ChessWindow::initializeWhitePieces() {
@@ -101,6 +164,23 @@ void view::ChessWindow::initializeWhitePieces() {
             }
         }
     }
+
+    //buttons[7][2]->setIcon(bishop);
+    //buttons[7][2]->setIconSize(QSize(45, 45));
+    //pieces.push_back(std::make_shared<model::Bishop>(bishop, model::Piece::White, 7, 2));
+
+    //buttons[7][5]->setIcon(bishop);
+    //buttons[7][5]->setIconSize(QSize(45, 45));
+    //pieces.push_back(std::make_shared<model::Bishop>(bishop, model::Piece::White, 7, 5));
+
+    //buttons[7][3]->setIcon(queen);
+    //buttons[7][3]->setIconSize(QSize(45, 45));
+    //pieces.push_back(std::make_shared<model::Queen>(queen, model::Piece::White, 7, 3));
+
+    //buttons[7][4]->setIcon(king);
+    //buttons[7][4]->setIconSize(QSize(45, 45));
+    //pieces.push_back(std::make_shared<model::King>(king, model::Piece::White, 7, 4));
+
 }
 
 void view::ChessWindow::movePiece(int row, int col){

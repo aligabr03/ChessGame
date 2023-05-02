@@ -11,6 +11,8 @@ Date: 20 Avril 2023
 #include <qmainwindow.h>
 #include <qgridlayout.h>
 #include <qpushbutton.h>
+#include <qmenu.h>
+#include <qaction.h>
 
 #include "MoveGuard.h"
 
@@ -22,6 +24,10 @@ namespace view
         void initializeWhitePieces();
         void initializeBlackPieces();
         void initializeBoard();
+
+        void clearBoard();
+        void startNormal();
+        void startKingOnly();
 
         void movePiece(int row, int col);
         void selectPiece(int row, int col);
