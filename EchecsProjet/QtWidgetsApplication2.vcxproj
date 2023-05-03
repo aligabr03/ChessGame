@@ -84,9 +84,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MoveGuard.cpp" />
     <ClCompile Include="Piece.cpp" />
     <QtRcc Include="QtWidgetsApplication2.qrc" />
     <QtUic Include="QtWidgetsApplication2.ui" />
+    <ClInclude Include="MoveGuard.h" />
     <ClInclude Include="Piece.h" />
     <ClInclude Include="ChessWindow.h" />
     <ClCompile Include="ChessWindow.cpp" />

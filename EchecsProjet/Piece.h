@@ -2,8 +2,11 @@
 Nom: Piece.h
 Description: Definit la classe Piece
 Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-Date: 14 Avril 2023
+Date: 20 Avril 2023
 */
+
+#ifndef PIECE_H
+#define PIECE_H
 
 #include <qpixmap.h>
 #include <stdexcept>
@@ -50,8 +53,12 @@ namespace model
                 if (s_kingCount > 2)
                 {
                     --s_kingCount;
-                    throw std::runtime_error("cannot create more than two kings.");
+                    throw std::runtime_error("Cannot create more than two kings.");
                 }
+        }
+
+        ~King() {
+            --s_kingCount;
         }
 
         Type type() override { return Piece::King; }
@@ -77,4 +84,4 @@ namespace model
     };
 }
 
-
+#endif

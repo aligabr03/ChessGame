@@ -2,14 +2,19 @@
 Nom: ChessWindow.h
 Description: Gere la vue du jeu
 Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-Date: 14 Avril 2023
+Date: 20 Avril 2023
 */
+
+#ifndef CHESSWINDOW_H
+#define CHESSWINDOW_H
 
 #include <qmainwindow.h>
 #include <qgridlayout.h>
 #include <qpushbutton.h>
+#include <qmenu.h>
+#include <qaction.h>
 
-#include "Piece.h"
+#include "MoveGuard.h"
 
 namespace view
 {
@@ -20,6 +25,10 @@ namespace view
         void initializeBlackPieces();
         void initializeBoard();
 
+        void clearBoard();
+        void startNormal();
+        void startKingOnly();
+
         void movePiece(int row, int col);
         void selectPiece(int row, int col);
         void capture(int row, int col);
@@ -27,8 +36,8 @@ namespace view
         void highlightValid(std::shared_ptr<model::Piece> piece, QGridLayout* gridLayout);
         void highlightValidByTurn(std::shared_ptr<model::Piece> piece, QGridLayout* gridLayout);
         void resetColors(QGridLayout* gridLayout);
+        bool isChecked();
         bool checkTurn();
-        int isChecked();
 
     private slots:
         void pieceClick();
@@ -45,3 +54,5 @@ namespace view
         bool whiteTurn = true;
     };
 }
+
+#endif

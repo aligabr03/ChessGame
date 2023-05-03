@@ -2,12 +2,13 @@
 Nom: Piece.cpp
 Description: Definit les methodes des classes derivees de Piece
 Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-Date: 14 Avril 2023
+Date: 20 Avril 2023
 */
 
 #include "Piece.h"
 
 int model::Piece::s_kingCount = 0;
+
 
 int model::Piece::isPieceAt(int row, int col, std::list<std::shared_ptr<Piece>> pieces) {
     for (const std::shared_ptr<Piece> piece : pieces) {
@@ -24,6 +25,7 @@ int model::Piece::isPieceAt(int row, int col, std::list<std::shared_ptr<Piece>> 
 }
 
 bool model::King::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) {
+
     // verifier que source != destination
     if (m_row == rowDest && m_col == colDest)
     {
@@ -49,7 +51,8 @@ bool model::King::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDes
     // Verification que le mouvement ne mettrai pas le roi en echec
     for (const std::shared_ptr<Piece> piece : pieces) {
         if (piece->color() != m_color) {
-            if (piece->validMove(pieces, rowDest, colDest)) {
+            if (piece->validMove(pieces, rowDest, colDest)) //si le roi met le roi en echec King::validMove s'appelle lui meme -> crash quand 2 rois s'approchent
+            {
                 return false;
             }
         }
@@ -60,6 +63,7 @@ bool model::King::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDes
 }
 
 bool model::Queen::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) {
+
     // verifier que source != destination
     if (m_row == rowDest && m_col == colDest)
     {
@@ -90,7 +94,7 @@ bool model::Queen::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDe
         c += colDirection;
     }
 
-    // Verification que le roi ne se deplace pas sur une case deja occupee par une autre piece de sa couleur
+    // Verification que la reine ne se deplace pas sur une case deja occupee par une autre piece de sa couleur
     if (isPieceAt(rowDest, colDest, pieces) == 1 && m_color == Piece::Color::White)
     {
         return false;
@@ -105,6 +109,7 @@ bool model::Queen::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDe
 }
 
 bool model::Bishop::validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) {
+    
     // verifier que source != destination
     if (m_row == rowDest && m_col == colDest) {
         return false;
