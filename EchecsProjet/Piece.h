@@ -2,14 +2,15 @@
 Nom: Piece.h
 Description: Definit la classe Piece
 Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-Date: 14 Avril 2023
+Date: 20 Avril 2023
 */
+
+#ifndef PIECE_H
+#define PIECE_H
 
 #include <qpixmap.h>
 #include <stdexcept>
 
-#ifndef PIECE_H
-#define PIECE_H
 namespace model
 {
     class Piece
@@ -45,12 +46,12 @@ namespace model
         int isPieceAt(int row, int col, std::list<std::shared_ptr<Piece>> pieces);
 
     protected:
+        QPixmap m_icon;
         Color m_color = Color::White;
         int m_row = 99;
         int m_col = 99;
-        QPixmap m_icon;
 
-        static int s_kingCount;
+        // static int s_kingCount;
     };
 
     class King : public Piece
@@ -62,12 +63,18 @@ namespace model
             if (s_kingCount > 2)
             {
                 --s_kingCount;
-                throw std::runtime_error("cannot create more than two kings.");
+                throw std::runtime_error("Cannot create more than two kings.");
             }
+        }
+
+        ~King()
+        {
+            --s_kingCount;
         }
 
         Type type() override { return Piece::King; }
         bool validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) override;
+        static int s_kingCount;
     };
 
     class Bishop : public Piece

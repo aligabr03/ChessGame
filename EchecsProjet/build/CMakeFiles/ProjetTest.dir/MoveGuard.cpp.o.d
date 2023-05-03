@@ -1,8 +1,8 @@
-CMakeFiles/ProjetTest.dir/ChessWindow.cpp.o: \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/ChessWindow.cpp \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/ChessWindow.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
+CMakeFiles/ProjetTest.dir/MoveGuard.cpp.o: \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/MoveGuard.cpp \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/MoveGuard.h \
+  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Piece.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qpixmap.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qtguiglobal.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qglobal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/type_traits \
@@ -277,15 +277,14 @@ CMakeFiles/ProjetTest.dir/ChessWindow.cpp.o: \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qforeach.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qtgui-config.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qtguiexports.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qtwidgets-config.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qtwidgetsexports.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qpaintdevice.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qwindowdefs.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qobjectdefs.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qnamespace.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qtmetamacros.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qobjectdefs_impl.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qobject.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qrect.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qhashfunctions.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qstring.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qchar.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qstringview.h \
@@ -409,20 +408,28 @@ CMakeFiles/ProjetTest.dir/ChessWindow.cpp.o: \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qanystringview.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qutf8stringview.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qstringtokenizer.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qlist.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qhashfunctions.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/numeric \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qmargins.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qsize.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qpoint.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qcolor.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qrgb.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qstringlist.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qlist.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qiterator.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qbytearraylist.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qstringlist.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qalgorithms.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/bit \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qstringmatcher.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qscopedpointer.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qrgba64.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qsharedpointer.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qshareddata.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qsharedpointer_impl.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qmetatype.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qcompare.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qscopeguard.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qdatastream.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qscopedpointer.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qiodevicebase.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qiterable.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qmetacontainer.h \
@@ -438,29 +445,24 @@ CMakeFiles/ProjetTest.dir/ChessWindow.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__functional/is_transparent.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__node_handle \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__tree \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qobject_impl.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qbindingstorage.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qmargins.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qaction.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qkeysequence.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qicon.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qsize.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qpixmap.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qpaintdevice.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qrect.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qpoint.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qcolor.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qrgb.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qrgba64.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qsharedpointer.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qshareddata.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qsharedpointer_impl.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qimage.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qpixelformat.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qtransform.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qpolygon.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qregion.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qline.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qtwidgets-config.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qtwidgetsexports.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qicon.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qkeysequence.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qobject.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qobject_impl.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qbindingstorage.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qaction.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qvariant.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qdebug.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qtextstream.h \
@@ -478,19 +480,4 @@ CMakeFiles/ProjetTest.dir/ChessWindow.cpp.o: \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qfontinfo.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qsizepolicy.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qcursor.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qbitmap.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qtabwidget.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qgridlayout.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qlayout.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qlayoutitem.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qmenu.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qaction.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/QAction \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/MoveGuard.h \
-  /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Piece.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/QMessageBox \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qdialog.h
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qbitmap.h

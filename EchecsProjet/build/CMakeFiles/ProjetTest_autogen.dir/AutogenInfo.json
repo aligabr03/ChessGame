@@ -229,6 +229,12 @@
 			null
 		],
 		[
+			"/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/MoveGuard.h",
+			"MU",
+			"EWIEGA46WW/moc_MoveGuard.cpp",
+			null
+		],
+		[
 			"/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Piece.h",
 			"MU",
 			"EWIEGA46WW/moc_Piece.cpp",
@@ -318,6 +324,11 @@
 	[
 		[
 			"/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/ChessWindow.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/MoveGuard.cpp",
 			"MU",
 			null
 		],

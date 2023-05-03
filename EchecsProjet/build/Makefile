@@ -179,6 +179,30 @@ ChessWindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/ChessWindow.cpp.s
 .PHONY : ChessWindow.cpp.s
 
+MoveGuard.o: MoveGuard.cpp.o
+.PHONY : MoveGuard.o
+
+# target to build an object file
+MoveGuard.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/MoveGuard.cpp.o
+.PHONY : MoveGuard.cpp.o
+
+MoveGuard.i: MoveGuard.cpp.i
+.PHONY : MoveGuard.i
+
+# target to preprocess a source file
+MoveGuard.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/MoveGuard.cpp.i
+.PHONY : MoveGuard.cpp.i
+
+MoveGuard.s: MoveGuard.cpp.s
+.PHONY : MoveGuard.s
+
+# target to generate assembly for a file
+MoveGuard.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/MoveGuard.cpp.s
+.PHONY : MoveGuard.cpp.s
+
 Piece.o: Piece.cpp.o
 .PHONY : Piece.o
 
@@ -313,6 +337,9 @@ help:
 	@echo "... ChessWindow.o"
 	@echo "... ChessWindow.i"
 	@echo "... ChessWindow.s"
+	@echo "... MoveGuard.o"
+	@echo "... MoveGuard.i"
+	@echo "... MoveGuard.s"
 	@echo "... Piece.o"
 	@echo "... Piece.i"
 	@echo "... Piece.s"
