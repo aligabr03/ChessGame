@@ -14,11 +14,11 @@ namespace model
 
     int model::Piece::isPieceAt(int row, int col, std::list<std::shared_ptr<Piece>> pieces)
     {
-        for (const std::shared_ptr<Piece> piece : pieces)
+        for (const std::shared_ptr<Piece>& piece : pieces)
         {
-            if (piece->row() == row && piece->col() == col)
+            if (piece->getRow() == row && piece->getCol() == col)
             {
-                if (piece->color() == Piece::Color::White)
+                if (piece->getColor() == Piece::Color::White)
                 {
                     return 1;
                 }
@@ -57,9 +57,9 @@ namespace model
         }
 
         // Verification que le mouvement ne mettrai pas le roi en echec
-        for (const std::shared_ptr<Piece> piece : pieces)
+        for (const std::shared_ptr<Piece>& piece : pieces)
         {
-            if (piece->color() != m_color)
+            if (piece->getColor() != m_color)
             {
                 if (piece->validMove(pieces, rowDest, colDest)) // si le roi met le roi en echec King::validMove s'appelle lui meme -> crash quand 2 rois s'approchent
                 {
@@ -94,9 +94,9 @@ namespace model
         int c = m_col + colDirection;
         while (r != rowDest || c != colDest)
         {
-            for (const std::shared_ptr<Piece> piece : pieces)
+            for (const std::shared_ptr<Piece>& piece : pieces)
             {
-                if (piece->row() == r && piece->col() == c)
+                if (piece->getRow() == r && piece->getCol() == c)
                 {
                     return false;
                 }

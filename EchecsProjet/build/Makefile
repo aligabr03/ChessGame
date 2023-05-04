@@ -251,6 +251,30 @@ ProjetTest_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/ProjetTest_autogen/mocs_compilation.cpp.s
 .PHONY : ProjetTest_autogen/mocs_compilation.cpp.s
 
+Test.o: Test.cpp.o
+.PHONY : Test.o
+
+# target to build an object file
+Test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/Test.cpp.o
+.PHONY : Test.cpp.o
+
+Test.i: Test.cpp.i
+.PHONY : Test.i
+
+# target to preprocess a source file
+Test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/Test.cpp.i
+.PHONY : Test.cpp.i
+
+Test.s: Test.cpp.s
+.PHONY : Test.s
+
+# target to generate assembly for a file
+Test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/Test.cpp.s
+.PHONY : Test.cpp.s
+
 bibliotheque_cours/bibliotheque_cours.o: bibliotheque_cours/bibliotheque_cours.cpp.o
 .PHONY : bibliotheque_cours/bibliotheque_cours.o
 
@@ -274,30 +298,6 @@ bibliotheque_cours/bibliotheque_cours.s: bibliotheque_cours/bibliotheque_cours.c
 bibliotheque_cours/bibliotheque_cours.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/bibliotheque_cours/bibliotheque_cours.cpp.s
 .PHONY : bibliotheque_cours/bibliotheque_cours.cpp.s
-
-bibliotheque_cours/verification_allocation.o: bibliotheque_cours/verification_allocation.cpp.o
-.PHONY : bibliotheque_cours/verification_allocation.o
-
-# target to build an object file
-bibliotheque_cours/verification_allocation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.o
-.PHONY : bibliotheque_cours/verification_allocation.cpp.o
-
-bibliotheque_cours/verification_allocation.i: bibliotheque_cours/verification_allocation.cpp.i
-.PHONY : bibliotheque_cours/verification_allocation.i
-
-# target to preprocess a source file
-bibliotheque_cours/verification_allocation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.i
-.PHONY : bibliotheque_cours/verification_allocation.cpp.i
-
-bibliotheque_cours/verification_allocation.s: bibliotheque_cours/verification_allocation.cpp.s
-.PHONY : bibliotheque_cours/verification_allocation.s
-
-# target to generate assembly for a file
-bibliotheque_cours/verification_allocation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjetTest.dir/build.make CMakeFiles/ProjetTest.dir/bibliotheque_cours/verification_allocation.cpp.s
-.PHONY : bibliotheque_cours/verification_allocation.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -346,12 +346,12 @@ help:
 	@echo "... ProjetTest_autogen/mocs_compilation.o"
 	@echo "... ProjetTest_autogen/mocs_compilation.i"
 	@echo "... ProjetTest_autogen/mocs_compilation.s"
+	@echo "... Test.o"
+	@echo "... Test.i"
+	@echo "... Test.s"
 	@echo "... bibliotheque_cours/bibliotheque_cours.o"
 	@echo "... bibliotheque_cours/bibliotheque_cours.i"
 	@echo "... bibliotheque_cours/bibliotheque_cours.s"
-	@echo "... bibliotheque_cours/verification_allocation.o"
-	@echo "... bibliotheque_cours/verification_allocation.i"
-	@echo "... bibliotheque_cours/verification_allocation.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

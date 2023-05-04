@@ -25,7 +25,8 @@ namespace model
         enum Color
         {
             White,
-            Black
+            Black,
+            None
         };
 
         Piece() = default;
@@ -34,11 +35,11 @@ namespace model
 
         virtual ~Piece(){};
 
-        Color color() const { return m_color; }
-        int row() const { return m_row; }
-        int col() const { return m_col; }
-        virtual Type type() = 0;
-        QPixmap icon() const { return m_icon; }
+        Color getColor() const { return m_color; }
+        int getRow() const { return m_row; }
+        int getCol() const { return m_col; }
+        virtual Type getType() = 0;
+        QPixmap getIcon() const { return m_icon; }
         void setRow(int row) { m_row = row; }
         void setCol(int col) { m_col = col; }
 
@@ -47,7 +48,7 @@ namespace model
 
     protected:
         QPixmap m_icon;
-        Color m_color = Color::White;
+        Color m_color = Color::None;
         int m_row = 99;
         int m_col = 99;
 
@@ -72,7 +73,7 @@ namespace model
             --s_kingCount;
         }
 
-        Type type() override { return Piece::King; }
+        Type getType() override { return Piece::King; }
         bool validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) override;
         static int s_kingCount;
     };
@@ -82,7 +83,7 @@ namespace model
     public:
         Bishop(QPixmap icon, Color color, int row, int col) : Piece(icon, color, row, col) {}
 
-        Type type() override { return Piece::Bishop; }
+        Type getType() override { return Piece::Bishop; }
         bool validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) override;
     };
 
@@ -91,7 +92,7 @@ namespace model
     public:
         Queen(QPixmap icon, Color color, int row, int col) : Piece(icon, color, row, col) {}
 
-        Type type() override { return Piece::Queen; }
+        Type getType() override { return Piece::Queen; }
         bool validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) override;
     };
 }

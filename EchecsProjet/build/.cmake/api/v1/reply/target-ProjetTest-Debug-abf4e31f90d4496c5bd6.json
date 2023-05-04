@@ -502,13 +502,13 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "bibliotheque_cours/bibliotheque_cours.cpp",
+			"path" : "Test.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "bibliotheque_cours/verification_allocation.cpp",
+			"path" : "bibliotheque_cours/bibliotheque_cours.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

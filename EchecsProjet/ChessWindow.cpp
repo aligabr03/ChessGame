@@ -256,7 +256,7 @@ namespace view
     {
         for (auto it = pieces_.begin(); it != pieces_.end(); it++)
         {
-            if ((*it)->row() == row && (*it)->col() == col)
+            if ((*it)->getRow() == row && (*it)->getCol() == col)
             {
                 selectedPiece_ = *it;
                 isPieceSelected_ = checkTurn();
@@ -270,22 +270,22 @@ namespace view
     {
         for (std::shared_ptr<model::Piece> king : pieces_)
         {
-            if (king->type() == model::Piece::King)
+            if (king->getType() == model::Piece::King)
             {
                 for (std::shared_ptr<model::Piece> piece : pieces_)
                 {
-                    if (piece->type() != model::Piece::King)
+                    if (piece->getType() != model::Piece::King)
                     {
-                        if (piece->color() == model::Piece::Black && whiteTurn_ && king->color() == model::Piece::White)
+                        if (piece->getColor() == model::Piece::Black && whiteTurn_ && king->getColor() == model::Piece::White)
                         {
-                            if (piece->validMove(pieces_, king->row(), king->col()))
+                            if (piece->validMove(pieces_, king->getRow(), king->getCol()))
                             {
                                 return true;
                             }
                         }
-                        else if (piece->color() == model::Piece::White && !whiteTurn_ && king->color() == model::Piece::Black)
+                        else if (piece->getColor() == model::Piece::White && !whiteTurn_ && king->getColor() == model::Piece::Black)
                         {
-                            if (piece->validMove(pieces_, king->row(), king->col()))
+                            if (piece->validMove(pieces_, king->getRow(), king->getCol()))
                             {
                                 return true;
                             }
@@ -300,12 +300,12 @@ namespace view
     bool view::ChessWindow::checkTurn()
     {
         const int MAX_ROWS = 99;
-        if (selectedPiece_->row() != MAX_ROWS && whiteTurn_ && selectedPiece_->color() == model::Piece::White)
+        if (selectedPiece_->getRow() != MAX_ROWS && whiteTurn_ && selectedPiece_->getColor() == model::Piece::White)
         {
             selectedButton_->setStyleSheet("background-color: rgb(233,233,108)");
             return true;
         }
-        else if (selectedPiece_->row() != MAX_ROWS && !whiteTurn_ && selectedPiece_->color() == model::Piece::Black)
+        else if (selectedPiece_->getRow() != MAX_ROWS && !whiteTurn_ && selectedPiece_->getColor() == model::Piece::Black)
         {
             selectedButton_->setStyleSheet("background-color: rgb(233,233,108)");
             return true;
@@ -337,11 +337,11 @@ namespace view
         const int MAX_ROWS = 99;
         if (selectedPiece_ != nullptr)
         {
-            if (selectedPiece_->row() != MAX_ROWS && whiteTurn_ == true && selectedPiece_->color() == model::Piece::White)
+            if (selectedPiece_->getRow() != MAX_ROWS && whiteTurn_ == true && selectedPiece_->getColor() == model::Piece::White)
             {
                 highlightValidByTurn(piece, gridLayout);
             }
-            else if (selectedPiece_->row() != MAX_ROWS && whiteTurn_ == false && selectedPiece_->color() == model::Piece::Black)
+            else if (selectedPiece_->getRow() != MAX_ROWS && whiteTurn_ == false && selectedPiece_->getColor() == model::Piece::Black)
             {
                 highlightValidByTurn(piece, gridLayout);
             }
@@ -377,7 +377,7 @@ namespace view
         {
             for (auto it = pieces_.begin(); it != pieces_.end(); it++)
             {
-                if ((*it)->row() == row && (*it)->col() == col)
+                if ((*it)->getRow() == row && (*it)->getCol() == col)
                 {
                     pieces_.erase(it);
                     break;
@@ -402,7 +402,7 @@ namespace view
         }
         else if (isPieceSelected_ == true)
         {
-            if (selectedPiece_->row() == row && selectedPiece_->col() == col)
+            if (selectedPiece_->getRow() == row && selectedPiece_->getCol() == col)
             {
                 resetColors(gridLayout);
                 isPieceSelected_ = false;

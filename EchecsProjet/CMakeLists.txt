@@ -12,7 +12,7 @@ set(BILIOTHEQUE_COURS
 	"bibliotheque_cours/bibliotheque_cours.cpp"
 	"include/bibliotheque_cours.hpp"
 	"include/CodeCoverage_bugfix.h"
-	"bibliotheque_cours/verification_allocation.cpp"
+	# "bibliotheque_cours/verification_allocation.cpp"
 	"include/verification_allocation.hpp"
 	"include/debogage_memoire.hpp"
 )
