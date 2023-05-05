@@ -36,6 +36,13 @@ namespace view
         initializeBlackPieces();
     }
 
+    void view::ChessWindow::chooseStartingPositions()
+    {
+        clearBoard();
+        chooseStartPositionWhitePieces();
+        chooseStartPositionBlackPieces();
+    }
+
     void view::ChessWindow::startKingOnly()
     {
         const int ICON_SIZE = 45;
@@ -62,13 +69,16 @@ namespace view
 
         QAction *onlyKings = new QAction("Only kings", this);
         QAction *normal = new QAction("New Game", this);
+        QAction *chooseStartingPositions = new QAction("Choose Starting Positions", this);
 
         connect(onlyKings, &QAction::triggered, this, &ChessWindow::startKingOnly);
         connect(normal, &QAction::triggered, this, &ChessWindow::startNormal);
+        connect(chooseStartingPositions, &QAction::triggered, this, &ChessWindow::chooseStartingPositions);
 
         QMenu *menu = new QMenu(this);
         menu->addAction(normal);
         menu->addAction(onlyKings);
+        menu->addAction(chooseStartingPositions);
 
         connect(menuButton, &QPushButton::clicked, menu, [=]()
                 { menu->popup(menuButton->mapToGlobal(QPoint(0, menuButton->height()))); });
@@ -151,28 +161,13 @@ namespace view
                 }
             }
         }
-
-        // buttons[0][2]->setIcon(bishopb);
-        // buttons[0][2]->setIconSize(QSize(45, 45));
-        // pieces.push_back(std::make_shared<model::Bishop>(bishopb, model::Piece::Black, 0, 2));
-
-        // buttons[0][5]->setIcon(bishopb);
-        // buttons[0][5]->setIconSize(QSize(45, 45));
-        // pieces.push_back(std::make_shared<model::Bishop>(bishopb, model::Piece::Black, 0, 5));
-
-        // buttons[0][3]->setIcon(queenb);
-        // buttons[0][3]->setIconSize(QSize(45, 45));
-        // pieces.push_back(std::make_shared<model::Queen>(queenb, model::Piece::Black, 0, 3));
-
-        // buttons[0][4]->setIcon(kingb);
-        // buttons[0][4]->setIconSize(QSize(45, 45));
-        // pieces.push_back(std::make_shared<model::King>(kingb, model::Piece::Black, 0, 4));
     }
 
     void view::ChessWindow::initializeWhitePieces()
     {
         const int ICON_SIZE = 45;
         const int WPIECES_START_ROWS = 6;
+        const int LAST_ROW = 7;
         QPixmap bishop("/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/bishop.png");
         QPixmap queen("/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/queen.png");
         QPixmap king("/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/king.png");
@@ -180,7 +175,7 @@ namespace view
         {
             for (int col = 0; col < CHESSBOARD_SIZE_; col++)
             {
-                if (row == 7)
+                if (row == LAST_ROW)
                 {
                     switch (col)
                     {
@@ -218,22 +213,178 @@ namespace view
                 }
             }
         }
+    }
 
-        // buttons[7][2]->setIcon(bishop);
-        // buttons[7][2]->setIconSize(QSize(45, 45));
-        // pieces.push_back(std::make_shared<model::Bishop>(bishop, model::Piece::White, 7, 2));
+    void view::ChessWindow::chooseStartPositionWhitePieces()
+    {
+        const int ICON_SIZE = 45;
+        QPixmap bishop("/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/bishop.png");
+        QPixmap queen("/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/queen.png");
+        QPixmap king("/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/king.png");
 
-        // buttons[7][5]->setIcon(bishop);
-        // buttons[7][5]->setIconSize(QSize(45, 45));
-        // pieces.push_back(std::make_shared<model::Bishop>(bishop, model::Piece::White, 7, 5));
+        int compteurPiece = 0;
 
-        // buttons[7][3]->setIcon(queen);
-        // buttons[7][3]->setIconSize(QSize(45, 45));
-        // pieces.push_back(std::make_shared<model::Queen>(queen, model::Piece::White, 7, 3));
+        while (compteurPiece < 3)
+        {
+            QInputDialog rowDialog;
+            rowDialog.setWindowTitle("Place your white pieces");
+            rowDialog.setLabelText("Select a row (0-7):");
+            rowDialog.setIntRange(0, 7);
+            rowDialog.setOkButtonText("Next");
+            rowDialog.setCancelButtonText("Cancel");
 
-        // buttons[7][4]->setIcon(king);
-        // buttons[7][4]->setIconSize(QSize(45, 45));
-        // pieces.push_back(std::make_shared<model::King>(king, model::Piece::White, 7, 4));
+            QInputDialog colDialog;
+            colDialog.setWindowTitle("Place your white pieces");
+            colDialog.setLabelText("Select a column (0-7):");
+            colDialog.setIntRange(0, 7);
+            colDialog.setOkButtonText("Place");
+            colDialog.setCancelButtonText("Cancel");
+
+            if (rowDialog.exec() == QDialog::Accepted)
+            {
+                int row = rowDialog.textValue().toInt();
+
+                if (colDialog.exec() == QDialog::Accepted)
+                {
+                    int col = colDialog.textValue().toInt();
+                    if (pieces_.empty() || std::none_of(pieces_.begin(), pieces_.end(), [row, col](auto piece)
+                                                        { return piece->getRow() == row && piece->getCol() == col; }))
+                    {
+                        QInputDialog inputDialog;
+                        inputDialog.setWindowTitle("Place your white pieces");
+                        inputDialog.setLabelText("Select a piece to place:");
+                        QStringList options;
+                        options << "White Bishop"
+                                << "White Queen"
+                                << "White King";
+                        inputDialog.setComboBoxItems(options);
+                        inputDialog.setOkButtonText("Place");
+                        inputDialog.setCancelButtonText("Cancel");
+
+                        if (inputDialog.exec() == QDialog::Accepted)
+                        {
+                            QString selectedOption = inputDialog.textValue();
+
+                            if (selectedOption == "White Bishop")
+                            {
+                                buttons[row][col]->setIcon(bishop);
+                                buttons[row][col]->setIconSize(QSize(ICON_SIZE, ICON_SIZE));
+                                pieces_.push_back(std::make_shared<model::Bishop>(bishop, model::Piece::White, row, col));
+                                compteurPiece += 1;
+                            }
+                            else if (selectedOption == "White Queen")
+                            {
+                                buttons[row][col]->setIcon(queen);
+                                buttons[row][col]->setIconSize(QSize(ICON_SIZE, ICON_SIZE));
+                                pieces_.push_back(std::make_shared<model::Queen>(queen, model::Piece::White, row, col));
+                                compteurPiece += 1;
+                            }
+                            else if (selectedOption == "White King")
+                            {
+                                try
+                                {
+                                    buttons[row][col]->setIcon(king);
+                                    buttons[row][col]->setIconSize(QSize(ICON_SIZE, ICON_SIZE));
+                                    pieces_.push_back(std::make_shared<model::King>(king, model::Piece::White, row, col));
+                                    compteurPiece += 1;
+                                }
+                                catch (const std::runtime_error &error)
+                                {
+                                    // Afficher un message d'erreur
+                                    QMessageBox::critical(nullptr, "Error", error.what());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    void view::ChessWindow::chooseStartPositionBlackPieces()
+    {
+        const int ICON_SIZE = 45;
+        QPixmap bishop("/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/bishop1.png");
+        QPixmap queen("/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/queen1.png");
+        QPixmap king("/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/king1.png");
+
+        int compteurPiece = 0;
+
+        while (compteurPiece < 3)
+        {
+            QInputDialog rowDialog;
+            rowDialog.setWindowTitle("Place your black pieces");
+            rowDialog.setLabelText("Select a row (0-7):");
+            rowDialog.setIntRange(0, 7);
+            rowDialog.setOkButtonText("Next");
+            rowDialog.setCancelButtonText("Cancel");
+
+            QInputDialog colDialog;
+            colDialog.setWindowTitle("Place your black pieces");
+            colDialog.setLabelText("Select a column (0-7):");
+            colDialog.setIntRange(0, 7);
+            colDialog.setOkButtonText("Place");
+            colDialog.setCancelButtonText("Cancel");
+
+            if (rowDialog.exec() == QDialog::Accepted)
+            {
+                int row = rowDialog.textValue().toInt();
+
+                if (colDialog.exec() == QDialog::Accepted)
+                {
+                    int col = colDialog.textValue().toInt();
+                    if (pieces_.empty() || std::none_of(pieces_.begin(), pieces_.end(), [row, col](auto piece)
+                                                        { return piece->getRow() == row && piece->getCol() == col; }))
+                    {
+                        QInputDialog inputDialog;
+                        inputDialog.setWindowTitle("Place your black pieces");
+                        inputDialog.setLabelText("Select a piece to place:");
+                        QStringList options;
+                        options << "Black Bishop"
+                                << "Black Queen"
+                                << "Black King";
+                        inputDialog.setComboBoxItems(options);
+                        inputDialog.setOkButtonText("Place");
+                        inputDialog.setCancelButtonText("Cancel");
+
+                        if (inputDialog.exec() == QDialog::Accepted)
+                        {
+                            QString selectedOption = inputDialog.textValue();
+
+                            if (selectedOption == "Black Bishop")
+                            {
+                                buttons[row][col]->setIcon(bishop);
+                                buttons[row][col]->setIconSize(QSize(ICON_SIZE, ICON_SIZE));
+                                pieces_.push_back(std::make_shared<model::Bishop>(bishop, model::Piece::Black, row, col));
+                                compteurPiece += 1;
+                            }
+                            else if (selectedOption == "Black Queen")
+                            {
+                                buttons[row][col]->setIcon(queen);
+                                buttons[row][col]->setIconSize(QSize(ICON_SIZE, ICON_SIZE));
+                                pieces_.push_back(std::make_shared<model::Queen>(queen, model::Piece::Black, row, col));
+                                compteurPiece += 1;
+                            }
+                            else if (selectedOption == "Black King")
+                            {
+                                try
+                                {
+                                    buttons[row][col]->setIcon(king);
+                                    buttons[row][col]->setIconSize(QSize(ICON_SIZE, ICON_SIZE));
+                                    pieces_.push_back(std::make_shared<model::King>(king, model::Piece::Black, row, col));
+                                    compteurPiece += 1;
+                                }
+                                catch (const std::runtime_error &error)
+                                {
+                                    // Afficher un message d'erreur
+                                    QMessageBox::critical(nullptr, "Error", error.what());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     void view::ChessWindow::movePiece(int row, int col)

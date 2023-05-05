@@ -9,7 +9,6 @@ Date: 20 Avril 2023
 
 namespace model
 {
-    // int model::Piece::s_kingCount = 0;
     int model::King::s_kingCount = 0;
 
     int model::Piece::isPieceAt(int row, int col, std::list<std::shared_ptr<Piece>> pieces)

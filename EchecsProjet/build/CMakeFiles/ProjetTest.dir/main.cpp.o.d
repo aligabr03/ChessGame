@@ -489,6 +489,17 @@ CMakeFiles/ProjetTest.dir/main.cpp.o: \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qmenu.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qaction.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/QAction \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/QInputDialog \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qinputdialog.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qframe.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qtextcursor.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qtextdocument.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qurl.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qtextformat.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qpen.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qtextoption.h \
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qdialog.h \
   /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/MoveGuard.h \
   /Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/EchecsProjet/Piece.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/QApplication \
@@ -503,5 +514,4 @@ CMakeFiles/ProjetTest.dir/main.cpp.o: \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtCore.framework/Headers/qlocale.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtGui.framework/Headers/qguiapplication_platform.h \
   /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/QMessageBox \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
-  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qdialog.h
+  /Users/rayaneoth/Qt/6.4.3/macos/lib/QtWidgets.framework/Headers/qmessagebox.h

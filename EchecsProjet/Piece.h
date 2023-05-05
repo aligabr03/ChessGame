@@ -11,8 +11,8 @@ Date: 20 Avril 2023
 #include <qpixmap.h>
 #include <stdexcept>
 
-namespace model
-{
+namespace model {
+    
     class Piece
     {
     public:
@@ -51,8 +51,6 @@ namespace model
         Color m_color = Color::None;
         int m_row = 99;
         int m_col = 99;
-
-        // static int s_kingCount;
     };
 
     class King : public Piece

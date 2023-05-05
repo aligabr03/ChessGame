@@ -13,6 +13,7 @@ Date: 20 Avril 2023
 #include <qpushbutton.h>
 #include <qmenu.h>
 #include <qaction.h>
+#include <QInputDialog>
 
 #include "MoveGuard.h"
 
@@ -24,11 +25,14 @@ namespace view
         ChessWindow();
         void initializeWhitePieces();
         void initializeBlackPieces();
+        void chooseStartPositionWhitePieces();
+        void chooseStartPositionBlackPieces();
         void initializeBoard();
 
         void clearBoard();
         void startNormal();
         void startKingOnly();
+        void chooseStartingPositions();
 
         void movePiece(int row, int col);
         void selectPiece(int row, int col);

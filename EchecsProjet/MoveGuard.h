@@ -12,8 +12,7 @@ Date: 20 Avril 2023
 #include "Piece.h"
 #include <qpushbutton.h>
 
-namespace model
-{
+namespace model {
     // Classe RAII
     class MoveGuard
     {
