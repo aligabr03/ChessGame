@@ -86,6 +86,7 @@
   <ItemGroup>
     <ClCompile Include="MoveGuard.cpp" />
     <ClCompile Include="Piece.cpp" />
+    <ClCompile Include="Test.cpp" />
     <QtRcc Include="QtWidgetsApplication2.qrc" />
     <QtUic Include="QtWidgetsApplication2.ui" />
     <ClInclude Include="MoveGuard.h" />

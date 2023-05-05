@@ -2,7 +2,7 @@
 Nom: ChessWindow.h
 Description: Gere la vue du jeu
 Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-Date: 20 Avril 2023
+Date: 5 Mai 2023
 */
 
 #ifndef CHESSWINDOW_H
@@ -13,12 +13,15 @@ Date: 20 Avril 2023
 #include <qpushbutton.h>
 #include <qmenu.h>
 #include <qaction.h>
+#include <qmessagebox.h>
+
 
 #include "MoveGuard.h"
 
 namespace view
 {
-    class ChessWindow : public QMainWindow {
+    class ChessWindow : public QMainWindow
+    {
     public:
         ChessWindow();
         void initializeWhitePieces();
@@ -43,15 +46,16 @@ namespace view
         void pieceClick();
 
     private:
-        QPushButton* buttons[8][8];
-        std::list<std::shared_ptr<model::Piece>> pieces;
+        static const int CHESSBOARD_SIZE_ = 8;
+        QPushButton* buttons[CHESSBOARD_SIZE_][CHESSBOARD_SIZE_];
+        std::list<std::shared_ptr<model::Piece>> pieces_;
 
-        QPushButton* selectedButton = nullptr;
-        QPushButton* lastValidButton = nullptr;
-        std::shared_ptr<model::Piece> selectedPiece = nullptr;
+        QPushButton* selectedButton_ = nullptr;
+        QPushButton* lastValidButton_ = nullptr;
+        std::shared_ptr<model::Piece> selectedPiece_ = nullptr;
 
-        bool isPieceSelected = false;
-        bool whiteTurn = true;
+        bool isPieceSelected_ = false;
+        bool whiteTurn_ = true;
     };
 }
 

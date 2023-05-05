@@ -2,29 +2,42 @@
 Nom: main.cpp
 Description: Main permettant de lancer le jeu.
 Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-Date: 20 Avril 2023
+Date: 5 Mai 2023
 */
 
 #include "ChessWindow.h"
 #include <QtWidgets/QApplication>
 #include <QMessageBox>
+#include <QApplication>
 
-int main(int argc, char *argv[])
+#if __has_include("bibliotheque_cours.hpp")
+#include "bibliotheque_cours.hpp"
+#define BIBLIOTHEQUE_COURS_INCLUS
+using bibliotheque_cours::cdbg;
+#else
+auto& cdbg = clog;
+#endif
+
+#if __has_include("verification_allocation.hpp")
+#include "verification_allocation.hpp"
+#include "debogage_memoire.hpp"
+#endif
+
+void initialiserBibliothequeCours([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
-    QApplication a(argc, argv);
-    try
-    {
-        // Creer la fenetre de jeu
-        view::ChessWindow w;
-        w.show();
+#ifdef BIBLIOTHEQUE_COURS_INCLUS
+	bibliotheque_cours::activerCouleursAnsi();
+	bibliotheque_cours::executerGoogleTest(argc, argv);
+#endif
+}
 
-        // Executer l'application
-        return a.exec();
-    }
-    catch (const std::runtime_error& error)
-    {
-        // Afficher un message d'erreur
-        QMessageBox::critical(nullptr, "Error", error.what());
-        return 1;
-    }
+int main(int argc, char* argv[])
+{
+	bibliotheque_cours::VerifierFuitesAllocations verifierFuitesAllocations;
+	QApplication app(argc, argv);
+	initialiserBibliothequeCours(argc, argv);
+
+	view::ChessWindow calcWindow;
+	calcWindow.show();
+	return app.exec();
 }

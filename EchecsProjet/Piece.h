@@ -2,7 +2,7 @@
 Nom: Piece.h
 Description: Definit la classe Piece
 Auteurs: Rayane Othmani (2126485) et Ali Gabr (2128904)
-Date: 20 Avril 2023
+Date: 5 Mai 2023
 */
 
 #ifndef PIECE_H
@@ -20,26 +20,27 @@ namespace model
 
         Piece() = default;
 
-        Piece(QPixmap icon, Color color, int row, int col) : m_icon(icon), m_color(color), m_row(row), m_col(col) {}
+        Piece(QPixmap icon, Color color, int row, int col) : icon_(icon), color_(color), row_(row), col_(col) {}
 
         virtual ~Piece() {};
 
-        Color color() const { return m_color; }
-        int row() const { return m_row; }
-        int col() const { return m_col; }
+        Color color() const { return color_; }
+        int row() const { return row_; }
+        int col() const { return col_; }
         virtual Type type() = 0;
-        QPixmap icon() const { return m_icon; }
-        void setRow(int row) { m_row = row; }
-        void setCol(int col) { m_col = col; }
+        QPixmap icon() const { return icon_; }
+        void setRow(int row) { row_ = row; }
+        void setCol(int col) { col_ = col; }
+
 
         virtual bool validMove(std::list<std::shared_ptr<Piece>> pieces, int rowDest, int colDest) = 0;
         int isPieceAt(int row, int col, std::list<std::shared_ptr<Piece>> pieces);
 
     protected:
-        Color m_color = Color::White;
-        int m_row = 99;
-        int m_col = 99;
-        QPixmap m_icon;
+        Color color_ = Color::White;
+        int row_ = 99;
+        int col_ = 99;
+        QPixmap icon_;
 
         static int s_kingCount;
     };
@@ -49,12 +50,12 @@ namespace model
     public:
         King(QPixmap icon, Color color, int row, int col) : Piece(icon, color, row, col)
         {
-                ++s_kingCount;
-                if (s_kingCount > 2)
-                {
-                    --s_kingCount;
-                    throw std::runtime_error("Cannot create more than two kings.");
-                }
+            ++s_kingCount;
+            if (s_kingCount > 2)
+            {
+                --s_kingCount;
+                throw std::runtime_error("Cannot create more than two kings.");
+            }
         }
 
         ~King() {
