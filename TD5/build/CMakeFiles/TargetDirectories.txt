@@ -1,4 +1,0 @@
-/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD5/build/CMakeFiles/TD5.dir
-/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD5/build/CMakeFiles/TD5_couverture.dir
-/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD5/build/CMakeFiles/edit_cache.dir
-/Users/rayaneoth/Desktop/Cours/LOG/2eme_SESSION/INF1015/Github_LAB/inf1015td/TD5/build/CMakeFiles/rebuild_cache.dir
